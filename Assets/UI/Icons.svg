@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4 (86a8ad7, 2024-10-11)"
+   sodipodi:docname="Icons.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#eeeeee"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="mm"
+     inkscape:zoom="11.616723"
+     inkscape:cx="35.853485"
+     inkscape:cy="30.946766"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="1072"
+     inkscape:window-y="476"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#button_diffuse_gradient"
+       id="radialGradient13"
+       cx="13.2"
+       cy="13.7"
+       fx="20.480001"
+       fy="20.980001"
+       r="14"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       id="button_diffuse_gradient"
+       cx="0.40000001"
+       cy="0.40000001"
+       r="0.5"
+       fx="0.66000003"
+       fy="0.66000003">
+      <stop
+         offset="0"
+         stop-color="#ffffff"
+         stop-opacity="1"
+         id="stop15" />
+      <stop
+         offset="1"
+         stop-color="#ffffff"
+         stop-opacity="0.39634147"
+         id="stop16" />
+    </radialGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#button_shiny_specular_gradient"
+       id="linearGradient13"
+       x1="8.0255909"
+       y1="9.5807037"
+       x2="14.914732"
+       y2="11.649515"
+       gradientTransform="scale(1.0996785,0.90935669)"
+       gradientUnits="userSpaceOnUse" />
+    <linearGradient
+       id="button_shiny_specular_gradient"
+       x1="0.333"
+       y1="0.40000001"
+       x2="0.66600001"
+       y2="0.5">
+      <stop
+         offset="0"
+         stop-color="#ffffff"
+         stop-opacity="1"
+         id="stop17" />
+      <stop
+         offset="1"
+         stop-color="#ffffff"
+         stop-opacity="0"
+         id="stop18" />
+    </linearGradient>
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#button_diffuse_gradient-4"
+       id="radialGradient13-2"
+       cx="13.2"
+       cy="13.7"
+       fx="20.480001"
+       fy="20.980001"
+       r="14"
+       gradientUnits="userSpaceOnUse" />
+    <radialGradient
+       id="button_diffuse_gradient-4"
+       cx="0.40000001"
+       cy="0.40000001"
+       r="0.5"
+       fx="0.66000003"
+       fy="0.66000003">
+      <stop
+         offset="0"
+         stop-color="#ffffff"
+         stop-opacity="1"
+         id="stop15-5" />
+      <stop
+         offset="1"
+         stop-color="#ffffff"
+         stop-opacity="0.39634147"
+         id="stop16-5" />
+    </radialGradient>
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#button_shiny_specular_gradient"
+       id="linearGradient1"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="scale(1.0996785,0.90935669)"
+       x1="8.0255909"
+       y1="9.5807037"
+       x2="14.914732"
+       y2="11.649515" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="use7"
+       transform="matrix(0.14670287,0,0,0.14670287,0.55850724,26.223091)">
+      <!-- DEBUG: rect x="-5" y="-5" width="50" height="50" fill="yellow"/ -->
+      <!-- Shadow. -->
+      <circle
+         cx="15.75"
+         cy="15.75"
+         r="15"
+         opacity="0.333"
+         fill="#000000"
+         stroke-width="1"
+         stroke="#000000"
+         id="circle10" />
+      <circle
+         cx="15"
+         cy="15"
+         r="15"
+         fill="#d0d4d6"
+         stroke-width="0.4"
+         stroke="#cbcacf"
+         id="circle11" />
+      <!-- Base. -->
+      <circle
+         cx="15"
+         cy="15"
+         r="15"
+         fill="#d0d4d6"
+         stroke-width="0.4"
+         stroke="#cbcacf"
+         id="circle12" />
+      <!-- Diffuse lighting. -->
+      <circle
+         cx="16"
+         cy="16.5"
+         r="14"
+         fill="url(#button_diffuse_gradient)"
+         stroke="none"
+         id="circle13"
+         style="fill:url(#radialGradient13)" />
+      <!-- Specular lighting. -->
+      <path
+         d="M 2,20 A 14.25,14.25 0 0 1 24,4 Z"
+         fill="url(#button_shiny_specular_gradient)"
+         stroke="none"
+         id="path13"
+         style="fill:url(#linearGradient13)" />
+    </g>
+    <g
+       id="use175"
+       transform="matrix(0.14670287,0,0,0.14670287,1.1333018,0.90014811)"
+       style="display:inline"
+       inkscape:export-filename="A_Button_Icon.png"
+       inkscape:export-xdpi="400"
+       inkscape:export-ydpi="400">
+      <g
+         id="use7-1">
+        <!-- DEBUG: rect x="-5" y="-5" width="50" height="50" fill="yellow"/ -->
+        <!-- Shadow. -->
+        <circle
+           cx="15.75"
+           cy="15.75"
+           r="15"
+           opacity="0.333"
+           fill="#000000"
+           stroke-width="1"
+           stroke="#000000"
+           id="circle10-5" />
+        <circle
+           cx="15"
+           cy="15"
+           r="15"
+           fill="#d0d4d6"
+           stroke-width="0.4"
+           stroke="#cbcacf"
+           id="circle11-2" />
+        <!-- Base. -->
+        <circle
+           cx="15"
+           cy="15"
+           r="15"
+           fill="#d0d4d6"
+           stroke-width="0.4"
+           stroke="#cbcacf"
+           id="circle12-7" />
+        <!-- Diffuse lighting. -->
+        <circle
+           cx="16"
+           cy="16.5"
+           r="14"
+           fill="url(#button_diffuse_gradient)"
+           stroke="none"
+           id="circle13-6"
+           style="fill:url(#radialGradient13-2)" />
+        <!-- Specular lighting. -->
+        <path
+           d="M 2,20 A 14.25,14.25 0 0 1 24,4 Z"
+           fill="url(#button_shiny_specular_gradient)"
+           stroke="none"
+           id="path13-1"
+           style="fill:url(#linearGradient1)" />
+      </g>
+      <text
+         x="15.235485"
+         y="16.689493"
+         font-size="15px"
+         font-family="Arial, sans-serif"
+         fill="#909090"
+         text-anchor="middle"
+         dominant-baseline="central"
+         id="text8">A</text>
+    </g>
+  </g>
+</svg>
