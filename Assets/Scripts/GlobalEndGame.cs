@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// A static class accessible anywhere for easily closing the game, used only for debugging and prototype versions of game
+/// </summary>
 public static class GlobalEndGame
 {
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
@@ -8,7 +11,7 @@ public static class GlobalEndGame
     {
         InputSystem.onAfterUpdate += CheckQuit;
     }
-
+    
     private static void CheckQuit()
     {
         if (Keyboard.current == null)

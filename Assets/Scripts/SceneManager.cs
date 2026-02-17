@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Simple class for easily changing the scene based on serialized scene names
+/// </summary>
 public class SceneManager : MonoBehaviour
 {
     [SerializeField]

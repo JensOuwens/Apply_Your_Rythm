@@ -1,6 +1,10 @@
 using System;
 using UnityEngine;
 
+/// <summary>
+/// A component class for making a rect transform pulsate back and forth, changing the size.
+/// Simple animation that adds polish to static ui elements
+/// </summary>
 public class UIPulse : MonoBehaviour
 {
     [SerializeField]
