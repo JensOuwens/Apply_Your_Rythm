@@ -17,3 +17,4 @@ MonoBehaviour:
     displayName: Test
     bpm: 145
     volume: 1
+    songId: 0

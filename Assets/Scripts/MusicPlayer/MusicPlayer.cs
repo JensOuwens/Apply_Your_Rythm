@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -12,34 +13,36 @@ public class MusicPlayer : MonoBehaviour
     private float currentSongPositionInMS;
     
     private AudioSource audioSource;
-    private SongListScriptableObject songList;
+    [SerializeField]private SongListScriptableObject songList;
 
-    public void Awake()
+    private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
     }
-    
+
     public void PlaySong(int songId)
     {
         currentSong = songList.songs[songId].clip;
-        GetSongLengthInMS();
         audioSource.clip = currentSong;
+        GetSongLengthInMS();
         audioSource.Play();
     }
 
     public void StopSong()
     {
-        
+        audioSource.Stop();
     }
 
     private void GetSongLengthInMS()
     {
         songLengthInMS =  audioSource.clip.length / 1000;
+        Debug.unityLogger.Log("Song Length In MS: " + songLengthInMS);
     }
 
     public void GetSongPositionInMS()
     {
         currentSongPositionInMS = audioSource.time / 1000;
+        Debug.Log(currentSongPositionInMS);
     }
     
     
