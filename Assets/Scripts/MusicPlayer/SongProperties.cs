@@ -1,9 +1,11 @@
+using System;
 using UnityEngine;
 
+[Serializable]
 public class SongProperties
 {
     public AudioClip clip;
-    public string name;
+    public string displayName;
     public int bpm;
-    public int volume;
+    public float volume = 1f;
 }
