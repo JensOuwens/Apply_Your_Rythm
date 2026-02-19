@@ -12,15 +12,19 @@ public class MusicPlayer : MonoBehaviour
     private float currentSongPositionInMS;
     
     private AudioSource audioSource;
+    private SongListScriptableObject songList;
 
     public void Awake()
     {
         audioSource = GetComponent<AudioSource>();
     }
     
-    public void PlaySong()
+    public void PlaySong(int songId)
     {
-        
+        currentSong = songList.songs[songId].clip;
+        GetSongLengthInMS();
+        audioSource.clip = currentSong;
+        audioSource.Play();
     }
 
     public void StopSong()
@@ -30,7 +34,12 @@ public class MusicPlayer : MonoBehaviour
 
     private void GetSongLengthInMS()
     {
-        
+        songLengthInMS =  audioSource.clip.length / 1000;
+    }
+
+    public void GetSongPositionInMS()
+    {
+        currentSongPositionInMS = audioSource.time / 1000;
     }
     
     

@@ -8,4 +8,5 @@ public class SongProperties
     public string displayName;
     public int bpm;
     public float volume = 1f;
+    public uint songId;
 }

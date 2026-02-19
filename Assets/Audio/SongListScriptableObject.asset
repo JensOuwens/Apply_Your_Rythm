@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e04792ea6b304e946b4947372bb7d9a5, type: 3}
   m_Name: SongListScriptableObject
   m_EditorClassIdentifier: Assembly-CSharp::SongListScriptableObject
-  songs: []
+  songs:
+  - clip: {fileID: 8300000, guid: 4cf3bee50276682488b5413048cfa2a7, type: 3}
+    displayName: Test
+    bpm: 145
+    volume: 1
