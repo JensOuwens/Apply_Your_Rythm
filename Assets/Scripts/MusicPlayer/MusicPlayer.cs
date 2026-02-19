@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 /// <summary>
-/// handles playing/ stopping audio files, holds how long the song is, and how far we are in the current song
+/// handles playing/ stopping audio files, holds how long the song is, and returns far we are in the current song
 /// </summary>
 public class MusicPlayer : MonoBehaviour
 {
@@ -35,15 +35,12 @@ public class MusicPlayer : MonoBehaviour
 
     private void GetSongLengthInMS()
     {
-        songLengthInMS =  audioSource.clip.length / 1000;
-        Debug.unityLogger.Log("Song Length In MS: " + songLengthInMS);
+        songLengthInMS =  audioSource.clip.length * 1000;
     }
 
-    public void GetSongPositionInMS()
+    public float GetSongPositionInMS()
     {
-        currentSongPositionInMS = audioSource.time / 1000;
-        Debug.Log(currentSongPositionInMS);
+        currentSongPositionInMS = audioSource.time * 1000;
+        return currentSongPositionInMS;
     }
-    
-    
 }
