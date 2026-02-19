@@ -39,7 +39,7 @@ public class PlayerInputManager : MonoBehaviour
 
     private void Awake()
     {
-        playerHitBeatAction = inputActionMap.FindAction("HitBeat");
+        playerHitBeatAction = inputActionMap.FindAction(nameHitBeatAction);
         playerHitBeatAction.performed += OnPlayerPressed;
         shouldWaitForRelease = new bool[playerCount];
     }
