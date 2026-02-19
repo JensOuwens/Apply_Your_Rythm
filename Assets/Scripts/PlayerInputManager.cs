@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 
 /// <summary>
 /// Takes in a inputAsset, and the name for the input used by every player to hit a beat
-/// Manages hit/pressed as well as the release event for held beat presses
+/// Manages hit/pressed as well as the release event for held beat presses, these events send out a int with their player id
 /// Manages registered devices internally TODO: move this functionality to separate component at start of the game
 /// </summary>
 public class PlayerInputManager : MonoBehaviour
