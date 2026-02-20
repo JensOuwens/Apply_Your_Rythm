@@ -12,4 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b3ea7b7f2ae4bb199c2d490a05e48ac, type: 3}
   m_Name: Composition
   m_EditorClassIdentifier: Assembly-CSharp::CompositionObject
-  playerCount: 4
+  beatAmount: 10
+  data:
+  - beatStart: 0
+    beatEnd: 0
+    type: 0
+  - beatStart: 2
+    beatEnd: 4
+    type: 1
+  - beatStart: 6
+    beatEnd: 0
+    type: 0
+  showVisual: 1
