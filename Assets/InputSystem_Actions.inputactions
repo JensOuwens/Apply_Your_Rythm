@@ -1,6 +1,46 @@
 {
+    "version": 1,
     "name": "InputSystem_Actions",
     "maps": [
+        {
+            "name": "RhythmPlayer",
+            "id": "9fcd25a6-d7b9-4bf4-8db5-1dd10d642afb",
+            "actions": [
+                {
+                    "name": "HitBeat",
+                    "type": "Button",
+                    "id": "1b434086-5465-4e5a-9752-8f6283d4556e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "bb964627-afb4-43c8-b707-c656f3760e1c",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "HitBeat",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d008b23f-fa18-452a-bab3-abc3b5b6d868",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "HitBeat",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
         {
             "name": "Player",
             "id": "df70fa95-8a34-4494-b137-73ab6b9c7d37",
