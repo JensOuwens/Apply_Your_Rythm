@@ -41,7 +41,7 @@ public class CompositionObjectEditor : Editor
         serializedObject.ApplyModifiedProperties();
     }
     
-    void DrawTimeline(CompositionObject comp, List<BeatData?> dataVisual)
+    void DrawTimeline(CompositionObject comp, List<BeatData> dataVisual)
     {
         if (dataVisual == null) return;
 
@@ -58,11 +58,11 @@ public class CompositionObjectEditor : Editor
 
             var beat = dataVisual[i];
 
-            if (!beat.HasValue)
+            if (beat == null)
                 EditorGUI.DrawRect(cell, new Color(0.15f, 0.15f, 0.15f));
             else
             {
-                var c = beat.Value.type == BeatType.Tap
+                var c = beat.type == BeatType.Tap
                     ? new Color(0.3f, 0.8f, 0.3f)
                     : new Color(0.3f, 0.5f, 1f);
 

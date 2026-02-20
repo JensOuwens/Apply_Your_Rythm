@@ -13,9 +13,9 @@ public class CompositionObject : ScriptableObject
     [SerializeField]
     public bool showVisual;
 
-    public List<BeatData?> BuildVisualList()
+    public List<BeatData> BuildVisualList()
     {
-        var result = new List<BeatData?>(beatAmount);
+        var result = new List<BeatData>(beatAmount);
         for (var i = 0; i < beatAmount; i++)
         {
             if (i >= result.Count)
@@ -29,14 +29,15 @@ public class CompositionObject : ScriptableObject
 
         foreach (var beat in data)
         {
+            var beatToUse = new BeatData(beat);
             if (beat.type == BeatType.Tap && beat.beatStart < result.Count && beat.beatStart >= 0)
             {
-                result[beat.beatStart] = beat;
+                result[beat.beatStart] = beatToUse;
                 continue;
             }
             for (var i = beat.beatStart; i <= beat.beatEnd && i < result.Count; i++)
                 if (i < result.Count && i >= 0)
-                    result[i] = beat;
+                    result[i] = beatToUse;
         }
 
         return result;

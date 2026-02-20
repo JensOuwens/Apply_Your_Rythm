@@ -7,11 +7,13 @@
 /// beat type
 /// </summary>
 [Serializable]
-public struct BeatData : IComparable
+public class BeatData : IComparable
 {
     public int beatStart;
     public int beatEnd;
     public BeatType type;
+    [NonSerialized]
+    public bool hit = false;
 
     public BeatData(int beatStart = 0, int beatEnd = 1, BeatType type = BeatType.Tap)
     {
@@ -19,6 +21,7 @@ public struct BeatData : IComparable
         this.beatEnd = beatEnd;
         this.type = type;
     }
+    public BeatData(BeatData other) : this(other.beatStart, other.beatEnd, other.type) { }
 
     public int CompareTo(object other)
     {

@@ -7,13 +7,13 @@ public class Composer : MonoBehaviour
 {
     [SerializeField]
     private CompositionObject composition;
-    private BeatData?[] beatData;
+    private BeatData[] beatData;
 
     private void Start() => beatData = composition.BuildVisualList().ToArray();
     
     /// <param name="beatPos">position in song</param>
     /// <returns>null if no beat exists or if position is out of range</returns>
-    public BeatData? GetBeat(int beatPos)
+    public BeatData GetBeat(int beatPos)
     {
         if (beatPos >= beatData.Length || beatPos < 0)
             return null;
