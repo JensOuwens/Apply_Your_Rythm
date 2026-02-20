@@ -12,13 +12,12 @@ public class MusicPlayer : MonoBehaviour
     private float songLengthInMS;
     private float currentSongPositionInMS;
     
+    [SerializeField]
+    private SongListScriptableObject songList;
+    [SerializeField]
     private AudioSource audioSource;
-    [SerializeField]private SongListScriptableObject songList;
 
-    private void Awake()
-    {
-        audioSource = GetComponent<AudioSource>();
-    }
+    private void OnValidate() => audioSource = GetComponent<AudioSource>();
 
     public void PlaySong(int songId)
     {
@@ -28,15 +27,8 @@ public class MusicPlayer : MonoBehaviour
         audioSource.Play();
     }
 
-    public void StopSong()
-    {
-        audioSource.Stop();
-    }
-
-    private void GetSongLengthInMS()
-    {
-        songLengthInMS =  audioSource.clip.length * 1000;
-    }
+    public void StopSong() => audioSource.Stop();
+    private void GetSongLengthInMS() => songLengthInMS = audioSource.clip.length * 1000;
 
     public float GetSongPositionInMS()
     {
