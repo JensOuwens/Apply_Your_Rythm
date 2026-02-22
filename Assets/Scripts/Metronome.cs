@@ -19,11 +19,6 @@ public class Metronome : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            InitMetronome();
-        }
-
         if (Initialized) UpdateBeat();
     }
     
