@@ -10,19 +10,19 @@ public class Metronome : MonoBehaviour
     [SerializeField] private MusicPlayer musicPlayer;
     
     private int bpm;
-    private float beatDurationInMS;
-    private int lastBeat = 0;
+    public float beatDurationInMS;
+    public int lastBeat = 0;
     private float nextBeatPosition;
     private float totalBeatCount;
 
-    private bool initialized = false;
+    public bool initialized = false;
 
     private void Update()
     {
         if (initialized) UpdateBeat();
     }
     
-    private void InitMetronome()
+    public void InitMetronome()
     {
         bpm = musicPlayer.songList.songs[musicPlayer.songId].bpm;
         beatDurationInMS = (60f / bpm) * 1000;

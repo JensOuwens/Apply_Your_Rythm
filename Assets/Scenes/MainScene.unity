@@ -247,6 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MusicPlayer
   songLengthInMS: 0
+  songId: 0
   songList: {fileID: 11400000, guid: ecf47c244c55f8c4ea02d16492bb375c, type: 2}
   audioSource: {fileID: 77862650}
 --- !u!4 &77862652
@@ -275,7 +276,7 @@ GameObject:
   - component: {fileID: 182072263}
   - component: {fileID: 182072262}
   m_Layer: 0
-  m_Name: TempGameObject
+  m_Name: Input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -569,6 +570,55 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &663044062
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 663044064}
+  - component: {fileID: 663044063}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &663044063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663044062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ed7cd3fab1c608478f5137348ace04f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  musicPlayer: {fileID: 77862651}
+  metronome: {fileID: 1741322473}
+  judge: {fileID: 1959487384}
+  playerInputManager: {fileID: 182072262}
+  musicId: 0
+--- !u!4 &663044064
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 663044062}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1221.8331, y: 258.24338, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1741322472
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,7 +649,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Metronome
   musicPlayer: {fileID: 77862651}
-  bpm: 144
+  beatDurationInMS: 0
+  lastBeat: 0
+  initialized: 0
 --- !u!4 &1741322474
 Transform:
   m_ObjectHideFlags: 0
@@ -627,7 +679,7 @@ GameObject:
   - component: {fileID: 1959487383}
   - component: {fileID: 1959487384}
   m_Layer: 0
-  m_Name: TempGameObject
+  m_Name: Judge+Composer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -673,9 +725,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c872526e9464d143a643a0f997a8bac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  composer: {fileID: 0}
-  metronome: {fileID: 0}
-  errorMargin: 0.8
+  composer: {fileID: 1959487383}
+  metronome: {fileID: 1741322473}
+  errorMarginMs: 80
   correctInputs: 0
   incorrectInputs: 0
 --- !u!1660057539 &9223372036854775807
@@ -688,3 +740,4 @@ SceneRoots:
   - {fileID: 77862652}
   - {fileID: 182072263}
   - {fileID: 1741322474}
+  - {fileID: 663044064}

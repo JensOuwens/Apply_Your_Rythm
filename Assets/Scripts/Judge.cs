@@ -1,46 +1,63 @@
 using UnityEngine;
 
 /// <summary>
-/// Using the composer and metronome judges a player's beat position, and keeps track of these judgments
+/// Using the composer and metronome judges a player's beat position,
+/// and keeps track of these judgments
 /// </summary>
 public class Judge : MonoBehaviour
 {
-    public Composer composer;
-    public Metronome metronome;
-    [SerializeField]
-    private float errorMargin = 0.8f;
-    [Space]
-    [SerializeField]
-    private int correctInputs = 0;
-    [SerializeField]
-    private int incorrectInputs = 0;
+    [Header("References")]
+    [SerializeField] private Composer composer;
+    [SerializeField] private Metronome metronome;
 
-    public void CheckInput(float beatPos)
+    [Header("Timing")]
+    [SerializeField] private float errorMarginMs = 80f; // milliseconds window
+
+    [Header("Stats")]
+    [SerializeField] private int correctInputs = 0;
+    [SerializeField] private int incorrectInputs = 0;
+
+    public void CheckInput(float songPosMs)
     {
         if (composer == null || metronome == null)
             return;
-        
-        var trueBeatPos = metronome.GetNearestBeat(beatPos);
-        // is beat on time
-        if (!(beatPos >= trueBeatPos - errorMargin) || !(trueBeatPos <= trueBeatPos + errorMargin))
-        {
-            incorrectInputs++;
+
+        if (!metronome.initialized)
             return;
-        }
-        
-        var foundBeat = composer.GetBeat(trueBeatPos);
-        // did player hit a non-existing beat
-        if (foundBeat == null)
+
+        int beatIndex = metronome.GetNearestBeat(songPosMs);
+        if (beatIndex < 0)
+            return;
+
+        float beatTimeMs = beatIndex * metronome.beatDurationInMS;
+
+        // Timing check
+        if (Mathf.Abs(songPosMs - beatTimeMs) > errorMarginMs)
         {
             incorrectInputs++;
             return;
         }
 
-        // did player hit a beat that's still hittable
-        if (!foundBeat.hit)
+        BeatData beat = composer.GetBeat(beatIndex);
+
+        // No beat at this index
+        if (beat == null)
         {
-            foundBeat.hit = true;
-            correctInputs++;
+            incorrectInputs++;
+            return;
         }
+
+        // Already hit
+        if (beat.hit)
+        {
+            incorrectInputs++;
+            return;
+        }
+
+        beat.hit = true;
+        correctInputs++;
     }
+
+    public int GetCorrectCount() => correctInputs;
+    public int GetIncorrectCount() => incorrectInputs;
 }
