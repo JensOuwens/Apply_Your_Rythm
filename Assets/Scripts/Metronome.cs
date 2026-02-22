@@ -15,11 +15,11 @@ public class Metronome : MonoBehaviour
     private float nextBeatPosition;
     private float totalBeatCount;
 
-    private bool Initialized = false;
+    private bool initialized = false;
 
     private void Update()
     {
-        if (Initialized) UpdateBeat();
+        if (initialized) UpdateBeat();
     }
     
     private void InitMetronome()
@@ -28,7 +28,7 @@ public class Metronome : MonoBehaviour
         beatDurationInMS = (60f / bpm) * 1000;
         totalBeatCount = musicPlayer.songLengthInMS / beatDurationInMS;
         nextBeatPosition = beatDurationInMS;
-        Initialized = true;
+        initialized = true;
     }
 
     private void UpdateBeat()
@@ -42,7 +42,7 @@ public class Metronome : MonoBehaviour
 
     public int GetNearestBeat(float beatPos)
     {
-        if (!Initialized)
+        if (!initialized)
             return -1;
 
         return Mathf.RoundToInt(beatPos / beatDurationInMS);
