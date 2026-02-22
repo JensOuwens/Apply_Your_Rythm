@@ -40,6 +40,7 @@ public class PlayerInputManager : MonoBehaviour
     private void Awake()
     {
         playerHitBeatAction = inputActionMap.FindAction(nameHitBeatAction);
+        playerHitBeatAction.Enable();
         playerHitBeatAction.performed += OnPlayerPressed;
         shouldWaitForRelease = new bool[playerCount];
     }
