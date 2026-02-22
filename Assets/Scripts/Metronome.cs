@@ -42,7 +42,7 @@ public class Metronome : MonoBehaviour
         while (songPosMs >= nextBeatPosition) // use while to catch multiple beats if frame skips
         {
             lastBeat += 1;
-            //Debug.Log($"[Metronome] Beat {lastBeat} at {songPosMs:F2}ms");
+            Debug.Log($"[Metronome] Beat {lastBeat} at {songPosMs:F2}ms");
 
             nextBeatPosition += beatDurationInMS;
         }

@@ -7,7 +7,8 @@ using UnityEngine;
 public class Judge : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private Composer composer;
+    [SerializeField]
+    public Composer composer;
     [SerializeField] private Metronome metronome;
 
     [Header("Timing")]
@@ -17,7 +18,7 @@ public class Judge : MonoBehaviour
     [SerializeField] private int correctInputs = 0;
     [SerializeField] private int incorrectInputs = 0;
 
-    public void CheckInput(float songPosMs)
+    public void CheckInput(float songPosMs, bool b)
     {
         if (composer == null || metronome == null)
             return;
@@ -53,6 +54,8 @@ public class Judge : MonoBehaviour
             incorrectInputs++;
             return;
         }
+        
+        
 
         beat.hit = true;
         correctInputs++;

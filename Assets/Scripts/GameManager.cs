@@ -1,5 +1,8 @@
 using UnityEngine;
 
+/// <summary>
+/// Manages the game, intializes the music player and metronome, plus binds the judge and inputmanager together.
+/// </summary>
 public class GameManager : MonoBehaviour
 {
     [Header("Core")]
@@ -38,7 +41,7 @@ public class GameManager : MonoBehaviour
         if (!gameRunning) return;
 
         float songPosMs = musicPlayer.GetSongPositionInMS();
-        judge.CheckInput(songPosMs);
+        judge.CheckInput(songPosMs, true);
     }
 
     private void OnPlayerReleased(int playerId)
@@ -46,6 +49,15 @@ public class GameManager : MonoBehaviour
         if (!gameRunning) return;
 
         float songPosMs = musicPlayer.GetSongPositionInMS();
-        judge.CheckInput(songPosMs);
+        int beatIndex = metronome.GetNearestBeat(songPosMs);
+        if (beatIndex < 0) return;
+
+        BeatData beat = judge.composer.GetBeat(beatIndex);
+        if (beat == null) return;
+        
+        if (beat.type == BeatType.Hold)
+        {
+            judge.CheckInput(songPosMs, false);
+        }
     }
 }
