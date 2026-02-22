@@ -44,17 +44,3 @@ public class Judge : MonoBehaviour
         }
     }
 }
-
-// temp class
-public class Metronome
-{
-    /// <summary>
-    /// Gets nearest bpm position
-    /// </summary>
-    /// <param name="beatPos"></param>
-    /// <returns></returns>
-    public int ConvertToBpm(float beatPos)
-    {
-        return 0;
-    }
-}

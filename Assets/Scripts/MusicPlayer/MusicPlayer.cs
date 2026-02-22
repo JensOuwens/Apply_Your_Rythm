@@ -9,18 +9,20 @@ public class MusicPlayer : MonoBehaviour
     [Header("SongProperties")]
     private AudioClip currentSong;
 
-    private float songLengthInMS;
+    public float songLengthInMS;
     private float currentSongPositionInMS;
+    public int songId;
     
-    [SerializeField]
-    private SongListScriptableObject songList;
-    [SerializeField]
-    private AudioSource audioSource;
+    public SongListScriptableObject songList;
+    [SerializeField] private AudioSource audioSource;
 
     private void OnValidate() => audioSource = GetComponent<AudioSource>();
 
+    private void Start() => PlaySong(0);
+
     public void PlaySong(int songId)
     {
+        this.songId = songId;
         currentSong = songList.songs[songId].clip;
         audioSource.clip = currentSong;
         GetSongLengthInMS();
@@ -28,7 +30,7 @@ public class MusicPlayer : MonoBehaviour
     }
 
     public void StopSong() => audioSource.Stop();
-    private void GetSongLengthInMS() => songLengthInMS = audioSource.clip.length * 1000;
+    public void GetSongLengthInMS() => songLengthInMS = audioSource.clip.length * 1000;
 
     public float GetSongPositionInMS()
     {
