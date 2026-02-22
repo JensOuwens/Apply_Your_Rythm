@@ -20,7 +20,7 @@ public class Judge : MonoBehaviour
         if (composer == null || metronome == null)
             return;
         
-        var trueBeatPos = metronome.ConvertToBpm(beatPos);
+        var trueBeatPos = metronome.GetNearestBeat(beatPos);
         // is beat on time
         if (!(beatPos >= trueBeatPos - errorMargin) || !(trueBeatPos <= trueBeatPos + errorMargin))
         {
