@@ -12,15 +12,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b3ea7b7f2ae4bb199c2d490a05e48ac, type: 3}
   m_Name: Composition
   m_EditorClassIdentifier: Assembly-CSharp::CompositionObject
-  beatAmount: 10
+  beatAmount: 143
   data:
   - beatStart: 0
     beatEnd: 0
     type: 0
+  - beatStart: 1
+    beatEnd: 1
+    type: 0
   - beatStart: 2
+    beatEnd: 2
+    type: 0
+  - beatStart: 3
+    beatEnd: 3
+    type: 0
+  - beatStart: 4
     beatEnd: 4
-    type: 1
+    type: 0
+  - beatStart: 5
+    beatEnd: 5
+    type: 0
   - beatStart: 6
-    beatEnd: 0
+    beatEnd: 6
+    type: 0
+  - beatStart: 7
+    beatEnd: 7
+    type: 0
+  - beatStart: 8
+    beatEnd: 8
+    type: 0
+  - beatStart: 9
+    beatEnd: 9
+    type: 0
+  - beatStart: 10
+    beatEnd: 10
     type: 0
   showVisual: 1
