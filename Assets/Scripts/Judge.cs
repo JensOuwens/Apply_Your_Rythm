@@ -1,28 +1,33 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
 /// Using the composer and metronome judges a player's beat position,
 /// and keeps track of these judgments
 /// </summary>
-
 public class Judge : MonoBehaviour
 {
     [Header("References")]
     [SerializeField]
-    public Composer composer;
-    [SerializeField] private Metronome metronome;
-    [SerializeField] private GooberCatchAnim gooberCatchAnim;
+    public List<Composer> composers = new();
+    [SerializeField] 
+    private Metronome metronome;
+    [SerializeField] 
+    private OrganismManager organismManager;
 
     [Header("Timing")]
-    [SerializeField] private float errorMarginMs = 80f; // milliseconds window
+    [SerializeField] 
+    private float errorMarginMs = 80f; // milliseconds window
 
     [Header("Stats")]
-    [SerializeField] private int correctInputs = 0;
-    [SerializeField] private int incorrectInputs = 0;
+    [SerializeField] 
+    private int correctInputs = 0;
+    [SerializeField] 
+    private int incorrectInputs = 0;
 
-    public void CheckInput(float songPosMs, bool pressed)
+    public void CheckInput(float songPosMs, int playerId, bool pressed)
     {
-        if (composer == null || metronome == null || !metronome.initialized)
+        if (composers == null || metronome == null || !metronome.initialized)
             return;
 
         var beatIndex = metronome.GetNearestBeat(songPosMs);
@@ -37,7 +42,7 @@ public class Judge : MonoBehaviour
             return;
         }
 
-        var beat = composer.GetBeat(beatIndex);
+        var beat = composers[playerId].GetBeat(beatIndex);
         if (beat == null || beat.hit)
         {
             incorrectInputs++;
@@ -46,16 +51,11 @@ public class Judge : MonoBehaviour
 
         beat.hit = true;
         correctInputs++;
-        
+
         if (beat.type == BeatType.Tap)
-        {
-            gooberCatchAnim.GooberAnim();
-        }
+            organismManager.TriggerAnim(playerId);
         else if (beat.type == BeatType.Hold)
-        {
-            var holdDurationSec = (beat.beatEnd - beat.beatStart + 1) * (metronome.beatDurationInMS / 1000f);
-            gooberCatchAnim.GooberHoldAnim(holdDurationSec);
-        }
+            organismManager.TriggerAnimHold(playerId, beat, metronome);
     }
 
     public int GetCorrectCount() => correctInputs;

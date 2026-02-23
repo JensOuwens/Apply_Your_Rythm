@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -5,13 +6,20 @@ public class GooberCatchAnim : MonoBehaviour
 {
     [SerializeField] private Sprite originalSprite;
     [SerializeField] private Sprite catchSprite;
-
+    [SerializeField] private float durationAnim = 0.8f;
+    [SerializeField] private SpriteRenderer spriteRenderer;
     private Coroutine currentAnim;
-    
+
+    private void OnValidate()
+    {
+        if (!spriteRenderer) spriteRenderer = GetComponent<SpriteRenderer>();
+        enabled = spriteRenderer != null;
+    }
+
     public void GooberAnim()
     {
         if (currentAnim != null) StopCoroutine(currentAnim);
-        currentAnim = StartCoroutine(GooberAnimCoroutine(0.8f));
+        currentAnim = StartCoroutine(GooberAnimCoroutine(durationAnim));
     }
     
     public void GooberHoldAnim(float duration)
@@ -22,9 +30,9 @@ public class GooberCatchAnim : MonoBehaviour
 
     private IEnumerator GooberAnimCoroutine(float duration)
     {
-        GetComponent<SpriteRenderer>().sprite = catchSprite;
+        spriteRenderer.sprite = catchSprite;
         yield return new WaitForSeconds(duration);
-        GetComponent<SpriteRenderer>().sprite = originalSprite;
+        spriteRenderer.sprite = originalSprite;
         currentAnim = null;
     }
 }

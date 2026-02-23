@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
@@ -17,8 +18,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int musicId;
     
     [Header("Visuals")]
-    [SerializeField] private ShowTapVisual tapVisual;
-    [SerializeField] private ShowHoldVisual holdVisual;
+    [SerializeField] private List<ShowTapVisual> tapVisual;
+    [SerializeField] private List<ShowHoldVisual> holdVisual;
     
     private int lastCheckedBeat = -1;
     private int lastVisualizedBeat = -1;
@@ -55,18 +56,18 @@ public class GameManager : MonoBehaviour
         if (targetBeatIndex == lastVisualizedBeat)
             return;
 
-        var beat = judge.composer.GetBeat(targetBeatIndex);
-        if (beat == null) return;
-
-        lastVisualizedBeat = targetBeatIndex;
-
-        if (beat.type == BeatType.Tap)
+        for (var i = 0; i < judge.composers.Count; i++)
         {
-            tapVisual.HandleTapVisual(metronome.beatDurationInMS);
-        }
-        else if (beat.type == BeatType.Hold)
-        {
-            holdVisual.HandleHoldVisual(beat, metronome.beatDurationInMS);
+            var composer = judge.composers[i];
+            var beat = composer.GetBeat(targetBeatIndex);
+            if (beat == null) return;
+
+            lastVisualizedBeat = targetBeatIndex;
+
+            if (beat.type == BeatType.Tap)
+                tapVisual[i].HandleTapVisual(metronome.beatDurationInMS);
+            else if (beat.type == BeatType.Hold)
+                holdVisual[i].HandleHoldVisual(beat, metronome.beatDurationInMS);
         }
     }
 
@@ -82,7 +83,7 @@ public class GameManager : MonoBehaviour
         if (!gameRunning) return;
 
         var songPosMs = musicPlayer.GetSongPositionInMS();
-        judge.CheckInput(songPosMs, true);
+        judge.CheckInput(songPosMs, playerId, true);
     }
 
     private void OnPlayerReleased(int playerId)
@@ -93,12 +94,10 @@ public class GameManager : MonoBehaviour
         var beatIndex = metronome.GetNearestBeat(songPosMs);
         if (beatIndex < 0) return;
 
-        var beat = judge.composer.GetBeat(beatIndex);
+        var beat = judge.composers[playerId].GetBeat(beatIndex);
         if (beat == null) return;
         
-        if (beat.type == BeatType.Hold)
-        {
-            judge.CheckInput(songPosMs, false);
-        }
+        if (beat.type == BeatType.Hold) 
+            judge.CheckInput(songPosMs, playerId, false);
     }
 }
