@@ -44,18 +44,18 @@ public class GameManager : MonoBehaviour
 
     private void CheckIncomingBeats()
     {
-        float songPosMs = musicPlayer.GetSongPositionInMS();
-        int currentBeat = metronome.GetNearestBeat(songPosMs);
+        var songPosMs = musicPlayer.GetSongPositionInMS();
+        var currentBeat = metronome.GetNearestBeat(songPosMs);
 
         if (currentBeat == lastCheckedBeat) return;
         lastCheckedBeat = currentBeat;
 
-        int targetBeatIndex = currentBeat + 3;
+        var targetBeatIndex = currentBeat + 3;
 
         if (targetBeatIndex == lastVisualizedBeat)
             return;
 
-        BeatData beat = judge.composer.GetBeat(targetBeatIndex);
+        var beat = judge.composer.GetBeat(targetBeatIndex);
         if (beat == null) return;
 
         lastVisualizedBeat = targetBeatIndex;

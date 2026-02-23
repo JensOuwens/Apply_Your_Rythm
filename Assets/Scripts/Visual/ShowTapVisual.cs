@@ -13,11 +13,11 @@ public class ShowTapVisual : MonoBehaviour
 
     IEnumerator TapCoroutine(float beatDurationInMS)
     {
-        float delay = beatDurationInMS / 1000f;
+        var delay = beatDurationInMS / 1000f;
 
-        for (int i = 0; i < tapLocations.Length; i++)
+        for (var i = 0; i < tapLocations.Length; i++)
         {
-            GameObject instance = Instantiate(
+            var instance = Instantiate(
                 tapVisualPrefab,
                 tapLocations[i].position,
                 Quaternion.identity

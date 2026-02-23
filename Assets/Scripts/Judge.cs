@@ -25,10 +25,10 @@ public class Judge : MonoBehaviour
         if (composer == null || metronome == null || !metronome.initialized)
             return;
 
-        int beatIndex = metronome.GetNearestBeat(songPosMs);
+        var beatIndex = metronome.GetNearestBeat(songPosMs);
         if (beatIndex < 0) return;
 
-        float beatTimeMs = beatIndex * metronome.beatDurationInMS;
+        var beatTimeMs = beatIndex * metronome.beatDurationInMS;
 
         // Timing check
         if (Mathf.Abs(songPosMs - beatTimeMs) > errorMarginMs)
@@ -37,7 +37,7 @@ public class Judge : MonoBehaviour
             return;
         }
 
-        BeatData beat = composer.GetBeat(beatIndex);
+        var beat = composer.GetBeat(beatIndex);
         if (beat == null || beat.hit)
         {
             incorrectInputs++;
@@ -53,7 +53,7 @@ public class Judge : MonoBehaviour
         }
         else if (beat.type == BeatType.Hold)
         {
-            float holdDurationSec = (beat.beatEnd - beat.beatStart + 1) * (metronome.beatDurationInMS / 1000f);
+            var holdDurationSec = (beat.beatEnd - beat.beatStart + 1) * (metronome.beatDurationInMS / 1000f);
             gooberCatchAnim.GooberHoldAnim(holdDurationSec);
         }
     }

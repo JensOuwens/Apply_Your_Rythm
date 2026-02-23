@@ -24,21 +24,21 @@ public class HoldVisual : MonoBehaviour
 
     private IEnumerator Run(int beatStart, int beatEnd, int spawnOffset)
     {
-        int holdLength = beatEnd - beatStart;
-        float initialDelay = spawnOffset * beatDurationSec;
+        var holdLength = beatEnd - beatStart;
+        var initialDelay = spawnOffset * beatDurationSec;
 
         // Wait before spawning to match spawnOffset
         yield return new WaitForSeconds(initialDelay);
 
-        Vector3 startPos = positions[0].position;
-        Vector3 endPos = positions[positions.Length - 1].position;
+        var startPos = positions[0].position;
+        var endPos = positions[positions.Length - 1].position;
 
-        float elapsed = 0f;
-        float totalDuration = holdLength * beatDurationSec;
+        var elapsed = 0f;
+        var totalDuration = holdLength * beatDurationSec;
 
         while (elapsed <= totalDuration)
         {
-            float t = Mathf.Clamp01(elapsed / totalDuration);
+            var t = Mathf.Clamp01(elapsed / totalDuration);
 
             // Move head smoothly from top to bottom
             if (head != null)
@@ -47,10 +47,10 @@ public class HoldVisual : MonoBehaviour
             // Stretch body from head → tail
             if (body != null && head != null && tail != null)
             {
-                Vector3 bodyPos = (head.position + tail.position) / 2f;
+                var bodyPos = (head.position + tail.position) / 2f;
                 body.position = bodyPos;
 
-                Vector3 scale = body.localScale;
+                var scale = body.localScale;
                 scale.y = Mathf.Abs(tail.position.y - head.position.y) / 2f; // scale.y is half-distance if pivot is center
                 body.localScale = scale;
             }

@@ -7,16 +7,22 @@ using UnityEngine;
 using UnityEngine.Splines;
 using UnityEngine.Splines.Interpolators;
 
+/// <summary>
+/// Moves object transform along a spline based on amount of set states, or knots within the spline
+/// </summary>
 [RequireComponent(typeof(SplineAnimate))]
 public class AnimateAlongSplineOnBeat : MonoBehaviour
 {
     [Header("RequireComponents")]
     [SerializeField]
-    private SplineAnimate splineAnimate;
-    [SerializeField]
     private Metronome metronome;
     [SerializeField]
     private MusicPlayer musicPlayer;
+    [SerializeField]
+    private SplineAnimate splineAnimate;
+    [SerializeField]
+    private bool shouldUseKnots;
+    private float[] knotsInDistance;
     [Header("config")]
     [SerializeField]
     private int currentState;
@@ -40,15 +46,19 @@ public class AnimateAlongSplineOnBeat : MonoBehaviour
             splineAnimate = GetComponent<SplineAnimate>();
         enabled = splineAnimate && metronome && musicPlayer;
         
+        if (shouldUseKnots && splineAnimate && splineAnimate.Container)
+            amountOfStates = splineAnimate.Container.Spline.Count;
         currentState = math.clamp(currentState, 0, amountOfStates);
     }
 
     private void Start()
     {
+        CalculateKnotsInDistance();
         if (!metronome)
             return;
         metronome.OnBeat.AddListener(OnBeat);
     }
+
     private void OnDisable() => metronome.OnBeat.RemoveListener(OnBeat);
     private void OnDestroy() => metronome.OnBeat.RemoveListener(OnBeat);
 
@@ -125,5 +135,47 @@ public class AnimateAlongSplineOnBeat : MonoBehaviour
         splineAnimate.NormalizedTime = lerpFloat.Interpolate(fromTime, toTime, curved);
     }
 
-    private float PositionOnTimeLine(int s) => Mathf.Clamp01((float)s / amountOfStates);
+    private float PositionOnTimeLine(int s)
+    {
+        if (!shouldUseKnots)
+            return Mathf.Clamp01((float)s / amountOfStates);
+        // calculate knotPosition along the spline
+        var spline = splineAnimate.Container.Spline;
+
+        if (s <= 0 || s >= spline.Count)
+            return math.clamp(s, 0, 1);
+        
+        return knotsInDistance[s];
+    }
+    
+    private void CalculateKnotsInDistance()
+    {
+        knotsInDistance = new float[amountOfStates];
+        if (!splineAnimate || !splineAnimate.Container || splineAnimate.Container.Spline == null)
+            return;
+        
+        var spline = splineAnimate.Container.Spline;
+        var totalLength = spline.GetLength();
+
+        for (var s = 0; s < knotsInDistance.Length; s++)
+        {
+            var distanceToKnot = 0f;
+            for (var i = 0; i < s; i++) 
+                distanceToKnot += spline.GetCurveLength(i);
+
+            knotsInDistance[s] =  Mathf.Clamp01(distanceToKnot / totalLength);
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (shouldUseKnots && !splineAnimate && !splineAnimate.Container && splineAnimate.Container.Spline == null)
+            return;
+        
+        Gizmos.color = Color.red;
+        foreach (var knot in splineAnimate.Container.Spline)
+        {
+            Gizmos.DrawSphere(knot.Position, 0.1f);
+        }
+    }
 }
