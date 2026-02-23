@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: fbd08d58b6a48804994a1e1a4241740e
+guid: 4efa12664abd8f747849a7e36bacc683
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5296785899620311940
-    second: IMG_0398_0
-  - first:
-      213: -1282973199013164906
-    second: IMG_0398_1
+      213: -5156993582514690110
+    second: Head_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -125,17 +122,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IMG_0398_0
+      name: Head_0
       rect:
         serializedVersion: 2
-        x: 76
-        y: 998
-        width: 17
-        height: 16
+        x: 824
+        y: 453
+        width: 127
+        height: 142
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,30 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 483aa2e46b6f18940800000000000000
-      internalID: 5296785899620311940
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: IMG_0398_1
-      rect:
-        serializedVersion: 2
-        x: 80
-        y: 210
-        width: 1892
-        height: 1339
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 69849784ca6f13ee0800000000000000
-      internalID: -1282973199013164906
+      spriteID: 2c72e3dd8adae68b0800000000000000
+      internalID: -5156993582514690110
       vertices: []
       indices: 
       edges: []
@@ -176,7 +164,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -186,8 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      IMG_0398_0: 5296785899620311940
-      IMG_0398_1: -1282973199013164906
+      Head_0: -5156993582514690110
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

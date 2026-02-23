@@ -1,4 +1,5 @@
 using System;
+using Unity.Mathematics;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -7,7 +8,7 @@ using UnityEngine.Splines;
 using UnityEngine.Splines.Interpolators;
 
 [RequireComponent(typeof(SplineAnimate))]
-public class OrganismPositionManager : MonoBehaviour
+public class AnimateAlongSplineOnBeat : MonoBehaviour
 {
     [Header("RequireComponents")]
     [SerializeField]
@@ -18,7 +19,9 @@ public class OrganismPositionManager : MonoBehaviour
     private MusicPlayer musicPlayer;
     [Header("config")]
     [SerializeField]
-    private PositionState state;
+    private int currentState;
+    [SerializeField]
+    private int amountOfStates;
     [SerializeField]
     private AnimationCurve beatEasing = AnimationCurve.EaseInOut(0, 0, 1, 1);
     private LerpFloat lerpFloat;
@@ -31,50 +34,14 @@ public class OrganismPositionManager : MonoBehaviour
     private int amountOfBeatsToCount = 1;
     private int beatCount = 0;
 
-    [Serializable]
-    public enum PositionState
-    {
-        StartHidden = 0,
-        One = 1,
-        Two = 2,
-        Three = 3,
-        Four = 4,
-        EndHidden = 5,
-    }
-
-    #region Validation
     private void OnValidate()
     {
         if (!splineAnimate)
             splineAnimate = GetComponent<SplineAnimate>();
         enabled = splineAnimate && metronome && musicPlayer;
-
-        if (!splineAnimate) return;
-#if UNITY_EDITOR
-        EditorApplication.delayCall += ApplyStateToSpline;
-#endif
+        
+        currentState = math.clamp(currentState, 0, amountOfStates);
     }
-    
-#if UNITY_EDITOR
-    private void ApplyStateToSpline()
-    {
-        if (this == null || !splineAnimate)
-            return;
-
-        if (!splineAnimate.isActiveAndEnabled)
-            return;
-
-        var container = splineAnimate.Container;
-        if (container == null || container.Spline == null || container.Spline.Count < 2)
-            return;
-
-        if (container.Spline.GetLength() <= 0f)
-            return;
-
-        splineAnimate.NormalizedTime = PositionOnTimeLine(state);
-    }
-#endif
-    #endregion
 
     private void Start()
     {
@@ -85,34 +52,33 @@ public class OrganismPositionManager : MonoBehaviour
     private void OnDisable() => metronome.OnBeat.RemoveListener(OnBeat);
     private void OnDestroy() => metronome.OnBeat.RemoveListener(OnBeat);
 
-    public void OnBeat()
+    private void OnBeat()
     {
         beatCount++;
         if (beatCount < amountOfBeatsToCount) return;
         beatCount = 0;
         AdvanceState();
     }
-    
-    public void AdvanceState()
+
+    private void AdvanceState()
     {
-        var newState = (int)state + 1;
-        if (newState > (int)PositionState.EndHidden)
-            SetState(PositionState.StartHidden);
+        var newState = (int)currentState + 1;
+        if (newState > amountOfStates)
+            SetState(0);
         else
-            SetState((PositionState)newState);
+            SetState(newState);
     }
-    public void SetState(PositionState stateToSet)
+
+    private void SetState(int stateToSet)
     {
-        var previousState = state;
+        var previousState = currentState;
 
         fromTime = PositionOnTimeLine(previousState);
-        state = stateToSet;
-        toTime = PositionOnTimeLine(state);
+        currentState = stateToSet;
+        toTime = PositionOnTimeLine(currentState);
 
         // Detect wrap: EndHidden -> StartHidden
-        var isWrap =
-            previousState == PositionState.EndHidden &&
-            state == PositionState.StartHidden;
+        var isWrap = previousState == amountOfStates && currentState == 0;
 
         // teleport
         if (isWrap)
@@ -159,9 +125,5 @@ public class OrganismPositionManager : MonoBehaviour
         splineAnimate.NormalizedTime = lerpFloat.Interpolate(fromTime, toTime, curved);
     }
 
-    private static float PositionOnTimeLine(PositionState s)
-    {
-        const int max = (int)PositionState.EndHidden;
-        return Mathf.Clamp01((float)s / max);
-    }
+    private float PositionOnTimeLine(int s) => Mathf.Clamp01((float)s / amountOfStates);
 }
