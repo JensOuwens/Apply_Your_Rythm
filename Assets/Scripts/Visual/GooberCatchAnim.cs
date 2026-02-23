@@ -5,16 +5,26 @@ public class GooberCatchAnim : MonoBehaviour
 {
     [SerializeField] private Sprite originalSprite;
     [SerializeField] private Sprite catchSprite;
+
+    private Coroutine currentAnim;
     
     public void GooberAnim()
     {
-        StartCoroutine(GooberAnimCoroutine());
+        if (currentAnim != null) StopCoroutine(currentAnim);
+        currentAnim = StartCoroutine(GooberAnimCoroutine(0.8f));
+    }
+    
+    public void GooberHoldAnim(float duration)
+    {
+        if (currentAnim != null) StopCoroutine(currentAnim);
+        currentAnim = StartCoroutine(GooberAnimCoroutine(duration));
     }
 
-    IEnumerator GooberAnimCoroutine()
+    private IEnumerator GooberAnimCoroutine(float duration)
     {
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = catchSprite;
-        yield return new WaitForSeconds(0.8f);
-        this.gameObject.GetComponent<SpriteRenderer>().sprite = originalSprite;
+        GetComponent<SpriteRenderer>().sprite = catchSprite;
+        yield return new WaitForSeconds(duration);
+        GetComponent<SpriteRenderer>().sprite = originalSprite;
+        currentAnim = null;
     }
 }
