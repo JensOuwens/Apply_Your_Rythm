@@ -4,12 +4,14 @@ using UnityEngine;
 /// Using the composer and metronome judges a player's beat position,
 /// and keeps track of these judgments
 /// </summary>
+
 public class Judge : MonoBehaviour
 {
     [Header("References")]
     [SerializeField]
     public Composer composer;
     [SerializeField] private Metronome metronome;
+    [SerializeField] private GooberCatchAnim gooberCatchAnim;
 
     [Header("Timing")]
     [SerializeField] private float errorMarginMs = 80f; // milliseconds window
@@ -18,17 +20,13 @@ public class Judge : MonoBehaviour
     [SerializeField] private int correctInputs = 0;
     [SerializeField] private int incorrectInputs = 0;
 
-    public void CheckInput(float songPosMs, bool b)
+    public void CheckInput(float songPosMs, bool pressed)
     {
-        if (composer == null || metronome == null)
-            return;
-
-        if (!metronome.initialized)
+        if (composer == null || metronome == null || !metronome.initialized)
             return;
 
         int beatIndex = metronome.GetNearestBeat(songPosMs);
-        if (beatIndex < 0)
-            return;
+        if (beatIndex < 0) return;
 
         float beatTimeMs = beatIndex * metronome.beatDurationInMS;
 
@@ -40,25 +38,24 @@ public class Judge : MonoBehaviour
         }
 
         BeatData beat = composer.GetBeat(beatIndex);
-
-        // No beat at this index
-        if (beat == null)
+        if (beat == null || beat.hit)
         {
             incorrectInputs++;
             return;
         }
-
-        // Already hit
-        if (beat.hit)
-        {
-            incorrectInputs++;
-            return;
-        }
-        
-        
 
         beat.hit = true;
         correctInputs++;
+        
+        if (beat.type == BeatType.Tap)
+        {
+            gooberCatchAnim.GooberAnim();
+        }
+        else if (beat.type == BeatType.Hold)
+        {
+            float holdDurationSec = (beat.beatEnd - beat.beatStart + 1) * (metronome.beatDurationInMS / 1000f);
+            gooberCatchAnim.GooberHoldAnim(holdDurationSec);
+        }
     }
 
     public int GetCorrectCount() => correctInputs;
