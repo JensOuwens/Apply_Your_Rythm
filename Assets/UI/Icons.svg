@@ -26,7 +26,7 @@
      inkscape:document-units="mm"
      inkscape:zoom="11.616723"
      inkscape:cx="35.853485"
-     inkscape:cy="30.946766"
+     inkscape:cy="92.926379"
      inkscape:window-width="1920"
      inkscape:window-height="1017"
      inkscape:window-x="1072"
@@ -35,6 +35,30 @@
      inkscape:current-layer="layer1" />
   <defs
      id="defs1">
+    <linearGradient
+       id="linearGradient21"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#ffffff;stop-opacity:1;"
+         offset="0"
+         id="stop20" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0;"
+         offset="0.76235294"
+         id="stop21" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient14"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#d2d2d2;stop-opacity:1;"
+         offset="0"
+         id="stop14" />
+      <stop
+         style="stop-color:#ffffff;stop-opacity:0.31672597;"
+         offset="1"
+         id="stop19" />
+    </linearGradient>
     <radialGradient
        inkscape:collect="always"
        xlink:href="#button_diffuse_gradient"
@@ -124,6 +148,38 @@
        id="linearGradient1"
        gradientUnits="userSpaceOnUse"
        gradientTransform="scale(1.0996785,0.90935669)"
+       x1="8.0255909"
+       y1="9.5807037"
+       x2="14.914732"
+       y2="11.649515" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient14"
+       id="radialGradient19"
+       cx="13.829228"
+       cy="23.736822"
+       fx="13.829228"
+       fy="23.736822"
+       r="2.0539999"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(2.5574672,0,0,1,-18.658786,0)" />
+    <radialGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient21"
+       id="radialGradient20"
+       gradientUnits="userSpaceOnUse"
+       cx="14.656926"
+       cy="24.508457"
+       fx="14.656926"
+       fy="24.508457"
+       r="2.0539999"
+       gradientTransform="matrix(1.4231123,0.59878676,-1.8734125,0.68073845,43.570728,-0.94901152)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#button_shiny_specular_gradient"
+       id="linearGradient23"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.16132599,0,0,0.13340524,12.310961,17.044334)"
        x1="8.0255909"
        y1="9.5807037"
        x2="14.914732"
@@ -244,6 +300,52 @@
          text-anchor="middle"
          dominant-baseline="central"
          id="text8">A</text>
+    </g>
+    <g
+       id="g23"
+       transform="translate(-6.4228526,9.1802747)">
+      <rect
+         style="opacity:0.33;fill:#000000;fill-opacity:1;stroke-width:3.19842;stroke-linecap:round;stroke-linejoin:round"
+         id="rect22"
+         width="11.631358"
+         height="4.5479999"
+         x="12.207974"
+         y="17.10483"
+         ry="2.2739999" />
+      <rect
+         style="fill:#d0d4d6;fill-opacity:1;stroke-width:3.19842;stroke-linecap:round;stroke-linejoin:round"
+         id="rect21"
+         width="11.406302"
+         height="4.46"
+         x="12.197898"
+         y="17.013727"
+         ry="2.23" />
+      <g
+         id="g21"
+         transform="translate(0.15943252,-4.9196317)">
+        <rect
+           style="fill:url(#radialGradient19);fill-opacity:1;stroke-width:3.19842;stroke-linecap:round;stroke-linejoin:round"
+           id="rect4"
+           width="10.506072"
+           height="4.1079998"
+           x="12.446205"
+           y="22.070015"
+           ry="2.0539999" />
+        <rect
+           style="fill:url(#radialGradient20);fill-opacity:1;stroke-width:3.19842;stroke-linecap:round;stroke-linejoin:round"
+           id="rect19"
+           width="10.506072"
+           height="4.1079998"
+           x="12.446205"
+           y="22.070015"
+           ry="2.0539999" />
+      </g>
+      <path
+         d="M 12.604366,19.978391 A 2.0905159,2.0905159 0 0 1 15.83183,17.631145 Z"
+         fill="url(#button_shiny_specular_gradient)"
+         stroke="none"
+         id="path22"
+         style="fill:url(#linearGradient23);stroke-width:0.146703" />
     </g>
   </g>
 </svg>
