@@ -10,6 +10,7 @@ public class Judge : MonoBehaviour
     [SerializeField]
     public Composer composer;
     [SerializeField] private Metronome metronome;
+    [SerializeField] private GooberCatchAnim gooberCatchAnim;
 
     [Header("Timing")]
     [SerializeField] private float errorMarginMs = 80f; // milliseconds window
@@ -58,6 +59,7 @@ public class Judge : MonoBehaviour
         
 
         beat.hit = true;
+        gooberCatchAnim.GooberAnim();
         correctInputs++;
     }
 
