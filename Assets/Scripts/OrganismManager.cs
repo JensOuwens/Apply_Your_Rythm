@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -15,6 +16,9 @@ public class OrganismManager : MonoBehaviour
     [SerializeField] 
     private List<GooberCatchAnim> catchAnims = new();
     private GooberCatchAnim[] usedAnims;
+    [SerializeField] 
+    private List<AnimateAlongSplineOnBeat> animSplines = new();
+    private AnimateAlongSplineOnBeat[] usedAnimSpline;
 
     private void OnValidate()
     {
@@ -31,6 +35,7 @@ public class OrganismManager : MonoBehaviour
         
         positions = tempList.ToArray();
         catchAnims = GetComponentsInChildren<GooberCatchAnim>().ToList();
+        animSplines = GetComponentsInChildren<AnimateAlongSplineOnBeat>().ToList();
     }
 
     public void TriggerAnim(int playerId) => usedAnims[playerId].GooberAnim();
@@ -38,25 +43,33 @@ public class OrganismManager : MonoBehaviour
     {
         var holdDurationSec = (beat.beatEnd - beat.beatStart + 1) * (metronome.beatDurationInMS / 1000f);
         usedAnims[playerId].GooberHoldAnim(holdDurationSec);
+
+        usedAnimSpline[playerId].SetTempDisabled(holdDurationSec);
     }
 
     private void FixedUpdate()
     {
         usedAnims = new GooberCatchAnim[positions.Length];
+        usedAnimSpline = new AnimateAlongSplineOnBeat[positions.Length];
         for (var i = 0; i < positions.Length; i++)
         {
-            var animCandidate = catchAnims[0];
+            var foundIndex = -1;
             var dist = 999f;
-            foreach (var catchAnim in catchAnims)
+            for (var j = 0; j < catchAnims.Count; j++)
             {
+                var catchAnim = catchAnims[j];
                 var newDist = Vector2.Distance(positions[i], catchAnim.transform.position);
                 if (!(newDist < dist)) continue;
                 dist = newDist;
-                animCandidate = catchAnim;
+                foundIndex = j;
             }
 
-            if (animCandidate)
-                usedAnims[i] = animCandidate;
+            var foundCatchAnim = catchAnims[foundIndex];
+            if (foundCatchAnim)
+                usedAnims[i] = foundCatchAnim;
+            var foundSplineAnim = animSplines[foundIndex];
+            if (foundSplineAnim)
+                usedAnimSpline[i] = foundSplineAnim;
         }
     }
 }

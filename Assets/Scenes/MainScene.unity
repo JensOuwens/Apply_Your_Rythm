@@ -918,7 +918,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  amountOfBeatsToCount: 2
+  amountOfBeatsToCount: 1
 --- !u!114 &376981118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1665,7 +1665,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  amountOfBeatsToCount: 2
+  amountOfBeatsToCount: 1
 --- !u!114 &503058620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2077,7 +2077,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  amountOfBeatsToCount: 2
+  amountOfBeatsToCount: 1
 --- !u!114 &588601879
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2464,7 +2464,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  amountOfBeatsToCount: 2
+  amountOfBeatsToCount: 1
 --- !u!114 &676126970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2655,7 +2655,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  amountOfBeatsToCount: 2
+  amountOfBeatsToCount: 1
 --- !u!114 &865079043
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2954,7 +2954,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  amountOfBeatsToCount: 2
+  amountOfBeatsToCount: 1
 --- !u!114 &1008199581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3435,7 +3435,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  amountOfBeatsToCount: 2
+  amountOfBeatsToCount: 1
 --- !u!114 &1404578023
 MonoBehaviour:
   m_ObjectHideFlags: 0

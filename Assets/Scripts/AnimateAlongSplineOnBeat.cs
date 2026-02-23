@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Unity.Mathematics;
 #if UNITY_EDITOR
 using UnityEditor;
@@ -51,16 +52,10 @@ public class AnimateAlongSplineOnBeat : MonoBehaviour
         currentState = math.clamp(currentState, 0, amountOfStates);
     }
 
-    private void Start()
-    {
-        CalculateKnotsInDistance();
-        if (!metronome)
-            return;
-        metronome.OnBeat.AddListener(OnBeat);
-    }
-
-    private void OnDisable() => metronome.OnBeat.RemoveListener(OnBeat);
-    private void OnDestroy() => metronome.OnBeat.RemoveListener(OnBeat);
+    private void Start() => CalculateKnotsInDistance();
+    private void OnEnable() => metronome?.OnBeat.AddListener(OnBeat);
+    private void OnDisable() => metronome?.OnBeat.RemoveListener(OnBeat);
+    private void OnDestroy() => metronome?.OnBeat.RemoveListener(OnBeat);
 
     private void OnBeat()
     {
@@ -177,5 +172,18 @@ public class AnimateAlongSplineOnBeat : MonoBehaviour
         {
             Gizmos.DrawSphere(knot.Position, 0.1f);
         }
+    }
+
+    public void SetTempDisabled(float holdDurationSec)
+    {
+        enabled = false;
+        StartCoroutine(EnableAfterDelay(holdDurationSec));
+    }
+    
+    private IEnumerator EnableAfterDelay(float beatDelay)
+    {
+        // Wait till hold action is done
+        yield return new WaitForSeconds(beatDelay);
+        enabled = true;
     }
 }
