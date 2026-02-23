@@ -390,6 +390,7 @@ Transform:
   - {fileID: 182072263}
   - {fileID: 1741322474}
   - {fileID: 663044064}
+  - {fileID: 2019573322}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &182072261
@@ -822,6 +823,7 @@ MonoBehaviour:
   judge: {fileID: 1959487384}
   playerInputManager: {fileID: 182072262}
   musicId: 0
+  tapVisual: {fileID: 2019573324}
 --- !u!4 &663044064
 Transform:
   m_ObjectHideFlags: 0
@@ -1130,6 +1132,69 @@ MonoBehaviour:
   errorMarginMs: 80
   correctInputs: 0
   incorrectInputs: 0
+--- !u!1 &2019573321
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2019573322}
+  - component: {fileID: 2019573324}
+  - component: {fileID: 2019573323}
+  m_Layer: 0
+  m_Name: Visuals
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2019573322
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019573321}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 143344362}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2019573323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019573321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32ddc539727db743b40a1674fad960d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShowHoldVisual
+--- !u!114 &2019573324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019573321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 980f4ad4962b2f24b949916e9604827b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ShowTapVisual
+  tapVisualPrefab: {fileID: 3405389222467856930, guid: 2c05b3fd7425f2c48a62fcb2e815b576, type: 3}
+  tapLocations:
+  - {fileID: 1531046481}
+  - {fileID: 2116340195}
+  - {fileID: 2058507412}
+  - {fileID: 1403515320}
 --- !u!1 &2058507410
 GameObject:
   m_ObjectHideFlags: 0
@@ -1318,10 +1383,10 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 619394802}
-  - {fileID: 354044234}
   - {fileID: 143344362}
   - {fileID: 8872719}
   - {fileID: 1403515320}
   - {fileID: 2058507412}
   - {fileID: 2116340195}
   - {fileID: 1531046481}
+  - {fileID: 354044234}
