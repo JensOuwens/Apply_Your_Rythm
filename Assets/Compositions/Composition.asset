@@ -17,13 +17,17 @@ MonoBehaviour:
   - beatStart: 5
     beatEnd: 5
     type: 0
+    attribute: 0
   - beatStart: 10
     beatEnd: 10
     type: 0
+    attribute: 1
   - beatStart: 15
     beatEnd: 17
     type: 1
+    attribute: 0
   - beatStart: 20
     beatEnd: 25
     type: 1
+    attribute: 0
   showVisual: 1

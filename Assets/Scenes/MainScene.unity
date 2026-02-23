@@ -514,7 +514,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 980f4ad4962b2f24b949916e9604827b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShowTapVisual
-  tapVisualPrefab: {fileID: 3405389222467856930, guid: 2c05b3fd7425f2c48a62fcb2e815b576, type: 3}
+  visualPrefabWater: {fileID: 3405389222467856930, guid: 2c05b3fd7425f2c48a62fcb2e815b576, type: 3}
+  visualPrefabCo2: {fileID: 3405389222467856930, guid: c7350666f64687c4ba7e0db9d264bbd9, type: 3}
   tapLocations:
   - {fileID: 121313976}
   - {fileID: 723319871}
@@ -1200,7 +1201,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 980f4ad4962b2f24b949916e9604827b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShowTapVisual
-  tapVisualPrefab: {fileID: 3405389222467856930, guid: 2c05b3fd7425f2c48a62fcb2e815b576, type: 3}
+  visualPrefabWater: {fileID: 3405389222467856930, guid: 2c05b3fd7425f2c48a62fcb2e815b576, type: 3}
+  visualPrefabCo2: {fileID: 3405389222467856930, guid: c7350666f64687c4ba7e0db9d264bbd9, type: 3}
   tapLocations:
   - {fileID: 1272534245}
   - {fileID: 1319826974}
@@ -3433,7 +3435,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 980f4ad4962b2f24b949916e9604827b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShowTapVisual
-  tapVisualPrefab: {fileID: 3405389222467856930, guid: 2c05b3fd7425f2c48a62fcb2e815b576, type: 3}
+  visualPrefabWater: {fileID: 3405389222467856930, guid: 2c05b3fd7425f2c48a62fcb2e815b576, type: 3}
+  visualPrefabCo2: {fileID: 3405389222467856930, guid: c7350666f64687c4ba7e0db9d264bbd9, type: 3}
   tapLocations:
   - {fileID: 502657004}
   - {fileID: 250345857}
@@ -4063,9 +4066,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1959487382}
   - component: {fileID: 1959487384}
-  - component: {fileID: 1959487388}
-  - component: {fileID: 1959487387}
-  - component: {fileID: 1959487386}
   - component: {fileID: 1959487385}
   m_Layer: 0
   m_Name: Judge+Composers
@@ -4101,11 +4101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c872526e9464d143a643a0f997a8bac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  composers:
-  - {fileID: 1959487388}
-  - {fileID: 1959487387}
-  - {fileID: 1959487386}
-  - {fileID: 1959487385}
+  composers: []
   metronome: {fileID: 1741322473}
   organismManager: {fileID: 505783573}
   errorMarginMs: 100
@@ -4120,49 +4116,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1959487381}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9129cca2060573a448110b72989d9623, type: 3}
+  m_Script: {fileID: 11500000, guid: 4eec5a0132937ff48b89149fea5cbbfa, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Composer
-  composition: {fileID: 11400000, guid: 2ceac1de4c0d8ff46a2e1edc07e635b1, type: 2}
---- !u!114 &1959487386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1959487381}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9129cca2060573a448110b72989d9623, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Composer
-  composition: {fileID: 11400000, guid: 2ceac1de4c0d8ff46a2e1edc07e635b1, type: 2}
---- !u!114 &1959487387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1959487381}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9129cca2060573a448110b72989d9623, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Composer
-  composition: {fileID: 11400000, guid: 2ceac1de4c0d8ff46a2e1edc07e635b1, type: 2}
---- !u!114 &1959487388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1959487381}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9129cca2060573a448110b72989d9623, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Composer
-  composition: {fileID: 11400000, guid: 2ceac1de4c0d8ff46a2e1edc07e635b1, type: 2}
+  m_EditorClassIdentifier: '::'
+  compositionList: {fileID: 11400000, guid: 7ee6709fb8d5a0c48a2ceb4c212879fd, type: 2}
+  judge: {fileID: 1959487384}
 --- !u!1 &2019573321
 GameObject:
   m_ObjectHideFlags: 0
@@ -4230,7 +4188,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 980f4ad4962b2f24b949916e9604827b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShowTapVisual
-  tapVisualPrefab: {fileID: 3405389222467856930, guid: 2c05b3fd7425f2c48a62fcb2e815b576, type: 3}
+  visualPrefabWater: {fileID: 3405389222467856930, guid: 2c05b3fd7425f2c48a62fcb2e815b576, type: 3}
+  visualPrefabCo2: {fileID: 3405389222467856930, guid: c7350666f64687c4ba7e0db9d264bbd9, type: 3}
   tapLocations:
   - {fileID: 1531046481}
   - {fileID: 2116340195}

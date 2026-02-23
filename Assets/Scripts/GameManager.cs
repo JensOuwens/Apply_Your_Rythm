@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour
             lastVisualizedBeat = targetBeatIndex;
 
             if (beat.type == BeatType.Tap)
-                tapVisual[i].HandleTapVisual(metronome.beatDurationInMS);
+                tapVisual[i].HandleTapVisual(beat, metronome.beatDurationInMS);
             else if (beat.type == BeatType.Hold)
                 holdVisual[i].HandleHoldVisual(beat, metronome.beatDurationInMS);
         }

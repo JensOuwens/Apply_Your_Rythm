@@ -45,7 +45,6 @@ public class CompositionObjectEditor : Editor
     {
         if (dataVisual == null) return;
 
-        // GUILayout.Space(5);
         var rowRect = GUILayoutUtility.GetRect(CellSize, dataVisual.Count *RowHeight);
 
         for (var i = 0; i < dataVisual.Count; i++)
@@ -62,11 +61,24 @@ public class CompositionObjectEditor : Editor
                 EditorGUI.DrawRect(cell, new Color(0.15f, 0.15f, 0.15f));
             else
             {
-                var c = beat.type == BeatType.Tap
-                    ? new Color(0.3f, 0.8f, 0.3f)
-                    : new Color(0.3f, 0.5f, 1f);
+                Color color;
+                if (beat.type == BeatType.Tap)
+                {
+                    if (beat.attribute == BeatAttribute.Water)
+                        color = new Color(0.3f, 0.5f, 1f);
+                    else
+                        color = new Color(0.5f, 0.3f, 0.5f);
+                }
+                else
+                {
+                    if (beat.attribute == BeatAttribute.Water)
+                        color = new Color(0.5f, 0.7f, 1f);
+                    else
+                        color = new Color(0.5f, 0.3f, 0.3f);
+                    cell.height += 2;
+                }
 
-                EditorGUI.DrawRect(cell, c);
+                EditorGUI.DrawRect(cell, color);
             }
 
             GUI.Box(cell, GUIContent.none);
