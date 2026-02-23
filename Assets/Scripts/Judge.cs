@@ -26,11 +26,11 @@ public class Judge : MonoBehaviour
         if (!metronome.initialized)
             return;
 
-        int beatIndex = metronome.GetNearestBeat(songPosMs);
+        var beatIndex = metronome.GetNearestBeat(songPosMs);
         if (beatIndex < 0)
             return;
 
-        float beatTimeMs = beatIndex * metronome.beatDurationInMS;
+        var beatTimeMs = beatIndex * metronome.beatDurationInMS;
 
         // Timing check
         if (Mathf.Abs(songPosMs - beatTimeMs) > errorMarginMs)
@@ -39,7 +39,7 @@ public class Judge : MonoBehaviour
             return;
         }
 
-        BeatData beat = composer.GetBeat(beatIndex);
+        var beat = composer.GetBeat(beatIndex);
 
         // No beat at this index
         if (beat == null)

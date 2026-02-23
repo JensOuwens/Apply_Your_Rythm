@@ -40,7 +40,7 @@ public class GameManager : MonoBehaviour
     {
         if (!gameRunning) return;
 
-        float songPosMs = musicPlayer.GetSongPositionInMS();
+        var songPosMs = musicPlayer.GetSongPositionInMS();
         judge.CheckInput(songPosMs, true);
     }
 
@@ -48,11 +48,11 @@ public class GameManager : MonoBehaviour
     {
         if (!gameRunning) return;
 
-        float songPosMs = musicPlayer.GetSongPositionInMS();
-        int beatIndex = metronome.GetNearestBeat(songPosMs);
+        var songPosMs = musicPlayer.GetSongPositionInMS();
+        var beatIndex = metronome.GetNearestBeat(songPosMs);
         if (beatIndex < 0) return;
 
-        BeatData beat = judge.composer.GetBeat(beatIndex);
+        var beat = judge.composer.GetBeat(beatIndex);
         if (beat == null) return;
         
         if (beat.type == BeatType.Hold)
