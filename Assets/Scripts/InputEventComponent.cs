@@ -3,6 +3,9 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// A simple component meant to connect one time player actions to things (such as UI)
+/// </summary>
 public class InputEventComponent : MonoBehaviour
 {
     [Header("Input config")]
