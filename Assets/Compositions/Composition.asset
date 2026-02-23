@@ -20,4 +20,10 @@ MonoBehaviour:
   - beatStart: 10
     beatEnd: 10
     type: 0
+  - beatStart: 15
+    beatEnd: 17
+    type: 1
+  - beatStart: 20
+    beatEnd: 25
+    type: 1
   showVisual: 1

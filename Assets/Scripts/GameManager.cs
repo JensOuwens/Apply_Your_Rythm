@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     
     [Header("Visuals")]
     [SerializeField] private ShowTapVisual tapVisual;
+    [SerializeField] private ShowHoldVisual holdVisual;
     
     private int lastCheckedBeat = -1;
     private int lastVisualizedBeat = -1;
@@ -49,18 +50,24 @@ public class GameManager : MonoBehaviour
         if (currentBeat == lastCheckedBeat) return;
         lastCheckedBeat = currentBeat;
 
-        int tapBeatIndex = currentBeat + 3;
+        int targetBeatIndex = currentBeat + 3;
 
-        if (tapBeatIndex == lastVisualizedBeat)
+        if (targetBeatIndex == lastVisualizedBeat)
             return;
 
-        BeatData beat = judge.composer.GetBeat(tapBeatIndex);
+        BeatData beat = judge.composer.GetBeat(targetBeatIndex);
         if (beat == null) return;
-        if (beat.type != BeatType.Tap) return;
 
-        lastVisualizedBeat = tapBeatIndex;
-        
-        tapVisual.HandleTapVisual(metronome.beatDurationInMS);
+        lastVisualizedBeat = targetBeatIndex;
+
+        if (beat.type == BeatType.Tap)
+        {
+            tapVisual.HandleTapVisual(metronome.beatDurationInMS);
+        }
+        else if (beat.type == BeatType.Hold)
+        {
+            holdVisual.HandleHoldVisual(beat, metronome.beatDurationInMS);
+        }
     }
 
     private void StartGame()

@@ -839,6 +839,7 @@ MonoBehaviour:
   playerInputManager: {fileID: 182072262}
   musicId: 0
   tapVisual: {fileID: 2019573324}
+  holdVisual: {fileID: 2019573323}
 --- !u!4 &663044064
 Transform:
   m_ObjectHideFlags: 0
@@ -1193,6 +1194,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32ddc539727db743b40a1674fad960d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShowHoldVisual
+  holdHeadPrefab: {fileID: 3151408185333711670, guid: 2aa35bd8de830954c99dc426f0710131, type: 3}
+  positions:
+  - {fileID: 1531046481}
+  - {fileID: 2116340195}
+  - {fileID: 2058507412}
+  - {fileID: 1403515320}
+  spawnOffsetBeats: 0
 --- !u!114 &2019573324
 MonoBehaviour:
   m_ObjectHideFlags: 0
