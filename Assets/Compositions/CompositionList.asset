@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: CompositionList
   m_EditorClassIdentifier: Assembly-CSharp::CompositionList
   compositions:
+  - {fileID: 11400000, guid: 22b6dbb6954f60549a689fbdec0773b2, type: 2}
+  - {fileID: 11400000, guid: 53044a44b6bd1dd49a819c298f1c0e80, type: 2}
   - {fileID: 11400000, guid: 2ceac1de4c0d8ff46a2e1edc07e635b1, type: 2}
-  - {fileID: 11400000, guid: 2ceac1de4c0d8ff46a2e1edc07e635b1, type: 2}
-  - {fileID: 11400000, guid: 2ceac1de4c0d8ff46a2e1edc07e635b1, type: 2}
-  - {fileID: 11400000, guid: 2ceac1de4c0d8ff46a2e1edc07e635b1, type: 2}
+  - {fileID: 11400000, guid: 53044a44b6bd1dd49a819c298f1c0e80, type: 2}
   showVisual: 1

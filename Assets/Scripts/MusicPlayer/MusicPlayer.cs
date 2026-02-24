@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// handles playing/ stopping audio files, holds how long the song is, and returns far we are in the current song
@@ -15,6 +16,8 @@ public class MusicPlayer : MonoBehaviour
     
     public SongListScriptableObject songList;
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private float songLengthUsedForEnd;
+    public UnityEvent onSongEnd;
 
     private void OnValidate() => audioSource = GetComponent<AudioSource>();
 
@@ -36,5 +39,11 @@ public class MusicPlayer : MonoBehaviour
     {
         currentSongPositionInMS = audioSource.time * 1000;
         return currentSongPositionInMS;
+    }
+
+    private void Update()
+    {
+        if (audioSource.time >= songLengthUsedForEnd)
+            onSongEnd.Invoke();
     }
 }
