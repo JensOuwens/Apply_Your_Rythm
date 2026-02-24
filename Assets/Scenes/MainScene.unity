@@ -4539,7 +4539,7 @@ MonoBehaviour:
   composers: []
   metronome: {fileID: 1741322473}
   organismManager: {fileID: 505783573}
-  errorMarginMs: 100
+  errorMarginMs: 150
   correctInputs: 0
   incorrectInputs: 0
 --- !u!114 &1959487385
