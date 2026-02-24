@@ -1,13 +1,28 @@
 fileFormatVersion: 2
-guid: 99bdaaa6ff5e487479f8cc131d147268
+guid: 4168a30a57e87d649803c778039c904e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1546358280141351381
-    second: IMG_0399_0
+      213: 585489585357299884
+    second: spritesheet (2)_0
   - first:
-      213: -1777440278478928282
-    second: IMG_0399_1
+      213: 3213048799308102398
+    second: spritesheet (2)_1
+  - first:
+      213: 4619062684799962818
+    second: spritesheet (2)_2
+  - first:
+      213: -7543266853627613897
+    second: spritesheet (2)_3
+  - first:
+      213: 7642487444960770648
+    second: spritesheet (2)_4
+  - first:
+      213: -8314218504887557038
+    second: spritesheet (2)_5
+  - first:
+      213: 4628161946674252807
+    second: spritesheet (2)_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,7 +64,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -100,7 +115,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: Android
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -113,7 +128,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
-    buildTarget: WebGL
+    buildTarget: WindowsStoreApps
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -129,45 +144,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: IMG_0399_0
+      name: spritesheet (2)_0
       rect:
         serializedVersion: 2
-        x: 76
-        y: 1036
-        width: 18
-        height: 18
+        x: 0
+        y: 0
+        width: 2048
+        height: 2048
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b26d0b0565b3a8ae0800000000000000
-      internalID: -1546358280141351381
+      spriteID: ca0a9e20da3102800800000000000000
+      internalID: 585489585357299884
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: IMG_0399_1
+      name: spritesheet (2)_1
       rect:
         serializedVersion: 2
-        x: 84
-        y: 159
-        width: 1888
-        height: 1464
+        x: 2048
+        y: 0
+        width: 2048
+        height: 2048
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 666cac7eb734557e0800000000000000
-      internalID: -1777440278478928282
+      spriteID: efa31c80cda079c20800000000000000
+      internalID: 3213048799308102398
       vertices: []
       indices: 
       edges: []
@@ -176,7 +191,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: bfccbf9639f71534a8b75546ae246fcb
     internalID: 0
     vertices: []
     indices: 
@@ -184,10 +199,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":2.0,"y":1.0},"gridSpriteSize":{"x":2048.0,"y":2048.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      IMG_0399_0: -1546358280141351381
-      IMG_0399_1: -1777440278478928282
+      spritesheet (2)_0: 585489585357299884
+      spritesheet (2)_1: 3213048799308102398
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

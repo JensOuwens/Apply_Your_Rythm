@@ -29,7 +29,7 @@ public class UIPulse : MonoBehaviour
     private void Update()
     {
         t += Time.unscaledDeltaTime * speed;
-        float s = (Mathf.Sin(t) + 1f) * 0.5f;
+        var s = (Mathf.Sin(t) + 1f) * 0.5f;
         rectTransform.localScale = Vector3.Lerp(minScale, maxScale, s);
     }
 }

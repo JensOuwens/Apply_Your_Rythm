@@ -19,4 +19,6 @@ public class Composer : MonoBehaviour
             return null;
         return beatData[beatPos];
     }
+
+    public void SetComposition(CompositionObject compositionObject) => composition = compositionObject;
 }

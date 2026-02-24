@@ -8,7 +8,7 @@ public class ShowHoldVisual : MonoBehaviour
 
     public void HandleHoldVisual(BeatData beat, float beatDurationInMS)
     {
-        float beatDelay = beatDurationInMS / 1000f;
+        var beatDelay = beatDurationInMS / 1000f;
         StartCoroutine(SpawnAndMoveHead(beat, beatDelay));
     }
 
@@ -18,19 +18,19 @@ public class ShowHoldVisual : MonoBehaviour
         yield return new WaitForSeconds(beatDelay);
 
         // Spawn head at top
-        GameObject head = Instantiate(holdHeadPrefab, positions[0].position, Quaternion.identity);
+        var head = Instantiate(holdHeadPrefab, positions[0].position, Quaternion.identity);
 
-        int totalPositions = positions.Length;
-        int holdLength = beat.beatEnd - beat.beatStart + 1;
+        var totalPositions = positions.Length;
+        var holdLength = beat.beatEnd - beat.beatStart + 1;
 
         // Determine how many beats per step so the head reaches bottom exactly at beatEnd
-        float beatsPerStep = holdLength / (float)(totalPositions - 1);
+        var beatsPerStep = holdLength / (float)(totalPositions - 1);
 
-        float elapsedBeats = 0f;
+        var elapsedBeats = 0f;
 
-        for (int step = 1; step < totalPositions; step++)
+        for (var step = 1; step < totalPositions; step++)
         {
-            float waitTime = beatsPerStep * beatDelay;
+            var waitTime = beatsPerStep * beatDelay;
             yield return new WaitForSeconds(waitTime);
 
             // Move head down one position

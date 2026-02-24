@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// Determines when a beat is in the song, how many beats the song has, and then transmits that data to other classes
@@ -7,6 +8,7 @@ public class Metronome : MonoBehaviour
 {
     [SerializeField] private MusicPlayer musicPlayer;
 
+    public UnityEvent OnBeat;
     private int bpm;
     public float beatDurationInMS;
     public int lastBeat = 0;
@@ -37,12 +39,14 @@ public class Metronome : MonoBehaviour
 
     private void UpdateBeat()
     {
-        float songPosMs = musicPlayer.GetSongPositionInMS();
+        var songPosMs = musicPlayer.GetSongPositionInMS();
 
         while (songPosMs >= nextBeatPosition) // use while to catch multiple beats if frame skips
         {
             lastBeat += 1;
-            Debug.Log($"[Metronome] Beat {lastBeat} at {songPosMs:F2}ms");
+            
+            OnBeat.Invoke();
+            // Debug.Log($"[Metronome] Beat {lastBeat} at {songPosMs:F2}ms");
 
             nextBeatPosition += beatDurationInMS;
         }
