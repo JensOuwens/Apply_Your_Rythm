@@ -341,6 +341,22 @@ MonoBehaviour:
   songId: 0
   songList: {fileID: 11400000, guid: ecf47c244c55f8c4ea02d16492bb375c, type: 2}
   audioSource: {fileID: 77862650}
+  songLengthUsedForEnd: 60
+  onSongEnd:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 143344363}
+        m_TargetAssemblyTypeName: SceneManager, Assembly-CSharp
+        m_MethodName: LoadEndScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &77862652
 Transform:
   m_ObjectHideFlags: 0
@@ -638,6 +654,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 143344362}
+  - component: {fileID: 143344363}
   m_Layer: 0
   m_Name: Managers
   m_TagString: Untagged
@@ -667,6 +684,21 @@ Transform:
   - {fileID: 505783572}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &143344363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143344361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 78cff6732968dbc4d9d8789cbb5bc975, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SceneManager
+  startMenuScene: StartMenu
+  gameScene: SampleScene
+  endScene: EndScene
 --- !u!1 &182072261
 GameObject:
   m_ObjectHideFlags: 0
@@ -4540,8 +4572,6 @@ MonoBehaviour:
   metronome: {fileID: 1741322473}
   organismManager: {fileID: 505783573}
   errorMarginMs: 150
-  correctInputs: 0
-  incorrectInputs: 0
 --- !u!114 &1959487385
 MonoBehaviour:
   m_ObjectHideFlags: 0

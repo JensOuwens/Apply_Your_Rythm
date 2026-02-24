@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,11 +20,17 @@ public class Judge : MonoBehaviour
     [SerializeField] 
     private float errorMarginMs = 80f; // milliseconds window
 
-    [Header("Stats")]
-    [SerializeField] 
-    private int correctInputs = 0;
-    [SerializeField] 
-    private int incorrectInputs = 0;
+    public static int correctInputsWater = 0;
+    public static int correctInputsCo2 = 0;
+    public static int incorrectInputs = 0;
+
+    private void Start()
+    {
+        correctInputsWater = 0;
+        correctInputsCo2 = 0;
+        incorrectInputs = 0;
+        DontDestroyOnLoad(gameObject);
+    }
 
     public void CheckInput(float songPosMs, int playerId, bool pressed)
     {
@@ -50,14 +57,14 @@ public class Judge : MonoBehaviour
         }
 
         beat.hit = true;
-        correctInputs++;
+        if (beat.attribute == BeatAttribute.Water)
+            correctInputsWater++;
+        else if (beat.attribute == BeatAttribute.Co2)
+            correctInputsCo2++;
 
         if (beat.type == BeatType.Tap)
             organismManager.TriggerAnim(playerId);
         else if (beat.type == BeatType.Hold)
             organismManager.TriggerAnimHold(playerId, beat, metronome);
     }
-
-    public int GetCorrectCount() => correctInputs;
-    public int GetIncorrectCount() => incorrectInputs;
 }

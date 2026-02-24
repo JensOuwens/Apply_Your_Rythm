@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 147625537}
   - component: {fileID: 147625539}
   - component: {fileID: 147625538}
+  - component: {fileID: 147625540}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -256,6 +257,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 147625536}
   m_CullTransparentMesh: 1
+--- !u!114 &147625540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147625536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d38fde305074694c9cf18b5c36dc6d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  textJudge: {fileID: 147625538}
 --- !u!1 &562160264
 GameObject:
   m_ObjectHideFlags: 0
@@ -482,12 +496,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -5082256744714481110, guid: f56cc6d91dc0c0a4e9a9c4bac9685708, type: 3}
+  m_Sprite: {fileID: 5777552420452043588, guid: 12f4ed5cac2613b4abba1e408a172704, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 46.17, y: 58.93203}
+  m_Size: {x: 23.61, y: 29.154297}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -501,9 +515,9 @@ Transform:
   m_GameObject: {fileID: 1569695419}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 13.66, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: 14.17, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
