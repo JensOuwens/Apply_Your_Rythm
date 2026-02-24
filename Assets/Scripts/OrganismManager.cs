@@ -44,7 +44,8 @@ public class OrganismManager : MonoBehaviour
         var holdDurationSec = (beat.beatEnd - beat.beatStart + 1) * (metronome.beatDurationInMS / 1000f);
         usedAnims[playerId].GooberHoldAnim(holdDurationSec);
 
-        usedAnimSpline[playerId].SetTempDisabled(holdDurationSec);
+        foreach (var anim in animSplines) 
+            anim.SetTempDisabled(holdDurationSec);
     }
 
     private void FixedUpdate()
