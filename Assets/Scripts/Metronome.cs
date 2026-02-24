@@ -46,7 +46,7 @@ public class Metronome : MonoBehaviour
             lastBeat += 1;
             
             OnBeat.Invoke();
-            // Debug.Log($"[Metronome] Beat {lastBeat} at {songPosMs:F2}ms");
+            Debug.Log($"[Metronome] Beat {lastBeat} at {songPosMs:F2}ms");
 
             nextBeatPosition += beatDurationInMS;
         }

@@ -12,22 +12,150 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b3ea7b7f2ae4bb199c2d490a05e48ac, type: 3}
   m_Name: Composition
   m_EditorClassIdentifier: Assembly-CSharp::CompositionObject
-  beatAmount: 143
+  beatAmount: 570
   data:
-  - beatStart: 5
-    beatEnd: 5
+  - beatStart: 14
+    beatEnd: 14
     type: 0
     attribute: 0
-  - beatStart: 10
-    beatEnd: 10
+  - beatStart: 16
+    beatEnd: 16
     type: 0
     attribute: 1
-  - beatStart: 15
-    beatEnd: 17
-    type: 1
-    attribute: 0
   - beatStart: 20
-    beatEnd: 25
+    beatEnd: 20
+    type: 0
+    attribute: 1
+  - beatStart: 22
+    beatEnd: 22
+    type: 0
+    attribute: 0
+  - beatStart: 26
+    beatEnd: 26
+    type: 0
+    attribute: 0
+  - beatStart: 28
+    beatEnd: 28
+    type: 0
+    attribute: 1
+  - beatStart: 32
+    beatEnd: 32
+    type: 0
+    attribute: 0
+  - beatStart: 34
+    beatEnd: 34
+    type: 0
+    attribute: 1
+  - beatStart: 38
+    beatEnd: 38
+    type: 0
+    attribute: 1
+  - beatStart: 40
+    beatEnd: 40
+    type: 0
+    attribute: 0
+  - beatStart: 45
+    beatEnd: 50
+    type: 1
+    attribute: 1
+  - beatStart: 60
+    beatEnd: 60
+    type: 0
+    attribute: 0
+  - beatStart: 65
+    beatEnd: 65
+    type: 0
+    attribute: 0
+  - beatStart: 67
+    beatEnd: 67
+    type: 0
+    attribute: 1
+  - beatStart: 68
+    beatEnd: 68
+    type: 0
+    attribute: 0
+  - beatStart: 72
+    beatEnd: 74
+    type: 1
+    attribute: 1
+  - beatStart: 78
+    beatEnd: 78
+    type: 0
+    attribute: 0
+  - beatStart: 80
+    beatEnd: 80
+    type: 0
+    attribute: 1
+  - beatStart: 85
+    beatEnd: 85
+    type: 0
+    attribute: 0
+  - beatStart: 86
+    beatEnd: 86
+    type: 0
+    attribute: 1
+  - beatStart: 87
+    beatEnd: 87
+    type: 0
+    attribute: 0
+  - beatStart: 90
+    beatEnd: 95
+    type: 1
+    attribute: 1
+  - beatStart: 108
+    beatEnd: 108
+    type: 0
+    attribute: 0
+  - beatStart: 110
+    beatEnd: 110
+    type: 0
+    attribute: 0
+  - beatStart: 112
+    beatEnd: 112
+    type: 0
+    attribute: 1
+  - beatStart: 115
+    beatEnd: 117
     type: 1
     attribute: 0
+  - beatStart: 122
+    beatEnd: 122
+    type: 0
+    attribute: 1
+  - beatStart: 124
+    beatEnd: 124
+    type: 0
+    attribute: 0
+  - beatStart: 125
+    beatEnd: 125
+    type: 0
+    attribute: 1
+  - beatStart: 128
+    beatEnd: 128
+    type: 0
+    attribute: 0
+  - beatStart: 132
+    beatEnd: 135
+    type: 1
+    attribute: 1
+  - beatStart: 140
+    beatEnd: 140
+    type: 0
+    attribute: 0
+  - beatStart: 142
+    beatEnd: 142
+    type: 0
+    attribute: 0
+  - beatStart: 145
+    beatEnd: 145
+    type: 0
+    attribute: 1
+  - beatStart: 146
+    beatEnd: 146
+    type: 0
+    attribute: 0
+  - beatStart: 147
+    beatEnd: 147
+    type: 0
+    attribute: 1
   showVisual: 1
