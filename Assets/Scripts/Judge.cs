@@ -17,6 +17,8 @@ public class Judge : MonoBehaviour
     private OrganismManager organismManager;
     [SerializeField]
     private ParticleManager particleManager;
+    [SerializeField]
+    private SoundEffectManager soundEffectManager;
 
     [Header("Timing")]
     [SerializeField] 
@@ -67,7 +69,8 @@ public class Judge : MonoBehaviour
         if (beat.type == BeatType.Tap)
         {
             organismManager.TriggerAnim(playerId); 
-            particleManager.SpawnRandomParticleIDPos(playerId);   
+            particleManager.SpawnRandomParticleIDPos(playerId);
+            soundEffectManager.PlaySoundEffectWithIndex(0);
         }
         else if (beat.type == BeatType.Hold)
             organismManager.TriggerAnimHold(playerId, beat, metronome);

@@ -682,6 +682,7 @@ Transform:
   - {fileID: 663044064}
   - {fileID: 608223664}
   - {fileID: 505783572}
+  - {fileID: 1585433283}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &143344363
@@ -4162,6 +4163,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2019573322}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1585433282
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1585433283}
+  - component: {fileID: 1585433284}
+  m_Layer: 0
+  m_Name: SoundEffectsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1585433283
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585433282}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 143344362}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1585433284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585433282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48492d8649b050b4cb4fee525dea259c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SoundEffectManager
+  SoundEffects:
+  - id: 0
+    AudioClip: {fileID: 8300000, guid: e6c0f1ec270d612459a2f7ae1ca41925, type: 3}
 --- !u!1 &1625077071
 GameObject:
   m_ObjectHideFlags: 0
@@ -4625,6 +4673,7 @@ MonoBehaviour:
   metronome: {fileID: 1741322473}
   organismManager: {fileID: 505783573}
   particleManager: {fileID: 1246615420}
+  soundEffectManager: {fileID: 1585433284}
   errorMarginMs: 150
 --- !u!114 &1959487385
 MonoBehaviour:
