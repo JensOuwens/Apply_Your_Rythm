@@ -11,7 +11,8 @@ public class MusicPlayer : MonoBehaviour
     private AudioClip currentSong;
 
     public float songLengthInMS;
-    private float currentSongPositionInMS;
+    [NonSerialized]
+    public float currentSongPositionInMS;
     public int songId;
     
     public SongListScriptableObject songList;

@@ -6,7 +6,6 @@ public class GooberCatchAnim : MonoBehaviour
 {
     [SerializeField] private Sprite originalSprite;
     [SerializeField] private Sprite catchSprite;
-    [SerializeField] private float durationAnim = 0.8f;
     [SerializeField] private SpriteRenderer spriteRenderer;
     private Coroutine currentAnim;
 
@@ -16,10 +15,10 @@ public class GooberCatchAnim : MonoBehaviour
         enabled = spriteRenderer != null;
     }
 
-    public void GooberAnim()
+    public void GooberAnim(float animLength)
     {
         if (currentAnim != null) StopCoroutine(currentAnim);
-        currentAnim = StartCoroutine(GooberAnimCoroutine(durationAnim));
+        currentAnim = StartCoroutine(GooberAnimCoroutine(animLength));
     }
     
     public void GooberHoldAnim(float duration)

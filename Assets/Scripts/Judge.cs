@@ -13,6 +13,8 @@ public class Judge : MonoBehaviour
     public List<Composer> composers = new();
     [SerializeField] 
     private Metronome metronome;
+    [SerializeField]
+    private MusicPlayer musicPlayer;
     [SerializeField] 
     private OrganismManager organismManager;
 
@@ -62,8 +64,12 @@ public class Judge : MonoBehaviour
         else if (beat.attribute == BeatAttribute.Co2)
             correctInputsCo2++;
 
+        var beatTimeLeft = musicPlayer.currentSongPositionInMS - beatTimeMs;
+        var beatTimeLeftTillNext = musicPlayer.currentSongPositionInMS - (beatIndex + 1) * metronome.beatDurationInMS;
+        var animTime = MathF.Abs(beatTimeLeft + beatTimeLeftTillNext / 2);
+        Debug.Log(animTime);
         if (beat.type == BeatType.Tap)
-            organismManager.TriggerAnim(playerId);
+            organismManager.TriggerAnim(playerId, animTime / 1000f);
         else if (beat.type == BeatType.Hold)
             organismManager.TriggerAnimHold(playerId, beat, metronome);
     }
