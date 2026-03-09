@@ -16,8 +16,8 @@ using UnityEngine.Splines.Interpolators;
 public class AnimateAlongSplineOnBeat : MonoBehaviour
 {
     [Header("RequireComponents")]
-    [SerializeField]
     private Metronome metronome;
+    private OrganismManager parentManager;
     [SerializeField]
     private MusicPlayer musicPlayer;
     [SerializeField]
@@ -48,25 +48,31 @@ public class AnimateAlongSplineOnBeat : MonoBehaviour
     {
         if (!splineAnimate)
             splineAnimate = GetComponent<SplineAnimate>();
-        enabled = splineAnimate && metronome && musicPlayer;
+        enabled = splineAnimate && musicPlayer;
         
         if (shouldUseKnots && splineAnimate && splineAnimate.Container)
             amountOfStates = splineAnimate.Container.Spline.Count;
         currentState = math.clamp(currentState, 0, amountOfStates);
     }
+    
+    public void Initialize(Metronome metronome1, OrganismManager manager)
+    {
+        metronome = metronome1;
+        parentManager = manager;
+        parentManager.onMoveBucket += OnMove;
+        CalculateKnotsInDistance();
+        SetState(currentState);
+    }
 
-    private void Start() => CalculateKnotsInDistance();
-    // private void OnEnable() => metronome?.OnBeat.AddListener(OnBeat); // TODO: move this to its own beat type
-    // private void OnDisable() => metronome?.OnBeat.RemoveListener(OnBeat);
-    // private void OnDestroy() => metronome?.OnBeat.RemoveListener(OnBeat);
-
-    private void OnBeat()
+    public void OnMove()
     {
         beatCount++;
         if (beatCount < amountOfBeatsToCount) return;
         beatCount = 0;
         AdvanceState();
     }
+
+    private void OnDisable() => parentManager.onMoveBucket -= OnMove;
 
     private void AdvanceState()
     {
@@ -181,9 +187,7 @@ public class AnimateAlongSplineOnBeat : MonoBehaviour
             return;
         
         Gizmos.color = Color.red;
-        foreach (var knot in splineAnimate.Container.Spline)
-        {
-            Gizmos.DrawSphere((Vector3)knot.Position + splineAnimate.transform.position, 0.1f);
-        }
+        foreach (var knot in splineAnimate.Container.Spline) 
+            Gizmos.DrawSphere(knot.Position, 0.1f);
     }
 }
