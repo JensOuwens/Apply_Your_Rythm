@@ -1,9 +1,11 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ComposerCreator : MonoBehaviour
 {
+    public static Action<Composer> ComposerSubscribed;
     [SerializeField]
     private CompositionList compositionList;
     [SerializeField]
@@ -21,7 +23,7 @@ public class ComposerCreator : MonoBehaviour
         {
             var composer = transform.AddComponent<Composer>();
             composer.SetComposition(composition);
-            judge.composers.Add(composer);
+            ComposerSubscribed.Invoke(composer);
         }
     }
 }

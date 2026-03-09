@@ -14,18 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CompositionObject
   beatAmount: 120
   data:
-  - beatStart: 4
-    beatEnd: 0
-    type: 0
-    attribute: 0
-  - beatStart: 8
-    beatEnd: 0
-    type: 0
-    attribute: 0
-  - beatStart: 12
-    beatEnd: 0
-    type: 0
-    attribute: 0
   - beatStart: 16
     beatEnd: 0
     type: 0
@@ -95,6 +83,18 @@ MonoBehaviour:
     type: 0
     attribute: 0
   - beatStart: 84
+    beatEnd: 0
+    type: 0
+    attribute: 0
+  - beatStart: 88
+    beatEnd: 0
+    type: 0
+    attribute: 0
+  - beatStart: 92
+    beatEnd: 0
+    type: 0
+    attribute: 0
+  - beatStart: 96
     beatEnd: 0
     type: 0
     attribute: 0

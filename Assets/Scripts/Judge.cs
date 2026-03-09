@@ -34,6 +34,11 @@ public class Judge : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void OnEnable() => ComposerCreator.ComposerSubscribed += SubscribeComposer;
+    private void OnDisable() => ComposerCreator.ComposerSubscribed -= SubscribeComposer;
+
+    public void SubscribeComposer(Composer composer) => composers.Add(composer);
+
     public void CheckInput(float songPosMs, int playerId, bool pressed)
     {
         if (composers == null || metronome == null || !metronome.initialized)
