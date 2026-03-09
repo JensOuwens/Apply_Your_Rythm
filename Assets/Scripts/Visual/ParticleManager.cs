@@ -4,6 +4,8 @@ using UnityEngine;
 /// <summary>
 /// call this function to spawn particle effects at the desired location
 /// </summary>
+///
+/// TODO: Add long notes logic
 
 [System.Serializable]
 public struct ParticleSystemItem
