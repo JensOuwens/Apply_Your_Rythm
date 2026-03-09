@@ -3211,7 +3211,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ParticleManager
   particleSystems:
   - id: 0
-    particleSystem: {fileID: 0}
+    particleSystem: {fileID: 757784602335229234, guid: 925450bc1d1cc9548acf165ba2204c9f, type: 3}
+  spawnPositions:
+  - {x: -5, y: -1.52}
+  - {x: -1.75, y: -1.52}
+  - {x: 1.75, y: -1.52}
+  - {x: 5, y: -1.52}
 --- !u!1 &1272534244
 GameObject:
   m_ObjectHideFlags: 0
@@ -4619,6 +4624,7 @@ MonoBehaviour:
   composers: []
   metronome: {fileID: 1741322473}
   organismManager: {fileID: 505783573}
+  particleManager: {fileID: 1246615420}
   errorMarginMs: 150
 --- !u!114 &1959487385
 MonoBehaviour:

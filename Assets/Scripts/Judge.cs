@@ -15,6 +15,8 @@ public class Judge : MonoBehaviour
     private Metronome metronome;
     [SerializeField] 
     private OrganismManager organismManager;
+    [SerializeField]
+    private ParticleManager particleManager;
 
     [Header("Timing")]
     [SerializeField] 
@@ -63,7 +65,10 @@ public class Judge : MonoBehaviour
             correctInputsCo2++;
 
         if (beat.type == BeatType.Tap)
-            organismManager.TriggerAnim(playerId);
+        {
+            organismManager.TriggerAnim(playerId); 
+            particleManager.SpawnRandomParticleIDPos(playerId);   
+        }
         else if (beat.type == BeatType.Hold)
             organismManager.TriggerAnimHold(playerId, beat, metronome);
     }
