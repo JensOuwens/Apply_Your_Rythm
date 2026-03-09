@@ -10,13 +10,13 @@ public class OrganismManager : MonoBehaviour
     [SerializeField]
     private SplineContainer spline;
     [SerializeField] 
-    private GooberCatchAnim[] catchAnims;
+    private OrganismAnim[] catchAnims;
 
     private void OnValidate()
     {
         if (spline == null)
             return;
-        catchAnims = GetComponentsInChildren<GooberCatchAnim>();
+        catchAnims = GetComponentsInChildren<OrganismAnim>();
     }
 
     public void TriggerAnim(int playerId, float animLength) => catchAnims[playerId].GooberAnim(animLength);
@@ -24,5 +24,13 @@ public class OrganismManager : MonoBehaviour
     {
         var holdDurationSec = (beat.beatEnd - beat.beatStart + 1) * (metronome.beatDurationInMS / 1000f);
         catchAnims[playerId].GooberHoldAnim(holdDurationSec);
+    }
+
+    public void InitOrganisms(Metronome metronome)
+    {
+        foreach (var organismAnim in catchAnims)
+        {
+            organismAnim.SetIdleSpeed(metronome.beatDurationInMS / 1000f);
+        }
     }
 }

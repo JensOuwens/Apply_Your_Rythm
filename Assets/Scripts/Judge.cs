@@ -64,12 +64,9 @@ public class Judge : MonoBehaviour
         else if (beat.attribute == BeatAttribute.Co2)
             correctInputsCo2++;
 
-        var beatTimeLeft = musicPlayer.currentSongPositionInMS - beatTimeMs;
-        var beatTimeLeftTillNext = musicPlayer.currentSongPositionInMS - (beatIndex + 1) * metronome.beatDurationInMS;
-        var animTime = MathF.Abs(beatTimeLeft + beatTimeLeftTillNext / 2);
-        Debug.Log(animTime);
+        var timeToNextBeat = (beatIndex + 1) * metronome.beatDurationInMS - songPosMs;
         if (beat.type == BeatType.Tap)
-            organismManager.TriggerAnim(playerId, animTime / 1000f);
+            organismManager.TriggerAnim(playerId, timeToNextBeat / 1000f);
         else if (beat.type == BeatType.Hold)
             organismManager.TriggerAnimHold(playerId, beat, metronome);
     }

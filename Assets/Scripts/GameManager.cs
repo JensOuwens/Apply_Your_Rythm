@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     [Header("Visuals")]
     [SerializeField] private List<ShowTapVisual> tapVisual;
     [SerializeField] private List<ShowHoldVisual> holdVisual;
+    [SerializeField] private OrganismManager organismManager;
     
     private int lastCheckedBeat = -1;
     private int lastVisualizedBeat = -1;
@@ -32,11 +33,8 @@ public class GameManager : MonoBehaviour
         playerInputManager.onPlayerReleased.AddListener(OnPlayerReleased);
     }
 
-    private void Start()
-    {
-        StartGame();
-    }
-    
+    private void Start() => StartGame();
+
     private void Update()
     {
         if (!gameRunning) return;
@@ -75,6 +73,7 @@ public class GameManager : MonoBehaviour
     {
         musicPlayer.PlaySong(musicId);
         metronome.InitMetronome();
+        organismManager.InitOrganisms(metronome);
         gameRunning = true;
     }
 
