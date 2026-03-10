@@ -17,6 +17,10 @@ public class Judge : MonoBehaviour
     private MusicPlayer musicPlayer;
     [SerializeField] 
     private OrganismManager organismManager;
+    [SerializeField]
+    private ParticleManager particleManager;
+    [SerializeField]
+    private SoundEffectManager soundEffectManager;
 
     [Header("Timing")]
     [SerializeField] 
@@ -71,8 +75,16 @@ public class Judge : MonoBehaviour
 
         var timeToNextBeat = (beatIndex + 1) * metronome.beatDurationInMS - songPosMs;
         if (beat.type == BeatType.Tap)
+        {
             organismManager.TriggerAnim(playerId, timeToNextBeat / 1000f);
+            particleManager.SpawnRandomParticleIDPos(playerId);
+            soundEffectManager.PlaySoundEffectWithIndex(0);
+        }
         else if (beat.type == BeatType.Hold)
+        {
             organismManager.TriggerAnimHold(playerId, beat);
+            particleManager.SpawnRandomParticleIDPosHold(playerId, beat);
+            soundEffectManager.PlaySoundEffectWithIndexHold(1, beat);
+        }
     }
 }
