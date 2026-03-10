@@ -47,7 +47,15 @@ public class OrganismManager : MonoBehaviour
             onMoveBucket.Invoke();
     }
 
-    public void TriggerAnim(int playerId, float animLength) => catchAnims[playerId].GooberAnim(animLength);
+    public void TriggerAnim(int playerId, float animLength)
+    {
+        catchAnims[playerId].GooberAnim(animLength);
+        var
+            bucket = alongSplineOnBeats.First(a =>
+                a.CurrentState == playerId + 1); // + 1 to align playerId to spline pos
+        bucket.FollowOrganism(catchAnims[playerId], animLength);
+    }
+
     public void TriggerAnimHold(int playerId, BeatData beat, Metronome metronome)
     {
         var holdDurationSec = (beat.beatEnd - beat.beatStart + 1) * (metronome.beatDurationInMS / 1000f);

@@ -28,7 +28,12 @@ public class AnimateAlongSplineOnBeat : MonoBehaviour
     [Header("config")]
     [SerializeField]
     private int currentState;
-    [SerializeField]
+    public int CurrentState
+    {
+        get => currentState;
+        private set => currentState = value;
+    }
+
     private int amountOfStates;
     [SerializeField]
     private int[] unUsedStates;
@@ -43,6 +48,8 @@ public class AnimateAlongSplineOnBeat : MonoBehaviour
     [SerializeField]
     private int amountOfBeatsToCount = 1;
     private int beatCount = 0;
+    
+    private OrganismAnim organismToFollow;
 
     private void OnValidate()
     {
@@ -118,6 +125,11 @@ public class AnimateAlongSplineOnBeat : MonoBehaviour
 
     private void Update()
     {
+        if (organismToFollow){
+            transform.position = organismToFollow.transform.position;
+            return;
+        }
+
         if (!splineAnimate ||
             !metronome ||
             !musicPlayer ||
@@ -189,5 +201,17 @@ public class AnimateAlongSplineOnBeat : MonoBehaviour
         Gizmos.color = Color.red;
         foreach (var knot in splineAnimate.Container.Spline) 
             Gizmos.DrawSphere(knot.Position, 0.1f);
+    }
+    
+    public void FollowOrganism(OrganismAnim catchAnim, float duration)
+    {
+        organismToFollow = catchAnim;
+        StartCoroutine(FollowOrganism(duration));
+    }
+
+    private IEnumerator FollowOrganism(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        organismToFollow = null;
     }
 }

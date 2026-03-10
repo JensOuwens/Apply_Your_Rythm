@@ -14,11 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CompositionObject
   beatAmount: 120
   data:
-  - beatStart: 14
+  - beatStart: 1
     beatEnd: 0
     type: 0
     attribute: 0
-  - beatStart: 26
+  - beatStart: 48
+    beatEnd: 0
+    type: 0
+    attribute: 0
+  - beatStart: 56
     beatEnd: 0
     type: 0
     attribute: 0
