@@ -3218,6 +3218,7 @@ MonoBehaviour:
   - {x: -1.75, y: -1.52}
   - {x: 1.75, y: -1.52}
   - {x: 5, y: -1.52}
+  metronome: {fileID: 1741322473}
 --- !u!1 &1272534244
 GameObject:
   m_ObjectHideFlags: 0

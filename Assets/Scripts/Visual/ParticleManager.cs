@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -24,6 +25,8 @@ public class ParticleManager : MonoBehaviour
     [SerializeField]
     private List<Vector2>  spawnPositions;
 
+    [SerializeField] private Metronome metronome;
+
     private void Awake()
     {
         if (instance == null)
@@ -32,22 +35,10 @@ public class ParticleManager : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);   
         }
     }
-
-    public void SpawnRandomParticle(Vector2 position)
-    {
-        int listIndex = Random.Range(0, particleSystems.Count - 1);
-        
-        Instantiate(particleSystems[listIndex].particleSystem, position, Quaternion.identity);
-    }
-
-    public void SpawnParticleWithIndex(Vector2 position, int index)
-    {
-        Instantiate(particleSystems[index].particleSystem, position, Quaternion.identity);
-    }
     
     public void SpawnRandomParticleIDPos(int position)
     {
-        int listIndex = Random.Range(0, particleSystems.Count - 1);
+        int listIndex = Random.Range(0, particleSystems.Count);
         
         Instantiate(particleSystems[listIndex].particleSystem,spawnPositions[position],  Quaternion.identity);
     }
@@ -56,6 +47,37 @@ public class ParticleManager : MonoBehaviour
     {
         Instantiate(particleSystems[index].particleSystem, spawnPositions[position], Quaternion.identity);
     }
+
+    public void SpawnRandomParticleIDPosHold(int position, BeatData beatData)
+    {
+        float beatLength = beatData.beatEnd -  beatData.beatStart;
+        beatLength = beatLength * metronome.beatDurationInMS / 1000f;
+        
+        int listIndex = Random.Range(0, particleSystems.Count);
+        
+        StartCoroutine(SpawnParticleForTimeFrame(position, listIndex, beatLength));
+    }
     
-    
+    public void SpawnParticleWithIndexIDPosHold(int position, int index, BeatData beatData)
+    {
+        float beatLength = beatData.beatEnd -  beatData.beatStart;
+        beatLength = beatLength * metronome.beatDurationInMS / 1000f;
+        
+        StartCoroutine(SpawnParticleForTimeFrame(position, index, beatLength));
+    }
+
+    IEnumerator SpawnParticleForTimeFrame(int position, int index, float beatLength)
+    {
+        float endtime = Time.time + beatLength;
+        
+        while (Time.time < endtime)
+        {
+            Instantiate(particleSystems[index].particleSystem, spawnPositions[position], Quaternion.identity);   
+            
+            yield return new WaitForSeconds(0.2f);
+        }
+        
+    }
+
+
 }
