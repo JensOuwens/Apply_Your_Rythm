@@ -3,6 +3,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 
+/// <summary>
+/// Loads in composers based on a composer list
+/// </summary>
 public class ComposerCreator : MonoBehaviour
 {
     public static Action<Composer> ComposerSubscribed;

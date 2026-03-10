@@ -2,6 +2,9 @@
 using System.Collections;
 using UnityEngine;
 
+/// <summary>
+/// Bucket manages the different components that makes up a bucket, letting movement be seperate and reusable still
+/// </summary>
 [RequireComponent(typeof(AnimateAlongSplineOnBeat))]
 public class Bucket : MonoBehaviour
 {

@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Tutorial button for showing when the player should press on the beat
+/// </summary>
 public class TutorialButton : MonoBehaviour
 {
     [SerializeField] private List<Composer> composers = new();

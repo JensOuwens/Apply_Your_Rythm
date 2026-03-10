@@ -5,6 +5,9 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Splines;
 
+/// <summary>
+/// Manages the organism animations, and their buckets
+/// </summary>
 [RequireComponent(typeof(Composer))]
 public class OrganismManager : MonoBehaviour
 {
