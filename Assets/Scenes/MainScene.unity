@@ -4210,9 +4210,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SoundEffectManager
   SoundEffects:
   - id: 0
-    AudioClip: {fileID: 8300000, guid: e6c0f1ec270d612459a2f7ae1ca41925, type: 3}
+    AudioClip: {fileID: 8300000, guid: 038fa744ba8bb904eb86bbdb3049b9bc, type: 3}
   - id: 1
-    AudioClip: {fileID: 8300000, guid: 620df935250a881429a9a64617fabc45, type: 3}
+    AudioClip: {fileID: 8300000, guid: 2b6818dcd53532b44b942ed03a010925, type: 3}
+  - id: 2
+    AudioClip: {fileID: 8300000, guid: 4f71cb95eed278049bdbb2611e43b7ac, type: 3}
   metronome: {fileID: 1741322473}
 --- !u!1 &1625077071
 GameObject:
