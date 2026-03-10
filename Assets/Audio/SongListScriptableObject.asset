@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: SongListScriptableObject
   m_EditorClassIdentifier: Assembly-CSharp::SongListScriptableObject
   songs:
+  - clip: {fileID: 8300000, guid: 3bce5f83334e1834195fcb2a5e919281, type: 3}
+    displayName: Tutorial
+    bpm: 120
+    volume: 1
+    songId: 1
   - clip: {fileID: 8300000, guid: 2c00cb1844a9e3e4aba70f0846cbdde8, type: 3}
     displayName: Spoken for
     bpm: 138

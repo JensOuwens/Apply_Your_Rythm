@@ -1,10 +1,12 @@
 using System;
 using System.Collections;
+using System.Linq;
 using Unity.Mathematics;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Splines;
 using UnityEngine.Splines.Interpolators;
 
@@ -15,7 +17,6 @@ using UnityEngine.Splines.Interpolators;
 public class AnimateAlongSplineOnBeat : MonoBehaviour
 {
     [Header("RequireComponents")]
-    [SerializeField]
     private Metronome metronome;
     [SerializeField]
     private MusicPlayer musicPlayer;
@@ -27,8 +28,15 @@ public class AnimateAlongSplineOnBeat : MonoBehaviour
     [Header("config")]
     [SerializeField]
     private int currentState;
-    [SerializeField]
+    public int CurrentState
+    {
+        get => currentState;
+        private set => currentState = value;
+    }
+
     private int amountOfStates;
+    [SerializeField]
+    private int[] unUsedStates;
     [SerializeField]
     private AnimationCurve beatEasing = AnimationCurve.EaseInOut(0, 0, 1, 1);
     private LerpFloat lerpFloat;
@@ -40,24 +48,31 @@ public class AnimateAlongSplineOnBeat : MonoBehaviour
     [SerializeField]
     private int amountOfBeatsToCount = 1;
     private int beatCount = 0;
+    [Header("Events")]
+    [SerializeField] 
+    private UnityEvent onLastState;
+    [SerializeField] 
+    private UnityEvent onStartLoop;
 
     private void OnValidate()
     {
         if (!splineAnimate)
             splineAnimate = GetComponent<SplineAnimate>();
-        enabled = splineAnimate && metronome && musicPlayer;
+        enabled = splineAnimate && musicPlayer;
         
         if (shouldUseKnots && splineAnimate && splineAnimate.Container)
             amountOfStates = splineAnimate.Container.Spline.Count;
         currentState = math.clamp(currentState, 0, amountOfStates);
     }
+    
+    public void Initialize(Metronome metronome1)
+    {
+        metronome = metronome1;
+        CalculateKnotsInDistance();
+        SetState(currentState);
+    }
 
-    private void Start() => CalculateKnotsInDistance();
-    private void OnEnable() => metronome?.OnBeat.AddListener(OnBeat);
-    private void OnDisable() => metronome?.OnBeat.RemoveListener(OnBeat);
-    private void OnDestroy() => metronome?.OnBeat.RemoveListener(OnBeat);
-
-    private void OnBeat()
+    public void OnMove()
     {
         beatCount++;
         if (beatCount < amountOfBeatsToCount) return;
@@ -68,6 +83,16 @@ public class AnimateAlongSplineOnBeat : MonoBehaviour
     private void AdvanceState()
     {
         var newState = (int)currentState + 1;
+        while (unUsedStates.Contains(newState))
+        {
+            if (unUsedStates.Contains(newState))
+                newState++;
+            else
+                break;
+            if (newState > amountOfStates)
+                newState = 0;
+        }
+        
         if (newState > amountOfStates)
             SetState(0);
         else
@@ -78,6 +103,9 @@ public class AnimateAlongSplineOnBeat : MonoBehaviour
     {
         var previousState = currentState;
 
+        if (stateToSet == amountOfStates - 1)
+            onLastState.Invoke();
+        
         fromTime = PositionOnTimeLine(previousState);
         currentState = stateToSet;
         toTime = PositionOnTimeLine(currentState);
@@ -88,12 +116,14 @@ public class AnimateAlongSplineOnBeat : MonoBehaviour
         // teleport
         if (isWrap)
         {
+            if (currentState == 0)
+                onStartLoop.Invoke();
             splineAnimate.NormalizedTime = toTime;
             isTransitioning = false;
             return;
         }
 
-        transitionStartBeat = musicPlayer.GetSongPositionInMS() / metronome.BeatDurationMs;
+        transitionStartBeat = musicPlayer.GetSongPositionInMS() / metronome.beatDurationInMS;
         isTransitioning = true;
     }
 
@@ -116,7 +146,7 @@ public class AnimateAlongSplineOnBeat : MonoBehaviour
         if (!isTransitioning)
             return;
 
-        double currentBeat = musicPlayer.GetSongPositionInMS() / metronome.BeatDurationMs;
+        double currentBeat = musicPlayer.GetSongPositionInMS() / metronome.beatDurationInMS;
         var phase = (float)(currentBeat - transitionStartBeat);
 
         if (phase >= 1f)
@@ -164,26 +194,11 @@ public class AnimateAlongSplineOnBeat : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        if (shouldUseKnots && !splineAnimate && !splineAnimate.Container && splineAnimate.Container.Spline == null)
+        if (shouldUseKnots || !splineAnimate || !splineAnimate.Container || splineAnimate.Container.Spline == null)
             return;
         
         Gizmos.color = Color.red;
-        foreach (var knot in splineAnimate.Container.Spline)
-        {
+        foreach (var knot in splineAnimate.Container.Spline) 
             Gizmos.DrawSphere(knot.Position, 0.1f);
-        }
-    }
-
-    public void SetTempDisabled(float holdDurationSec)
-    {
-        enabled = false;
-        StartCoroutine(EnableAfterDelay(holdDurationSec));
-    }
-    
-    private IEnumerator EnableAfterDelay(float beatDelay)
-    {
-        // Wait till hold action is done
-        yield return new WaitForSeconds(beatDelay);
-        enabled = true;
     }
 }

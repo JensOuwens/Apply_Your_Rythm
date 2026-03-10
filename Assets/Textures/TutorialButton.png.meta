@@ -1,19 +1,16 @@
 fileFormatVersion: 2
-guid: f9ddf4b873d17fa44a423ee8c06313f9
+guid: 71c88e3291aee8a448282898481e44a4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5878203096085206695
-    second: spritesheet (4)_0
+      213: 8575710031886937591
+    second: TutorialButton_0
   - first:
-      213: 8541543648840734694
-    second: spritesheet (4)_1
+      213: -8039759249662607351
+    second: TutorialButton_1
   - first:
-      213: 3316518890299791053
-    second: spritesheet (4)_2
-  - first:
-      213: -1704431106280724860
-    second: spritesheet (4)_3
+      213: 4276245218268444606
+    second: TutorialButton_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -60,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 1400
+  spritePixelsToUnits: 200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -135,13 +132,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spritesheet (4)_0
+      name: TutorialButton_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 2048
-        height: 2048
+        width: 906
+        height: 889
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,20 +147,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7a692c36292939150800000000000000
-      internalID: 5878203096085206695
+      spriteID: 7fdef5386da030770800000000000000
+      internalID: 8575710031886937591
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet (4)_1
+      name: TutorialButton_1
       rect:
         serializedVersion: 2
-        x: 2048
+        x: 906
         y: 0
-        width: 2048
-        height: 2048
+        width: 906
+        height: 889
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -172,8 +169,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6e755ae81b8a98670800000000000000
-      internalID: 8541543648840734694
+      spriteID: 90003341f890d6090800000000000000
+      internalID: -8039759249662607351
       vertices: []
       indices: 
       edges: []
@@ -182,7 +179,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: ee7c6c03cbdf1f24f88bbac49c24ed46
+    spriteID: 43dd6157621fb6449ab4ee2b82c3b931
     internalID: 0
     vertices: []
     indices: 
@@ -192,10 +189,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries:
       - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":2.0,"y":1.0},"gridSpriteSize":{"x":2048.0,"y":2048.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":2.0,"y":1.0},"gridSpriteSize":{"x":906.0,"y":889.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      spritesheet (4)_0: 5878203096085206695
-      spritesheet (4)_1: 8541543648840734694
+      TutorialButton_0: 8575710031886937591
+      TutorialButton_1: -8039759249662607351
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

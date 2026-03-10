@@ -17,7 +17,6 @@ public class Metronome : MonoBehaviour
 
     public bool initialized = false;
 
-    public float BeatDurationMs => beatDurationInMS;
     public bool Initialized => initialized;
 
     private void Update()
@@ -46,7 +45,7 @@ public class Metronome : MonoBehaviour
             lastBeat += 1;
             
             OnBeat.Invoke();
-            Debug.Log($"[Metronome] Beat {lastBeat} at {songPosMs:F2}ms");
+            // Debug.Log($"[Metronome] Beat {lastBeat} at {songPosMs:F2}ms");
 
             nextBeatPosition += beatDurationInMS;
         }

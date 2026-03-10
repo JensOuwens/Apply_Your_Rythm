@@ -13,6 +13,8 @@ public class Judge : MonoBehaviour
     public List<Composer> composers = new();
     [SerializeField] 
     private Metronome metronome;
+    [SerializeField]
+    private MusicPlayer musicPlayer;
     [SerializeField] 
     private OrganismManager organismManager;
     [SerializeField]
@@ -35,6 +37,11 @@ public class Judge : MonoBehaviour
         incorrectInputs = 0;
         DontDestroyOnLoad(gameObject);
     }
+
+    private void OnEnable() => ComposerCreator.ComposerSubscribed += SubscribeComposer;
+    private void OnDisable() => ComposerCreator.ComposerSubscribed -= SubscribeComposer;
+
+    public void SubscribeComposer(Composer composer) => composers.Add(composer);
 
     public void CheckInput(float songPosMs, int playerId, bool pressed)
     {
@@ -66,15 +73,16 @@ public class Judge : MonoBehaviour
         else if (beat.attribute == BeatAttribute.Co2)
             correctInputsCo2++;
 
+        var timeToNextBeat = (beatIndex + 1) * metronome.beatDurationInMS - songPosMs;
         if (beat.type == BeatType.Tap)
         {
-            organismManager.TriggerAnim(playerId); 
+            organismManager.TriggerAnim(playerId, timeToNextBeat / 1000f);
             particleManager.SpawnRandomParticleIDPos(playerId);
             soundEffectManager.PlaySoundEffectWithIndex(0);
         }
         else if (beat.type == BeatType.Hold)
         {
-            organismManager.TriggerAnimHold(playerId, beat, metronome);
+            organismManager.TriggerAnimHold(playerId, beat);
             particleManager.SpawnRandomParticleIDPosHold(playerId, beat);
             soundEffectManager.PlaySoundEffectWithIndexHold(1, beat);
         }

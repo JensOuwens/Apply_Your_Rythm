@@ -1,19 +1,10 @@
 fileFormatVersion: 2
-guid: f9ddf4b873d17fa44a423ee8c06313f9
+guid: 567833014ebc8d640a9cd23b9ae26d92
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5878203096085206695
-    second: spritesheet (4)_0
-  - first:
-      213: 8541543648840734694
-    second: spritesheet (4)_1
-  - first:
-      213: 3316518890299791053
-    second: spritesheet (4)_2
-  - first:
-      213: -1704431106280724860
-    second: spritesheet (4)_3
+      213: 7578331518214074657
+    second: Bucket_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -60,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 1400
+  spritePixelsToUnits: 20
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -135,45 +126,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spritesheet (4)_0
+      name: Bucket_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 2048
-        height: 2048
+        x: 19
+        y: 9
+        width: 122
+        height: 142
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7a692c36292939150800000000000000
-      internalID: 5878203096085206695
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spritesheet (4)_1
-      rect:
-        serializedVersion: 2
-        x: 2048
-        y: 0
-        width: 2048
-        height: 2048
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6e755ae81b8a98670800000000000000
-      internalID: 8541543648840734694
+      spriteID: 121fb453d54ab2960800000000000000
+      internalID: 7578331518214074657
       vertices: []
       indices: 
       edges: []
@@ -182,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: ee7c6c03cbdf1f24f88bbac49c24ed46
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -190,12 +159,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":2.0,"y":1.0},"gridSpriteSize":{"x":2048.0,"y":2048.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      spritesheet (4)_0: 5878203096085206695
-      spritesheet (4)_1: 8541543648840734694
+      Bucket_0: 7578331518214074657
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
