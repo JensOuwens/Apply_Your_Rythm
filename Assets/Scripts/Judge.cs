@@ -76,6 +76,7 @@ public class Judge : MonoBehaviour
         {
             organismManager.TriggerAnimHold(playerId, beat, metronome);
             particleManager.SpawnRandomParticleIDPosHold(playerId, beat);
+            soundEffectManager.PlaySoundEffectWithIndexHold(1, beat);
         }
     }
 }

@@ -5,8 +5,6 @@ using UnityEngine;
 /// <summary>
 /// call this function to spawn particle effects at the desired location
 /// </summary>
-///
-/// TODO: Add long notes logic
 
 [System.Serializable]
 public struct ParticleSystemItem
@@ -66,7 +64,7 @@ public class ParticleManager : MonoBehaviour
         StartCoroutine(SpawnParticleForTimeFrame(position, index, beatLength));
     }
 
-    IEnumerator SpawnParticleForTimeFrame(int position, int index, float beatLength)
+    private IEnumerator SpawnParticleForTimeFrame(int position, int index, float beatLength)
     {
         float endtime = Time.time + beatLength;
         
