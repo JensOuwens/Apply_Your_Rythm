@@ -73,6 +73,6 @@ public class Judge : MonoBehaviour
         if (beat.type == BeatType.Tap)
             organismManager.TriggerAnim(playerId, timeToNextBeat / 1000f);
         else if (beat.type == BeatType.Hold)
-            organismManager.TriggerAnimHold(playerId, beat, metronome);
+            organismManager.TriggerAnimHold(playerId, beat);
     }
 }

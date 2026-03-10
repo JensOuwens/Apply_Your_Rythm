@@ -19,7 +19,7 @@ public class OrganismManager : MonoBehaviour
     [SerializeField] 
     private OrganismAnim[] catchAnims;
     [SerializeField]
-    private AnimateAlongSplineOnBeat[] alongSplineOnBeats;
+    private Bucket[] buckets;
 
     public Action onMoveBucket;
 
@@ -28,7 +28,7 @@ public class OrganismManager : MonoBehaviour
         if (spline == null)
             return;
         catchAnims = GetComponentsInChildren<OrganismAnim>();
-        alongSplineOnBeats = GetComponentsInChildren<AnimateAlongSplineOnBeat>();
+        buckets = GetComponentsInChildren<Bucket>();
         composer ??= GetComponent<Composer>();
         enabled = metronome && composer && musicPlayer;
     }
@@ -36,7 +36,7 @@ public class OrganismManager : MonoBehaviour
     private void Start()
     {
         metronome.OnBeat.AddListener(OnBeat);
-        foreach (var bucketAnim in alongSplineOnBeats) 
+        foreach (var bucketAnim in buckets) 
             bucketAnim.Initialize(metronome, this);
     }
 
@@ -46,23 +46,26 @@ public class OrganismManager : MonoBehaviour
         if (beat != null)
             onMoveBucket.Invoke();
     }
+    
+    private Bucket GetBucketFromPlayerId(int playerId) => buckets.First(a => a.CurrentState == playerId + 1); // + 1 to align playerId to spline pos
 
     public void TriggerAnim(int playerId, float animLength)
     {
         catchAnims[playerId].GooberAnim(animLength);
-        var
-            bucket = alongSplineOnBeats.First(a =>
-                a.CurrentState == playerId + 1); // + 1 to align playerId to spline pos
+        var bucket = GetBucketFromPlayerId(playerId);
         bucket.FollowOrganism(catchAnims[playerId], animLength);
+        bucket.Fill();
     }
 
-    public void TriggerAnimHold(int playerId, BeatData beat, Metronome metronome)
+    public void TriggerAnimHold(int playerId, BeatData beat)
     {
         var holdDurationSec = (beat.beatEnd - beat.beatStart + 1) * (metronome.beatDurationInMS / 1000f);
         catchAnims[playerId].GooberHoldAnim(holdDurationSec);
+        var bucket = GetBucketFromPlayerId(playerId);
+        bucket.Fill();
     }
 
-    public void InitOrganisms(Metronome metronome)
+    public void InitOrganisms()
     {
         foreach (var organismAnim in catchAnims)
         {

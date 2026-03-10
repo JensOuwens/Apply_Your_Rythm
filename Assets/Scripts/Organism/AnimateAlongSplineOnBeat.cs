@@ -6,6 +6,7 @@ using Unity.Mathematics;
 using UnityEditor;
 #endif
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Splines;
 using UnityEngine.Splines.Interpolators;
 
@@ -17,7 +18,6 @@ public class AnimateAlongSplineOnBeat : MonoBehaviour
 {
     [Header("RequireComponents")]
     private Metronome metronome;
-    private OrganismManager parentManager;
     [SerializeField]
     private MusicPlayer musicPlayer;
     [SerializeField]
@@ -48,8 +48,11 @@ public class AnimateAlongSplineOnBeat : MonoBehaviour
     [SerializeField]
     private int amountOfBeatsToCount = 1;
     private int beatCount = 0;
-    
-    private OrganismAnim organismToFollow;
+    [Header("Events")]
+    [SerializeField] 
+    private UnityEvent onLastState;
+    [SerializeField] 
+    private UnityEvent onStartLoop;
 
     private void OnValidate()
     {
@@ -62,11 +65,9 @@ public class AnimateAlongSplineOnBeat : MonoBehaviour
         currentState = math.clamp(currentState, 0, amountOfStates);
     }
     
-    public void Initialize(Metronome metronome1, OrganismManager manager)
+    public void Initialize(Metronome metronome1)
     {
         metronome = metronome1;
-        parentManager = manager;
-        parentManager.onMoveBucket += OnMove;
         CalculateKnotsInDistance();
         SetState(currentState);
     }
@@ -78,8 +79,6 @@ public class AnimateAlongSplineOnBeat : MonoBehaviour
         beatCount = 0;
         AdvanceState();
     }
-
-    private void OnDisable() => parentManager.onMoveBucket -= OnMove;
 
     private void AdvanceState()
     {
@@ -104,6 +103,9 @@ public class AnimateAlongSplineOnBeat : MonoBehaviour
     {
         var previousState = currentState;
 
+        if (stateToSet == amountOfStates - 1)
+            onLastState.Invoke();
+        
         fromTime = PositionOnTimeLine(previousState);
         currentState = stateToSet;
         toTime = PositionOnTimeLine(currentState);
@@ -114,6 +116,8 @@ public class AnimateAlongSplineOnBeat : MonoBehaviour
         // teleport
         if (isWrap)
         {
+            if (currentState == 0)
+                onStartLoop.Invoke();
             splineAnimate.NormalizedTime = toTime;
             isTransitioning = false;
             return;
@@ -125,11 +129,6 @@ public class AnimateAlongSplineOnBeat : MonoBehaviour
 
     private void Update()
     {
-        if (organismToFollow){
-            transform.position = organismToFollow.transform.position;
-            return;
-        }
-
         if (!splineAnimate ||
             !metronome ||
             !musicPlayer ||
@@ -195,23 +194,11 @@ public class AnimateAlongSplineOnBeat : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        if (shouldUseKnots && !splineAnimate && !splineAnimate.Container && splineAnimate.Container.Spline == null)
+        if (shouldUseKnots || !splineAnimate || !splineAnimate.Container || splineAnimate.Container.Spline == null)
             return;
         
         Gizmos.color = Color.red;
         foreach (var knot in splineAnimate.Container.Spline) 
             Gizmos.DrawSphere(knot.Position, 0.1f);
-    }
-    
-    public void FollowOrganism(OrganismAnim catchAnim, float duration)
-    {
-        organismToFollow = catchAnim;
-        StartCoroutine(FollowOrganism(duration));
-    }
-
-    private IEnumerator FollowOrganism(float duration)
-    {
-        yield return new WaitForSeconds(duration);
-        organismToFollow = null;
     }
 }

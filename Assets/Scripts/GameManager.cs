@@ -73,7 +73,7 @@ public class GameManager : MonoBehaviour
     {
         musicPlayer.PlaySong(musicId);
         metronome.InitMetronome();
-        organismManager.InitOrganisms(metronome);
+        organismManager.InitOrganisms();
         gameRunning = true;
     }
 
