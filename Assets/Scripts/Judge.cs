@@ -93,7 +93,7 @@ public class Judge : MonoBehaviour
         {
             organismManager.TriggerAnim(playerId, timeToNextBeat / 1000f);
             particleManager.SpawnRandomParticleIDPos(playerId);
-            soundEffectManager.PlaySoundEffectWithIndex(0);
+            soundEffectManager.PlayRandomSoundEffect();
         }
         else if (beat.type == BeatType.Hold)
         {
