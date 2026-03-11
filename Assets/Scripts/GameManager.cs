@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 /// <summary>
@@ -18,14 +20,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int musicId;
     
     [Header("Visuals")]
-    [SerializeField] private List<ShowTapVisual> tapVisual;
-    [SerializeField] private List<ShowHoldVisual> holdVisual;
+    [SerializeField] private List<ShowBeatVisual> beatVisualManagers;
     [SerializeField] private OrganismManager organismManager;
     
-    private int lastCheckedBeat = -1;
-    private int lastVisualizedBeat = -1;
+    private List<int> lastCheckedBeatPerLane = new();
+    private List<int> lastVisualizedBeatPerLane = new();
 
     private bool gameRunning;
+
+    private void OnValidate()
+    {
+        beatVisualManagers = FindObjectsByType<ShowBeatVisual>(FindObjectsInactive.Include, FindObjectsSortMode.None).ToList();
+        beatVisualManagers.Sort();
+    }
 
     private void Awake()
     {
@@ -34,6 +41,14 @@ public class GameManager : MonoBehaviour
     }
 
     private void Start() => StartGame();
+    
+    private void OnEnable() => ComposerCreator.ComposerSubscribed += SubscribeComposer;
+    private void OnDisable() => ComposerCreator.ComposerSubscribed -= SubscribeComposer;
+    private void SubscribeComposer(Composer obj)
+    {
+        lastCheckedBeatPerLane.Add(-1);
+        lastVisualizedBeatPerLane.Add(-1);
+    }
 
     private void Update()
     {
@@ -45,27 +60,31 @@ public class GameManager : MonoBehaviour
     {
         var songPosMs = musicPlayer.GetSongPositionInMS();
         var currentBeat = metronome.GetNearestBeat(songPosMs);
-
-        if (currentBeat == lastCheckedBeat) return;
-        lastCheckedBeat = currentBeat;
-
-        var targetBeatIndex = currentBeat + 3;
-
-        if (targetBeatIndex == lastVisualizedBeat)
-            return;
-
         for (var i = 0; i < judge.composers.Count; i++)
         {
+            if (currentBeat == lastCheckedBeatPerLane[i]) continue;
+            lastCheckedBeatPerLane[i] = currentBeat;
+
+            var targetBeatIndex = currentBeat + 3;
+            if (targetBeatIndex == lastVisualizedBeatPerLane[i]) continue;
+
             var composer = judge.composers[i];
             var beat = composer.GetBeat(targetBeatIndex);
-            if (beat == null) return;
+            if (beat == null) continue;
+            
+            if (beat.type == BeatType.Hold)
+            {
+                if (targetBeatIndex < beat.beatStart)
+                    continue;
 
-            lastVisualizedBeat = targetBeatIndex;
-
-            if (beat.type == BeatType.Tap)
-                tapVisual[i].HandleTapVisual(beat, metronome.beatDurationInMS);
-            else if (beat.type == BeatType.Hold)
-                holdVisual[i].HandleHoldVisual(beat, metronome.beatDurationInMS);
+                if (targetBeatIndex >= beat.beatEnd)
+                {
+                    lastVisualizedBeatPerLane[i] = beat.beatEnd;
+                    continue;
+                }
+            }
+            lastVisualizedBeatPerLane[i] = targetBeatIndex;
+            beatVisualManagers[i].TriggerSpawnVisual(beat, metronome.beatDurationInMS);
         }
     }
 

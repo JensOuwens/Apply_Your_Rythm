@@ -54,8 +54,10 @@ public class Judge : MonoBehaviour
         var beatTimeMs = beatIndex * metronome.beatDurationInMS;
 
         // Timing check
-        if (Mathf.Abs(songPosMs - beatTimeMs) > errorMarginMs)
+        var timingDiff = songPosMs - beatTimeMs;
+        if (Mathf.Abs(timingDiff) > errorMarginMs)
         {
+            Debug.Log(timingDiff > 0 ? "Too early" : "Too late");
             incorrectInputs++;
             return;
         }

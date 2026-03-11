@@ -1124,7 +1124,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 429248772}
-  - component: {fileID: 429248774}
   - component: {fileID: 429248773}
   m_Layer: 0
   m_Name: Row (2)
@@ -1165,31 +1164,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32ddc539727db743b40a1674fad960d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShowHoldVisual
-  holdHeadPrefab: {fileID: 3151408185333711670, guid: 2aa35bd8de830954c99dc426f0710131, type: 3}
+  id: 2
+  metronome: {fileID: 1741322473}
+  prefabs:
+  - type: 0
+    attribute: 0
+    prefab: {fileID: 3405389222467856930, guid: 2c05b3fd7425f2c48a62fcb2e815b576, type: 3}
+  - type: 0
+    attribute: 1
+    prefab: {fileID: 3405389222467856930, guid: c7350666f64687c4ba7e0db9d264bbd9, type: 3}
+  - type: 1
+    attribute: 0
+    prefab: {fileID: 3151408185333711670, guid: 2aa35bd8de830954c99dc426f0710131, type: 3}
   positions:
   - {fileID: 587162371}
   - {fileID: 1419997336}
   - {fileID: 1541429338}
   - {fileID: 1076579704}
---- !u!114 &429248774
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 429248771}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 980f4ad4962b2f24b949916e9604827b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShowTapVisual
-  visualPrefabWater: {fileID: 3405389222467856930, guid: 2c05b3fd7425f2c48a62fcb2e815b576, type: 3}
-  visualPrefabCo2: {fileID: 3405389222467856930, guid: c7350666f64687c4ba7e0db9d264bbd9, type: 3}
-  tapLocations:
-  - {fileID: 587162371}
-  - {fileID: 1419997336}
-  - {fileID: 1541429338}
-  - {fileID: 1076579704}
+  speed: 50
 --- !u!1 &446709260
 GameObject:
   m_ObjectHideFlags: 0
@@ -1842,12 +1834,7 @@ MonoBehaviour:
   judge: {fileID: 1959487384}
   playerInputManager: {fileID: 182072262}
   musicId: 0
-  tapVisual:
-  - {fileID: 2019573324}
-  - {fileID: 429248774}
-  - {fileID: 2046924138}
-  - {fileID: 1845990800}
-  holdVisual:
+  beatVisualManagers:
   - {fileID: 2019573323}
   - {fileID: 429248773}
   - {fileID: 2046924137}
@@ -4369,7 +4356,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1845990798}
-  - component: {fileID: 1845990800}
   - component: {fileID: 1845990799}
   m_Layer: 0
   m_Name: Row (4)
@@ -4410,31 +4396,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32ddc539727db743b40a1674fad960d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShowHoldVisual
-  holdHeadPrefab: {fileID: 3151408185333711670, guid: 2aa35bd8de830954c99dc426f0710131, type: 3}
+  id: 4
+  metronome: {fileID: 1741322473}
+  prefabs:
+  - type: 0
+    attribute: 0
+    prefab: {fileID: 3405389222467856930, guid: 2c05b3fd7425f2c48a62fcb2e815b576, type: 3}
+  - type: 0
+    attribute: 1
+    prefab: {fileID: 3405389222467856930, guid: c7350666f64687c4ba7e0db9d264bbd9, type: 3}
+  - type: 1
+    attribute: 0
+    prefab: {fileID: 3151408185333711670, guid: 2aa35bd8de830954c99dc426f0710131, type: 3}
   positions:
   - {fileID: 153311976}
   - {fileID: 878065515}
   - {fileID: 974487285}
   - {fileID: 2103446693}
---- !u!114 &1845990800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1845990797}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 980f4ad4962b2f24b949916e9604827b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShowTapVisual
-  visualPrefabWater: {fileID: 3405389222467856930, guid: 2c05b3fd7425f2c48a62fcb2e815b576, type: 3}
-  visualPrefabCo2: {fileID: 3405389222467856930, guid: c7350666f64687c4ba7e0db9d264bbd9, type: 3}
-  tapLocations:
-  - {fileID: 153311976}
-  - {fileID: 878065515}
-  - {fileID: 974487285}
-  - {fileID: 2103446693}
+  speed: 50
 --- !u!1001 &1851508276
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4780,7 +4759,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2019573322}
-  - component: {fileID: 2019573324}
   - component: {fileID: 2019573323}
   m_Layer: 0
   m_Name: Row (1)
@@ -4821,31 +4799,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32ddc539727db743b40a1674fad960d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShowHoldVisual
-  holdHeadPrefab: {fileID: 3151408185333711670, guid: 2aa35bd8de830954c99dc426f0710131, type: 3}
+  id: 1
+  metronome: {fileID: 1741322473}
+  prefabs:
+  - type: 0
+    attribute: 0
+    prefab: {fileID: 3405389222467856930, guid: 2c05b3fd7425f2c48a62fcb2e815b576, type: 3}
+  - type: 0
+    attribute: 1
+    prefab: {fileID: 3405389222467856930, guid: c7350666f64687c4ba7e0db9d264bbd9, type: 3}
+  - type: 1
+    attribute: 0
+    prefab: {fileID: 3151408185333711670, guid: 2aa35bd8de830954c99dc426f0710131, type: 3}
   positions:
   - {fileID: 1531046481}
   - {fileID: 2116340195}
   - {fileID: 2058507412}
   - {fileID: 1403515320}
---- !u!114 &2019573324
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2019573321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 980f4ad4962b2f24b949916e9604827b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShowTapVisual
-  visualPrefabWater: {fileID: 3405389222467856930, guid: 2c05b3fd7425f2c48a62fcb2e815b576, type: 3}
-  visualPrefabCo2: {fileID: 3405389222467856930, guid: c7350666f64687c4ba7e0db9d264bbd9, type: 3}
-  tapLocations:
-  - {fileID: 1531046481}
-  - {fileID: 2116340195}
-  - {fileID: 2058507412}
-  - {fileID: 1403515320}
+  speed: 50
 --- !u!1 &2046924135
 GameObject:
   m_ObjectHideFlags: 0
@@ -4855,7 +4826,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2046924136}
-  - component: {fileID: 2046924138}
   - component: {fileID: 2046924137}
   m_Layer: 0
   m_Name: Row (3)
@@ -4896,31 +4866,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32ddc539727db743b40a1674fad960d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShowHoldVisual
-  holdHeadPrefab: {fileID: 3151408185333711670, guid: 2aa35bd8de830954c99dc426f0710131, type: 3}
+  id: 3
+  metronome: {fileID: 1741322473}
+  prefabs:
+  - type: 0
+    attribute: 0
+    prefab: {fileID: 3405389222467856930, guid: 2c05b3fd7425f2c48a62fcb2e815b576, type: 3}
+  - type: 0
+    attribute: 1
+    prefab: {fileID: 3405389222467856930, guid: c7350666f64687c4ba7e0db9d264bbd9, type: 3}
+  - type: 1
+    attribute: 0
+    prefab: {fileID: 3151408185333711670, guid: 2aa35bd8de830954c99dc426f0710131, type: 3}
   positions:
   - {fileID: 123995597}
   - {fileID: 1427981137}
   - {fileID: 1181955762}
   - {fileID: 1575793012}
---- !u!114 &2046924138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2046924135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 980f4ad4962b2f24b949916e9604827b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ShowTapVisual
-  visualPrefabWater: {fileID: 3405389222467856930, guid: 2c05b3fd7425f2c48a62fcb2e815b576, type: 3}
-  visualPrefabCo2: {fileID: 3405389222467856930, guid: c7350666f64687c4ba7e0db9d264bbd9, type: 3}
-  tapLocations:
-  - {fileID: 123995597}
-  - {fileID: 1427981137}
-  - {fileID: 1181955762}
-  - {fileID: 1575793012}
+  speed: 50
 --- !u!1 &2048668423
 GameObject:
   m_ObjectHideFlags: 0
