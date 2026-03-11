@@ -24,6 +24,8 @@ public class ParticleManager : MonoBehaviour
     private List<Vector2>  spawnPositions;
 
     [SerializeField] private Metronome metronome;
+    
+    private Dictionary<int, Coroutine> activeHoldParticles = new();
 
     private void Awake()
     {
@@ -48,14 +50,16 @@ public class ParticleManager : MonoBehaviour
 
     public void SpawnRandomParticleIDPosHold(int position, BeatData beatData)
     {
-        float beatLength = beatData.beatEnd -  beatData.beatStart;
+        float beatLength = beatData.beatEnd - beatData.beatStart;
         beatLength = beatLength * metronome.beatDurationInMS / 1000f;
-        
+
         int listIndex = Random.Range(0, particleSystems.Count);
-        
-        StartCoroutine(SpawnParticleForTimeFrame(position, listIndex, beatLength));
+
+        if (activeHoldParticles.TryGetValue(position, out var existing))
+            StopCoroutine(existing);
+
+        activeHoldParticles[position] = StartCoroutine(SpawnParticleForTimeFrame(position, listIndex, beatLength));
     }
-    
     public void SpawnParticleWithIndexIDPosHold(int position, int index, BeatData beatData)
     {
         float beatLength = beatData.beatEnd -  beatData.beatStart;
@@ -76,6 +80,14 @@ public class ParticleManager : MonoBehaviour
         }
         
     }
-
+    
+    public void StopHoldParticles(int position)
+    {
+        if (activeHoldParticles.TryGetValue(position, out var coroutine))
+        {
+            StopCoroutine(coroutine);
+            activeHoldParticles.Remove(position);
+        }
+    }
 
 }

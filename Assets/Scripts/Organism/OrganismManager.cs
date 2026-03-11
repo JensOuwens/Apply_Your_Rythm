@@ -75,4 +75,9 @@ public class OrganismManager : MonoBehaviour
             organismAnim.SetIdleSpeed(metronome.beatDurationInMS / 1000f);
         }
     }
+    
+    public void StopHold(int playerId)
+    {
+        catchAnims[playerId].StopHoldAnim();
+    }
 }

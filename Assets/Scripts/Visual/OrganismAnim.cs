@@ -57,4 +57,15 @@ public class OrganismAnim : MonoBehaviour
         spriteRenderer.sprite = originalSprite;
         currentAnim = null;
     }
+    
+    public void StopHoldAnim()
+    {
+        if (currentAnim != null)
+        {
+            StopCoroutine(currentAnim);
+            currentAnim = null;
+        }
+
+        spriteRenderer.sprite = originalSprite;
+    }
 }

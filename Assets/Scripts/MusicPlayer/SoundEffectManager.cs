@@ -24,6 +24,7 @@ public class SoundEffectManager : MonoBehaviour
     
     [SerializeField]
     private Metronome metronome;
+    private Dictionary<int, AudioSource> activeHoldSounds = new();
 
     private void Awake()
     {
@@ -65,32 +66,38 @@ public class SoundEffectManager : MonoBehaviour
         
     }
 
-    public void PlaySoundEffectWithIndexHold(int index, BeatData beatData)
+    public void PlaySoundEffectWithIndexHold(int index, BeatData beatData, int playerId)
     {
-        float beatLength = beatData.beatEnd -  beatData.beatStart;
+        float beatLength = beatData.beatEnd - beatData.beatStart;
         beatLength = beatLength * metronome.beatDurationInMS / 1000f;
 
-        StartCoroutine(PlaySoundEffectHold(index, beatLength));
-    }
-    
-    private IEnumerator PlaySoundEffectHold(int index, float beatLength)
-    {
-        float endtime = Time.time + beatLength;
-        
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = SoundEffects[index].AudioClip;
-        audioSource.Play();
         audioSource.loop = true;
-        
-        while (Time.time < endtime)
-        {
-            yield return null;
-        }
-        
-        audioSource.loop = false;
-        Destroy(audioSource);
-        yield return null;
+        audioSource.Play();
+
+        activeHoldSounds[playerId] = audioSource;
+
+        StartCoroutine(PlaySoundEffectHold(playerId, beatLength));
     }
     
+    private IEnumerator PlaySoundEffectHold(int playerId, float beatLength)
+    {
+        float endtime = Time.time + beatLength;
 
+        while (Time.time < endtime)
+            yield return null;
+
+        StopHoldSound(playerId);
+    }
+    
+    public void StopHoldSound(int playerId)
+    {
+        if (activeHoldSounds.TryGetValue(playerId, out var source))
+        {
+            source.loop = false;
+            Destroy(source);
+            activeHoldSounds.Remove(playerId);
+        }
+    }
 }
