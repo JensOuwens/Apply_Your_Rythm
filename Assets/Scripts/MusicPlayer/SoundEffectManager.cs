@@ -15,7 +15,9 @@ public class SoundEffectManager : MonoBehaviour
     public static SoundEffectManager instance;
     
     [SerializeField]
-    private List<SoundEffectItem> SoundEffects;
+    private List<SoundEffectItem> SoundEffectsTap;
+    [SerializeField]
+    private List<SoundEffectItem> SoundEffectsHold;
     
     [SerializeField]
     private Metronome metronome;
@@ -33,9 +35,9 @@ public class SoundEffectManager : MonoBehaviour
 
     public void PlayRandomSoundEffect()
     {
-        int listIndex = Random.Range(0, SoundEffects.Count - 1);
+        int listIndex = Random.Range(0, SoundEffectsTap.Count - 1);
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource.clip = SoundEffects[listIndex].AudioClip;
+        audioSource.clip = SoundEffectsTap[listIndex].AudioClip;
         audioSource.Play();
         Destroy(audioSource, audioSource.clip.length);
     }
@@ -43,7 +45,7 @@ public class SoundEffectManager : MonoBehaviour
     public void PlaySoundEffectWithIndex(int index)
     {
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource.clip = SoundEffects[index].AudioClip;
+        audioSource.clip = SoundEffectsTap[index].AudioClip;
         audioSource.Play();
         Destroy(audioSource, audioSource.clip.length);
     }
@@ -51,7 +53,7 @@ public class SoundEffectManager : MonoBehaviour
     public void PlayRandomSoundEffectHold(BeatData beatData, int playerId)
     {
         float beatLength = (beatData.beatEnd - beatData.beatStart + 1) * metronome.beatDurationInMS / 1000f;
-        int listIndex = Random.Range(0, SoundEffects.Count);
+        int listIndex = Random.Range(0, SoundEffectsHold.Count);
         PlaySoundEffectWithIndexHold(listIndex, beatData, playerId);
     }
 
@@ -59,11 +61,10 @@ public class SoundEffectManager : MonoBehaviour
     {
         float beatLength = (beatData.beatEnd - beatData.beatStart + 1) * metronome.beatDurationInMS / 1000f;
 
-        // Stop existing hold for this player
         StopHoldSound(playerId);
 
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource.clip = SoundEffects[index].AudioClip;
+        audioSource.clip = SoundEffectsHold[index].AudioClip;
         audioSource.loop = true;
         audioSource.Play();
 

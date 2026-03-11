@@ -2044,13 +2044,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48492d8649b050b4cb4fee525dea259c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundEffectManager
-  SoundEffects:
+  SoundEffectsTap:
   - id: 0
     AudioClip: {fileID: 8300000, guid: 39ba10150e708914793d85f05ecf4abb, type: 3}
   - id: 1
     AudioClip: {fileID: 8300000, guid: fb5ab940ba458df42990d7b2bcb3d7a7, type: 3}
   - id: 2
     AudioClip: {fileID: 8300000, guid: 9c78027cb34f38643afb9e7ddd9adb64, type: 3}
+  SoundEffectsHold:
+  - id: 0
+    AudioClip: {fileID: 8300000, guid: 620df935250a881429a9a64617fabc45, type: 3}
   metronome: {fileID: 1741322473}
 --- !u!1001 &754874695
 PrefabInstance:
