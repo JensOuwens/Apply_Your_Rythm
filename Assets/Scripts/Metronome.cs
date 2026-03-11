@@ -58,4 +58,12 @@ public class Metronome : MonoBehaviour
 
         return Mathf.RoundToInt(songPosMs / beatDurationInMS);
     }
+    
+    public int GetBeat(float songPosMs)
+    {
+        if (!initialized)
+            return -1;
+
+        return Mathf.FloorToInt(songPosMs / beatDurationInMS);
+    }
 }
