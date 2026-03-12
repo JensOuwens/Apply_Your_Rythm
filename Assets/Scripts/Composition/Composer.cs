@@ -21,4 +21,5 @@ public class Composer : MonoBehaviour
     }
 
     public void SetComposition(CompositionObject compositionObject) => composition = compositionObject;
+    public int GetCount() => composition.BuildVisualList().ToArray().Length;
 }

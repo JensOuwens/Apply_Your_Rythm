@@ -57,7 +57,7 @@ public class OrganismManager : MonoBehaviour
         catchAnims[playerId].GooberAnim(animLength);
         var bucket = GetBucketFromPlayerId(playerId);
         bucket.FollowOrganism(catchAnims[playerId], animLength);
-        bucket.Fill();
+        bucket.Fill(1);
     }
 
     public void TriggerAnimHold(int playerId, BeatData beat)
@@ -65,7 +65,7 @@ public class OrganismManager : MonoBehaviour
         var holdDurationSec = (beat.beatEnd - beat.beatStart + 1) * (metronome.beatDurationInMS / 1000f);
         catchAnims[playerId].GooberHoldAnim(holdDurationSec);
         var bucket = GetBucketFromPlayerId(playerId);
-        bucket.Fill();
+        bucket.Fill(1);
     }
 
     public void InitOrganisms()
