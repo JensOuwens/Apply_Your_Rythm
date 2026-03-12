@@ -17,6 +17,9 @@ public class ParticleManager : MonoBehaviour
     [SerializeField]
     private List<ParticleSystemItem> particleSystems;
     [SerializeField]
+    private List<ParticleSystemItem> holdParticleSystems;
+    
+    [SerializeField]
     private List<Vector2> spawnPositions;
 
     [SerializeField] private Metronome metronome;
@@ -46,7 +49,7 @@ public class ParticleManager : MonoBehaviour
     public void SpawnRandomParticleIDPosHold(int position, BeatData beatData)
     {
         float beatLength = (beatData.beatEnd - beatData.beatStart + 1) * metronome.beatDurationInMS / 1000f;
-        int listIndex = Random.Range(0, particleSystems.Count);
+        int listIndex = Random.Range(0, holdParticleSystems.Count);
 
         if (activeHoldParticles.TryGetValue(position, out var existing))
             StopCoroutine(existing);
@@ -70,7 +73,7 @@ public class ParticleManager : MonoBehaviour
 
         while (Time.time < endtime)
         {
-            Instantiate(particleSystems[index].particleSystem, spawnPositions[position], Quaternion.identity);   
+            Instantiate(holdParticleSystems[index].particleSystem, spawnPositions[position], Quaternion.identity);   
             yield return new WaitForSeconds(0.2f);
         }
     }
