@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// Bucket manages the different components that makes up a bucket, letting movement be seperate and reusable still
@@ -18,7 +19,9 @@ public class Bucket : MonoBehaviour
     private Animator animator;
     private OrganismManager parentManager;
     private OrganismAnim organismToFollow;
+    private int savedAmount;
     public int CurrentState => animateAlongSpline.CurrentState;
+    public Action<int> OnEmptyBucket;
 
     private void OnValidate()
     {
@@ -54,9 +57,18 @@ public class Bucket : MonoBehaviour
         organismToFollow = null;
     }
 
-    public void Fill() => animator.SetBool(IsFull, true);
+    public void Fill(int amount)
+    {
+        savedAmount += amount;
+        animator.SetBool(IsFull, true);
+    }
 
-    public void OnLastBeat() => spriteRenderer.enabled = false;
+    public void OnLastBeat()
+    {
+        spriteRenderer.enabled = false;
+        OnEmptyBucket.Invoke(savedAmount);
+        savedAmount = 0;
+    }
 
     public void OnStartLoop()
     {
