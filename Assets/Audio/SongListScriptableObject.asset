@@ -23,8 +23,3 @@ MonoBehaviour:
     bpm: 138
     volume: 1
     songId: 0
-  - clip: {fileID: 8300000, guid: 4cf3bee50276682488b5413048cfa2a7, type: 3}
-    displayName: Test
-    bpm: 145
-    volume: 1
-    songId: 1

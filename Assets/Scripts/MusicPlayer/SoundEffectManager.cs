@@ -2,10 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// use this class to spawn sound effects, and play them
-/// </summary>
-
 [System.Serializable]
 public struct SoundEffectItem
 {
@@ -15,15 +11,18 @@ public struct SoundEffectItem
 
 public class SoundEffectManager : MonoBehaviour
 {
-
     [HideInInspector]
     public static SoundEffectManager instance;
     
     [SerializeField]
-    private List<SoundEffectItem> SoundEffects;
+    private List<SoundEffectItem> SoundEffectsTap;
+    [SerializeField]
+    private List<SoundEffectItem> SoundEffectsHold;
     
     [SerializeField]
     private Metronome metronome;
+
+    private Dictionary<int, AudioSource> activeHoldSounds = new();
 
     private void Awake()
     {
@@ -36,61 +35,61 @@ public class SoundEffectManager : MonoBehaviour
 
     public void PlayRandomSoundEffect()
     {
-        int listIndex = Random.Range(0, SoundEffects.Count - 1);
+        int listIndex = Random.Range(0, SoundEffectsTap.Count - 1);
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
-        
-        audioSource.clip = SoundEffects[listIndex].AudioClip;
+        audioSource.clip = SoundEffectsTap[listIndex].AudioClip;
         audioSource.Play();
         Destroy(audioSource, audioSource.clip.length);
-        
     }
 
     public void PlaySoundEffectWithIndex(int index)
     {
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
-        
-        audioSource.clip = SoundEffects[index].AudioClip;
+        audioSource.clip = SoundEffectsTap[index].AudioClip;
         audioSource.Play();
         Destroy(audioSource, audioSource.clip.length);
     }
-    
-    public void PlayRandomSoundEffectHold(BeatData beatData)
+
+    public void PlayRandomSoundEffectHold(BeatData beatData, int playerId)
     {
-        float beatLength = beatData.beatEnd -  beatData.beatStart;
-        beatLength = beatLength * metronome.beatDurationInMS / 1000f;
-        
-        int listIndex = Random.Range(0, SoundEffects.Count);
-        
-        StartCoroutine(PlaySoundEffectHold(listIndex, beatLength));
-        
+        float beatLength = (beatData.beatEnd - beatData.beatStart + 1) * metronome.beatDurationInMS / 1000f;
+        int listIndex = Random.Range(0, SoundEffectsHold.Count);
+        PlaySoundEffectWithIndexHold(listIndex, beatData, playerId);
     }
 
-    public void PlaySoundEffectWithIndexHold(int index, BeatData beatData)
+    public void PlaySoundEffectWithIndexHold(int index, BeatData beatData, int playerId)
     {
-        float beatLength = beatData.beatEnd -  beatData.beatStart;
-        beatLength = beatLength * metronome.beatDurationInMS / 1000f;
+        float beatLength = (beatData.beatEnd - beatData.beatStart + 1) * metronome.beatDurationInMS / 1000f;
 
-        StartCoroutine(PlaySoundEffectHold(index, beatLength));
+        StopHoldSound(playerId);
+
+        AudioSource audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = SoundEffectsHold[index].AudioClip;
+        audioSource.loop = true;
+        audioSource.Play();
+
+        activeHoldSounds[playerId] = audioSource;
+
+        StartCoroutine(PlaySoundEffectHold(playerId, beatLength));
     }
-    
-    private IEnumerator PlaySoundEffectHold(int index, float beatLength)
+
+    private IEnumerator PlaySoundEffectHold(int playerId, float beatLength)
     {
         float endtime = Time.time + beatLength;
-        
-        AudioSource audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource.clip = SoundEffects[index].AudioClip;
-        audioSource.Play();
-        audioSource.loop = true;
-        
-        while (Time.time < endtime)
-        {
-            yield return null;
-        }
-        
-        audioSource.loop = false;
-        Destroy(audioSource);
-        yield return null;
-    }
-    
 
+        while (Time.time < endtime)
+            yield return null;
+
+        StopHoldSound(playerId);
+    }
+
+    public void StopHoldSound(int playerId)
+    {
+        if (activeHoldSounds.TryGetValue(playerId, out var source))
+        {
+            source.loop = false;
+            Destroy(source);
+            activeHoldSounds.Remove(playerId);
+        }
+    }
 }

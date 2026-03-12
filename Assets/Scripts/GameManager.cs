@@ -107,15 +107,8 @@ public class GameManager : MonoBehaviour
     private void OnPlayerReleased(int playerId)
     {
         if (!gameRunning) return;
-
-        var songPosMs = musicPlayer.GetSongPositionInMS();
-        var beatIndex = metronome.GetNearestBeat(songPosMs);
-        if (beatIndex < 0) return;
-
-        var beat = judge.composers[playerId].GetBeat(beatIndex);
-        if (beat == null) return;
         
-        if (beat.type == BeatType.Hold) 
-            judge.CheckInput(songPosMs, playerId, false);
+        var songPosMs = musicPlayer.GetSongPositionInMS();
+        judge.CheckInput(songPosMs, playerId, false);
     }
 }

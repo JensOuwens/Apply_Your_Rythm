@@ -30,6 +30,8 @@ public class Judge : MonoBehaviour
     public static int correctInputsCo2 = 0;
     public static int incorrectInputs = 0;
 
+    private Dictionary<int, BeatData> activeHolds = new();
+
     private void Start()
     {
         correctInputsWater = 0;
@@ -48,16 +50,28 @@ public class Judge : MonoBehaviour
         if (composers == null || metronome == null || !metronome.initialized)
             return;
 
+        if (!pressed)
+        {
+            // RELEASED: stop any active hold
+            if (activeHolds.TryGetValue(playerId, out var holdBeat))
+            {
+                activeHolds.Remove(playerId);
+
+                organismManager.StopHold(playerId);
+                particleManager.StopHoldParticles(playerId);
+                soundEffectManager.StopHoldSound(playerId);
+            }
+            return;
+        }
+
         var beatIndex = metronome.GetNearestBeat(songPosMs);
         if (beatIndex < 0) return;
 
         var beatTimeMs = beatIndex * metronome.beatDurationInMS;
-
-        // Timing check
         var timingDiff = songPosMs - beatTimeMs;
+
         if (Mathf.Abs(timingDiff) > errorMarginMs)
         {
-            Debug.Log(timingDiff > 0 ? "Too early" : "Too late");
             incorrectInputs++;
             return;
         }
@@ -70,23 +84,28 @@ public class Judge : MonoBehaviour
         }
 
         beat.hit = true;
-        if (beat.attribute == BeatAttribute.Water)
-            correctInputsWater++;
-        else if (beat.attribute == BeatAttribute.Co2)
-            correctInputsCo2++;
+        if (beat.attribute == BeatAttribute.Water) correctInputsWater++;
+        else if (beat.attribute == BeatAttribute.Co2) correctInputsCo2++;
 
         var timeToNextBeat = (beatIndex + 1) * metronome.beatDurationInMS - songPosMs;
+
         if (beat.type == BeatType.Tap)
         {
             organismManager.TriggerAnim(playerId, timeToNextBeat / 1000f);
             particleManager.SpawnRandomParticleIDPos(playerId);
-            soundEffectManager.PlaySoundEffectWithIndex(0);
+            soundEffectManager.PlayRandomSoundEffect();
         }
         else if (beat.type == BeatType.Hold)
         {
-            organismManager.TriggerAnimHold(playerId, beat);
-            particleManager.SpawnRandomParticleIDPosHold(playerId, beat);
-            soundEffectManager.PlaySoundEffectWithIndexHold(1, beat);
+            // Only start if not already active
+            if (!activeHolds.ContainsKey(playerId))
+            {
+                activeHolds[playerId] = beat;
+
+                organismManager.TriggerAnimHold(playerId, beat);
+                particleManager.SpawnRandomParticleIDPosHold(playerId, beat);
+                soundEffectManager.PlaySoundEffectWithIndexHold(0, beat, playerId);
+            }
         }
     }
 }
