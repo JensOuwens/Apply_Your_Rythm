@@ -1996,7 +1996,7 @@ MonoBehaviour:
     particleSystem: {fileID: 757784602335229234, guid: 925450bc1d1cc9548acf165ba2204c9f, type: 3}
   holdParticleSystems:
   - id: 0
-    particleSystem: {fileID: 757784602335229234, guid: faee05b779c2f96458968670401de9c4, type: 3}
+    particleSystem: {fileID: 757784602335229234, guid: 925450bc1d1cc9548acf165ba2204c9f, type: 3}
   spawnPositions:
   - {x: -3.61, y: 0}
   - {x: -1.2, y: 0}
