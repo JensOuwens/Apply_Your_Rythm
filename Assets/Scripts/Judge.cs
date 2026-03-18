@@ -37,7 +37,6 @@ public class Judge : MonoBehaviour
         correctInputsWater = 0;
         correctInputsCo2 = 0;
         incorrectInputs = 0;
-        DontDestroyOnLoad(gameObject);
     }
 
     private void OnEnable() => ComposerCreator.ComposerSubscribed += SubscribeComposer;
@@ -53,14 +52,10 @@ public class Judge : MonoBehaviour
         if (!pressed)
         {
             // RELEASED: stop any active hold
-            if (activeHolds.TryGetValue(playerId, out var holdBeat))
-            {
-                activeHolds.Remove(playerId);
-
-                organismManager.StopHold(playerId);
-                particleManager.StopHoldParticles(playerId);
-                soundEffectManager.StopHoldSound(playerId);
-            }
+            if (!activeHolds.Remove(playerId, out _)) return;
+            organismManager.StopHold(playerId);
+            particleManager.StopHoldParticles(playerId);
+            soundEffectManager.StopHoldSound(playerId);
             return;
         }
 
@@ -98,14 +93,12 @@ public class Judge : MonoBehaviour
         else if (beat.type == BeatType.Hold)
         {
             // Only start if not already active
-            if (!activeHolds.ContainsKey(playerId))
-            {
-                activeHolds[playerId] = beat;
+            if (!activeHolds.TryAdd(playerId, beat)) return;
+            var holdDurationSec = (beat.beatEnd - beat.beatStart) * (metronome.beatDurationInMS / 1000f) - timingDiff / 1000f;
 
-                organismManager.TriggerAnimHold(playerId, beat);
-                particleManager.SpawnRandomParticleIDPosHold(playerId, beat);
-                soundEffectManager.PlaySoundEffectWithIndexHold(0, beat, playerId);
-            }
+            organismManager.TriggerAnimHold(playerId, beat, holdDurationSec);
+            particleManager.SpawnRandomParticleIDPosHold(playerId, beat, holdDurationSec);
+            soundEffectManager.PlaySoundEffectWithIndexHold(0, beat, playerId, holdDurationSec);
         }
     }
 }

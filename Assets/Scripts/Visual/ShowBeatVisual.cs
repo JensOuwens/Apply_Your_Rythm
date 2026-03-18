@@ -16,19 +16,150 @@ public class ShowBeatVisual : MonoBehaviour, IComparable
     [SerializeField] private Transform[] positions;
     [SerializeField] private float speed = 50;
     
+    private readonly List<BeatInstance> liveInstances = new();
+    
     [Serializable]
     public class VisualPrefab
     {
         public BeatType type;
         public BeatAttribute attribute;
         public GameObject prefab;
+
+        public BeatInstance Spawn(Transform[] positions, Vector3 position, int index = 0, int beatLength = 1)
+        {
+            BeatInstance instance;
+            if (type == BeatType.Hold)
+                instance = new HoldBeatInstance(Instantiate(prefab, position, Quaternion.identity), index, positions, beatLength);
+            else
+                instance = new BeatInstance(Instantiate(prefab, position, Quaternion.identity), index, positions);
+            return instance;
+        }
     }
     
-    private List<BeatInstance> liveInstances = new();
-    private struct BeatInstance
+    public class BeatInstance
     {
-        public GameObject instance;
-        public int positionIndex;
+        protected readonly GameObject visualInstance;
+        protected readonly Transform[] positionsRef;
+        protected int positionIndex;
+
+        public BeatInstance(GameObject visualInstance, int positionIndex, Transform[] positions)
+        {
+            positionsRef = positions;
+            this.visualInstance = visualInstance;
+            this.positionIndex = positionIndex;
+        }
+
+        /// <summary>
+        /// increments the visual's position (so update will move towards it)
+        /// </summary>
+        public void IncrementPosition() => positionIndex = Math.Clamp(positionIndex + 1, 0, positionsRef.Length);
+
+        public virtual bool ShouldDestroyInstance()
+        {
+            if (positionsRef.Length > positionIndex) return false;
+            Destroy(visualInstance);
+            return true;
+        }
+
+        public virtual void Update(float speed)
+        {
+            if (positionsRef.Length - 1 < positionIndex && positionIndex > 0)
+                return;
+            visualInstance.transform.position = Vector3.Lerp(visualInstance.transform.position, 
+                positionsRef[positionIndex].position, Time.deltaTime * speed);
+        }
+    }
+
+    private class HoldBeatInstance : BeatInstance
+    {
+        private readonly GameObject holdLineInstance;
+        private readonly LineRenderer lineRenderer;
+        private int lineLength;
+
+        public HoldBeatInstance(GameObject visualInstance, int positionIndex, Transform[] positions, int lineLength) : base(visualInstance, positionIndex, positions)
+        {
+            this.lineLength = lineLength + 1; // add extra beat for tail
+            
+            holdLineInstance = new GameObject($"{visualInstance.name}_HoldLine");
+            lineRenderer = holdLineInstance.AddComponent<LineRenderer>();
+            
+            lineRenderer.positionCount = Math.Max(lineLength, positions.Length);
+            lineRenderer.useWorldSpace = true;
+            for (var i = 0; i < lineRenderer.positionCount; i++) lineRenderer.SetPosition(i, visualInstance.transform.position);
+        }
+
+        public override bool ShouldDestroyInstance()
+        {
+            // ONLY shrink after head is finished
+            if (!visualInstance) 
+                lineLength--;
+
+            if (!base.ShouldDestroyInstance() || lineLength > 0)
+                return false;
+            Destroy(holdLineInstance);
+            return true;
+        }
+
+        public override void Update(float speed)
+        {
+            if (!lineRenderer) return;
+
+            #region GetHeadPosition
+            Vector3 headPos;
+            if (!visualInstance)
+                headPos = positionsRef.Last().position; // head is gone → lock to last position
+            else
+            {
+                base.Update(speed);
+                headPos = visualInstance.transform.position;
+            }
+            lineRenderer.SetPosition(0, headPos);
+            #endregion
+
+            var targetCount = Mathf.Max(1, lineLength);
+            if (lineRenderer.positionCount <= targetCount) // when moving dont shrink
+            {
+                SetLinePointsAlongPositions(speed);
+                return;
+            }
+
+            ShrinkLinePoints(speed);
+        }
+
+        private void ShrinkLinePoints(float speed)
+        {
+            var currentCount = lineRenderer.positionCount;
+            
+            var current = lineRenderer.GetPosition(currentCount - 1);
+            var target = lineRenderer.GetPosition(currentCount - 2);
+            var diff = target - current;
+            var dist = diff.magnitude;
+            
+            var step = speed * Time.deltaTime;
+            var newPos = current + diff.normalized * Mathf.Min(step, dist);
+            lineRenderer.SetPosition(currentCount - 1, newPos);
+            
+            if (dist <= 0.001f)
+                lineRenderer.positionCount--;
+        }
+
+        private void SetLinePointsAlongPositions(float speed)
+        {
+            for (var i = 1; i < lineRenderer.positionCount; i++)
+            {
+                var targetIndex = positionIndex - i;
+                Vector3 targetPos;
+
+                if (targetIndex >= 0 && targetIndex < positionsRef.Length)
+                    targetPos = positionsRef[targetIndex].position;
+                else
+                    targetPos = positionsRef[0].position + Vector3.up * 5;
+
+                var point = lineRenderer.GetPosition(i);
+                lineRenderer.SetPosition(i,
+                    Vector3.Lerp(point, targetPos, Time.deltaTime * speed));
+            }
+        }
     }
     
     private void OnValidate() => enabled = metronome && prefabs.Length > 0 && positions.Length > 0;
@@ -38,37 +169,26 @@ public class ShowBeatVisual : MonoBehaviour, IComparable
     public int CompareTo(object obj)
     {
         if (obj is ShowBeatVisual beatVisual)
-        {
             return -beatVisual.id.CompareTo(id);
-        }
         return -1;
     }
     
+    /// <summary>
+    /// Moves all live instances, and removes them in case incrementation fails
+    /// </summary>
     private void OnBeatMove()
     {
         for (var i = liveInstances.Count - 1; i >= 0; i--)
         {
             var beatInstance = liveInstances[i];
-            beatInstance.positionIndex++;
-            liveInstances[i] = beatInstance;
-            
-            if (positions.Length > beatInstance.positionIndex) continue;
-            Destroy(beatInstance.instance);
+            beatInstance.IncrementPosition();
+            if (!beatInstance.ShouldDestroyInstance())
+                continue;
             liveInstances.RemoveAt(i);
         }
     }
-
-    private void Update()
-    {
-        foreach (var beatInstance in liveInstances)
-        {
-            if (positions.Length - 1 < beatInstance.positionIndex && beatInstance.positionIndex > 0)
-                continue;
-            beatInstance.instance.transform.position = Vector3.Lerp(beatInstance.instance.transform.position,
-                positions[beatInstance.positionIndex].position, Time.deltaTime * speed);
-        }
-    }
-
+    private void Update() => liveInstances.ForEach(instance => instance.Update(speed));
+    
     public void TriggerSpawnVisual(BeatData beat, float beatDurationInMS)
     {
         var beatDelay = beatDurationInMS / 1000f;
@@ -85,7 +205,6 @@ public class ShowBeatVisual : MonoBehaviour, IComparable
             yield break;
         
         // Spawn instance at top
-        var holdInstance = Instantiate(foundVisual.prefab, positions[0].position, Quaternion.identity);
-        liveInstances.Add(new BeatInstance{instance = holdInstance, positionIndex = 0});
+        liveInstances.Add(foundVisual.Spawn(positions, positions[0].position, beatLength: beat.beatEnd - beat.beatStart));
     }
 }

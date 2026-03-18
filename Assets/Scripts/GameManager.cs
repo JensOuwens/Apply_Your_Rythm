@@ -72,17 +72,8 @@ public class GameManager : MonoBehaviour
             var beat = composer.GetBeat(targetBeatIndex);
             if (beat == null) continue;
             
-            if (beat.type == BeatType.Hold)
-            {
-                if (targetBeatIndex < beat.beatStart)
-                    continue;
-
-                if (targetBeatIndex >= beat.beatEnd)
-                {
-                    lastVisualizedBeatPerLane[i] = beat.beatEnd;
-                    continue;
-                }
-            }
+            if (beat.type == BeatType.Hold && targetBeatIndex != beat.beatStart)
+                continue;
             lastVisualizedBeatPerLane[i] = targetBeatIndex;
             beatVisualManagers[i].TriggerSpawnVisual(beat, metronome.beatDurationInMS);
         }

@@ -28,11 +28,8 @@ public class ParticleManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(this.gameObject);   
-        }
+        if (instance) return;
+        instance = this;
     }
 
     public void SpawnRandomParticleIDPos(int position)
@@ -46,9 +43,8 @@ public class ParticleManager : MonoBehaviour
         Instantiate(particleSystems[index].particleSystem, spawnPositions[position], Quaternion.identity);
     }
 
-    public void SpawnRandomParticleIDPosHold(int position, BeatData beatData)
+    public void SpawnRandomParticleIDPosHold(int position, BeatData beatData, float beatLength)
     {
-        float beatLength = (beatData.beatEnd - beatData.beatStart + 1) * metronome.beatDurationInMS / 1000f;
         int listIndex = Random.Range(0, holdParticleSystems.Count);
 
         if (activeHoldParticles.TryGetValue(position, out var existing))

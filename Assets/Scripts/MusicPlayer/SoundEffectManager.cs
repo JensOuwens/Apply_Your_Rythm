@@ -26,11 +26,8 @@ public class SoundEffectManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(this.gameObject);
-        }
+        if (instance) return;
+        instance = this;
     }
 
     public void PlayRandomSoundEffect()
@@ -54,13 +51,11 @@ public class SoundEffectManager : MonoBehaviour
     {
         float beatLength = (beatData.beatEnd - beatData.beatStart + 1) * metronome.beatDurationInMS / 1000f;
         int listIndex = Random.Range(0, SoundEffectsHold.Count);
-        PlaySoundEffectWithIndexHold(listIndex, beatData, playerId);
+        PlaySoundEffectWithIndexHold(listIndex, beatData, playerId, beatLength);
     }
 
-    public void PlaySoundEffectWithIndexHold(int index, BeatData beatData, int playerId)
+    public void PlaySoundEffectWithIndexHold(int index, BeatData beatData, int playerId, float beatLength)
     {
-        float beatLength = (beatData.beatEnd - beatData.beatStart + 1) * metronome.beatDurationInMS / 1000f;
-
         StopHoldSound(playerId);
 
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
