@@ -17,6 +17,9 @@ public class ShowBeatVisual : MonoBehaviour, IComparable
     [SerializeField] private float speed = 50;
     private readonly List<BeatInstance> liveInstances = new();
     
+    /// <summary>
+    /// Keeps track of different visual params per type and attribute
+    /// </summary>
     [Serializable]
     public class VisualPrefab
     {
@@ -37,6 +40,9 @@ public class ShowBeatVisual : MonoBehaviour, IComparable
         }
     }
     
+    /// <summary>
+    /// Manages a beat instance's visuals
+    /// </summary>
     public class BeatInstance
     {
         protected readonly GameObject visualInstance;
@@ -71,6 +77,9 @@ public class ShowBeatVisual : MonoBehaviour, IComparable
         }
     }
 
+    /// <summary>
+    /// Manages a hold beat instance's line visuals
+    /// </summary>
     private class HoldBeatInstance : BeatInstance
     {
         private readonly GameObject holdLineInstance;
