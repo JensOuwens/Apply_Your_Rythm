@@ -15,7 +15,6 @@ public class ShowBeatVisual : MonoBehaviour, IComparable
     [SerializeField] private VisualPrefab[] prefabs;
     [SerializeField] private Transform[] positions;
     [SerializeField] private float speed = 50;
-    
     private readonly List<BeatInstance> liveInstances = new();
     
     [Serializable]
@@ -24,12 +23,14 @@ public class ShowBeatVisual : MonoBehaviour, IComparable
         public BeatType type;
         public BeatAttribute attribute;
         public GameObject prefab;
+        [Space, SerializeField] private Material holdLineMaterial;
+        [SerializeField] private Gradient holdLineColor;
 
         public BeatInstance Spawn(Transform[] positions, Vector3 position, int index = 0, int beatLength = 1)
         {
             BeatInstance instance;
             if (type == BeatType.Hold)
-                instance = new HoldBeatInstance(Instantiate(prefab, position, Quaternion.identity), index, positions, beatLength);
+                instance = new HoldBeatInstance(Instantiate(prefab, position, Quaternion.identity), index, positions, beatLength, holdLineMaterial, holdLineColor);
             else
                 instance = new BeatInstance(Instantiate(prefab, position, Quaternion.identity), index, positions);
             return instance;
@@ -76,12 +77,19 @@ public class ShowBeatVisual : MonoBehaviour, IComparable
         private readonly LineRenderer lineRenderer;
         private int lineLength;
 
-        public HoldBeatInstance(GameObject visualInstance, int positionIndex, Transform[] positions, int lineLength) : base(visualInstance, positionIndex, positions)
+        public HoldBeatInstance(GameObject visualInstance, int positionIndex, Transform[] positions, int lineLength,
+            Material holdLineMaterial, Gradient holdLineColor) : base(visualInstance, positionIndex, positions)
         {
             this.lineLength = lineLength + 1; // add extra beat for tail
             
             holdLineInstance = new GameObject($"{visualInstance.name}_HoldLine");
             lineRenderer = holdLineInstance.AddComponent<LineRenderer>();
+
+            lineRenderer.material = holdLineMaterial;
+            lineRenderer.widthCurve = AnimationCurve.EaseInOut(0, 0.6f, 1, 0.1f);
+            lineRenderer.colorGradient = holdLineColor;
+            lineRenderer.numCapVertices = 10;
+            lineRenderer.sortingOrder = 0;
             
             lineRenderer.positionCount = Math.Max(lineLength, positions.Length);
             lineRenderer.useWorldSpace = true;
