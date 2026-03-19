@@ -64,14 +64,12 @@ public class PlayerInputManager : MonoBehaviour
         var id = GetDeviceId(obj.control.device);
         onPlayerPressed.Invoke(id);
         shouldWaitForRelease[id] = true;
-        // Debug.Log($"Player {id} Pressed"); // TODO: remove debug log
     }
 
     private void OnPlayerReleased(int id)
     {
         onPlayerReleased.Invoke(id);
         shouldWaitForRelease[id] = false;
-        // Debug.Log($"Player {id} Released"); // TODO: remove debug log
     }
 
     private void CheckRegistrationDevice(InputDevice controlDevice)
