@@ -458,12 +458,70 @@ Transform:
   m_GameObject: {fileID: 77862649}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.040002465, y: 0.14000106, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 143344362}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &95097287
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 95097288}
+  - component: {fileID: 95097289}
+  m_Layer: 0
+  m_Name: FailParticleEffectManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &95097288
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95097287}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -2.45, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1959487382}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &95097289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95097287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d63b39439ac27f4f9dd2adc5608754c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParticleManager
+  particleSystems:
+  - id: 1
+    particleSystem: {fileID: 7400366457010098375, guid: 58e295a4741b96244a7cbe72ebb335c5, type: 3}
+  - id: 0
+    particleSystem: {fileID: 7400366457010098375, guid: 05dcd86ca73c67e48aab50298d1d4742, type: 3}
+  holdParticleSystems:
+  - id: 0
+    particleSystem: {fileID: 757784602335229234, guid: 925450bc1d1cc9548acf165ba2204c9f, type: 3}
+  spawnPositions:
+  - {x: -3.61, y: -2.45}
+  - {x: -1.2, y: -2.45}
+  - {x: 1.2, y: -2.45}
+  - {x: 3.61, y: -2.45}
+  metronome: {fileID: 1741322473}
 --- !u!1 &123995596
 GameObject:
   m_ObjectHideFlags: 0
@@ -922,7 +980,7 @@ Transform:
   m_GameObject: {fileID: 182072261}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 485.46, y: 273.14, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1287,13 +1345,13 @@ MonoBehaviour:
   background: {fileID: 425141502}
   buckets:
   - {fileID: 1215653392}
-  - {fileID: 1798084117}
+  - {fileID: 1012537314}
+  - {fileID: 1740054350}
+  - {fileID: 2738742881734718413}
+  - {fileID: 1851508278}
   - {fileID: 1475156453}
   - {fileID: 1046053002}
-  - {fileID: 1740054350}
-  - {fileID: 1012537314}
-  - {fileID: 1851508278}
-  - {fileID: 2738742881734718413}
+  - {fileID: 1798084117}
 --- !u!1 &429248771
 GameObject:
   m_ObjectHideFlags: 0
@@ -2226,7 +2284,7 @@ Transform:
   m_GameObject: {fileID: 663044062}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1221.7931, y: 258.3834, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4748,7 +4806,7 @@ Transform:
   m_GameObject: {fileID: 1741322472}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1221.7931, y: 258.3834, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4807,6 +4865,7 @@ MonoBehaviour:
   musicPlayer: {fileID: 77862651}
   onSprite: {fileID: -8039759249662607351, guid: 71c88e3291aee8a448282898481e44a4, type: 3}
   offSprite: {fileID: 8575710031886937591, guid: 71c88e3291aee8a448282898481e44a4, type: 3}
+  spriteRendererPush: {fileID: 35517323}
 --- !u!212 &1775060901
 SpriteRenderer:
   serializedVersion: 2
@@ -4857,7 +4916,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8575710031886937591, guid: 71c88e3291aee8a448282898481e44a4, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5601,10 +5660,11 @@ Transform:
   m_GameObject: {fileID: 1959487381}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 485.46, y: 273.14, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 95097288}
   m_Father: {fileID: 143344362}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1959487384
@@ -5623,7 +5683,8 @@ MonoBehaviour:
   metronome: {fileID: 1741322473}
   musicPlayer: {fileID: 77862651}
   organismManager: {fileID: 505783573}
-  particleManager: {fileID: 727059446}
+  beatParticleManager: {fileID: 727059446}
+  failParticleManager: {fileID: 95097289}
   soundEffectManager: {fileID: 732773501}
   screenPulse: {fileID: 519420033}
   errorMarginMs: 150
