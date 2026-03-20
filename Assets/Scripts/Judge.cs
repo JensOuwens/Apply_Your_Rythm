@@ -21,6 +21,8 @@ public class Judge : MonoBehaviour
     private ParticleManager particleManager;
     [SerializeField]
     private SoundEffectManager soundEffectManager;
+    [SerializeField]
+    private ScreenPulse screenPulse;
 
     [Header("Timing")]
     [SerializeField] 
@@ -89,6 +91,7 @@ public class Judge : MonoBehaviour
             organismManager.TriggerAnim(playerId, timeToNextBeat / 1000f);
             particleManager.SpawnRandomParticleIDPos(playerId);
             soundEffectManager.PlayRandomSoundEffect();
+            screenPulse.Pulse();
         }
         else if (beat.type == BeatType.Hold)
         {
@@ -99,6 +102,7 @@ public class Judge : MonoBehaviour
             organismManager.TriggerAnimHold(playerId, beat, holdDurationSec);
             particleManager.SpawnRandomParticleIDPosHold(playerId, beat, holdDurationSec);
             soundEffectManager.PlaySoundEffectWithIndexHold(0, beat, playerId, holdDurationSec);
+            screenPulse.HoldPulse(holdDurationSec);
         }
     }
 }
