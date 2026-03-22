@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -58,18 +59,58 @@ public class ScreenPulse : MonoBehaviour
     }
 
     // Player hit (medium priority)
-    public void HitPulse()
+    public void HitPulse(float delay, float timingDiff) => 
+        StartCoroutine(HitPulseDelayed(delay, timingDiff));
+
+    private IEnumerator HitPulseDelayed(float delay, float timingDiff)
     {
-        TriggerPulse(maxZoom.First(a => a.priority == PulsePriority.Player).zoomIn, zoomSpeed, 
-            PulsePriority.Player, 0.1f);
+        if (delay > 0f)
+            yield return new WaitForSeconds(delay);
+
+        var speedMultiplier = 1f;
+        var holdDuration = zoomSpeed * speedMultiplier;
+
+        if (timingDiff > 0f) // late
+        {
+            // compress animation so it catches up
+            var lateSeconds = timingDiff / 1000f;
+            speedMultiplier = Mathf.Clamp01(zoomSpeed / (zoomSpeed + lateSeconds));
+            holdDuration = Mathf.Lerp(zoomSpeed, zoomSpeed * 0.5f, Mathf.Clamp01(lateSeconds * 10f));
+        }
+
+        TriggerPulse(
+            maxZoom.First(a => a.priority == PulsePriority.Player).zoomIn,
+            holdDuration,
+            PulsePriority.Player,
+            0.1f
+        );
     }
 
     // Hold (highest priority)
-    public void HoldPulse(float holdDuration)
+    public void HoldPulse(float holdDuration, float delay, float timingDiff) => 
+        StartCoroutine(HoldPulseDelayed(holdDuration, delay, timingDiff));
+
+    private IEnumerator HoldPulseDelayed(float holdDuration, float delay, float timingDiff)
     {
+        if (delay > 0f)
+            yield return new WaitForSeconds(delay);
+
         held = true;
-        TriggerPulse(maxZoom.First(a => a.priority == PulsePriority.Hold).zoomIn, holdDuration, 
-            PulsePriority.Hold, holdDuration);
+
+        var speedMultiplier = 1f;
+
+        if (timingDiff > 0f)
+        {
+            var lateSeconds = timingDiff / 1000f;
+            speedMultiplier = Mathf.Clamp01(zoomSpeed / (zoomSpeed + lateSeconds));
+        }
+
+        TriggerPulse(
+            maxZoom.First(a => a.priority == PulsePriority.Hold).zoomIn,
+            holdDuration * speedMultiplier,
+            PulsePriority.Hold,
+            holdDuration
+        );
     }
 
     private void TriggerPulse(float zoom, float holdDuration, PulsePriority priority, float lockTime)
