@@ -70,14 +70,14 @@ public class Judge : MonoBehaviour
         if (beat == null || beat.hit)
         {
             if (beat == null)
-                failParticleManager.SpawnParticleWithIndexIDPos(playerId, 1); // Too early particle
+                failParticleManager.SpawnParticleWithIndexIDPos(playerId, 0); // beat has passed, so considered too late
             incorrectInputs++;
             return;
         }
         
         var beatTimeMs = beatIndex * metronome.beatDurationInMS;
         var timingDiff = songPosMs - beatTimeMs;
-
+            
         if (Mathf.Abs(timingDiff) > errorMarginMs)
         {
             if (timingDiff < 0)
@@ -99,7 +99,7 @@ public class Judge : MonoBehaviour
             organismManager.TriggerAnim(playerId, timeToNextBeat / 1000f);
             beatParticleManager.SpawnRandomParticleIDPos(playerId);
             soundEffectManager.PlayRandomSoundEffect();
-            screenPulse.Pulse();
+            screenPulse.HitPulse();
         }
         else if (beat.type == BeatType.Hold)
         {
