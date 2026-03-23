@@ -55,8 +55,15 @@ public class Metronome : MonoBehaviour
     {
         if (!initialized)
             return -1;
+        
+        var exact = songPosMs / beatDurationInMS;
+        var lower = Mathf.FloorToInt(exact);
+        var upper = lower + 1;
 
-        return Mathf.RoundToInt(songPosMs / beatDurationInMS);
+        var lowerDiff = Mathf.Abs(songPosMs - lower * beatDurationInMS);
+        var upperDiff = Mathf.Abs(songPosMs - upper * beatDurationInMS);
+
+        return lowerDiff < upperDiff ? lower : upper;
     }
     
     public int GetBeat(float songPosMs)

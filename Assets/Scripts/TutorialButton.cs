@@ -13,6 +13,7 @@ public class TutorialButton : MonoBehaviour
     [SerializeField] private MusicPlayer musicPlayer;
     [SerializeField] private Sprite onSprite;
     [SerializeField] private Sprite offSprite;
+    [SerializeField] private SpriteRenderer spriteRendererPush;
 
     private void OnValidate() => spriteRenderer ??= GetComponent<SpriteRenderer>();
     
@@ -34,5 +35,6 @@ public class TutorialButton : MonoBehaviour
     {
         BeatData beat = composers[0].GetBeat(metronome.GetNearestBeat(musicPlayer.GetSongPositionInMS()));
         spriteRenderer.sprite = beat != null ? onSprite : offSprite;
+        spriteRendererPush.enabled = beat != null;
     }
 }

@@ -11,9 +11,6 @@ public struct ParticleSystemItem
 
 public class ParticleManager : MonoBehaviour
 {
-    [HideInInspector]
-    public static ParticleManager instance;
-    
     [SerializeField]
     private List<ParticleSystemItem> particleSystems;
     [SerializeField]
@@ -21,16 +18,11 @@ public class ParticleManager : MonoBehaviour
     
     [SerializeField]
     private List<Vector2> spawnPositions;
-
-    [SerializeField] private Metronome metronome;
+    
+    [SerializeField] 
+    private Metronome metronome;
 
     private Dictionary<int, Coroutine> activeHoldParticles = new();
-
-    private void Awake()
-    {
-        if (instance) return;
-        instance = this;
-    }
 
     public void SpawnRandomParticleIDPos(int position)
     {

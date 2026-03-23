@@ -18,9 +18,13 @@ public class Judge : MonoBehaviour
     [SerializeField] 
     private OrganismManager organismManager;
     [SerializeField]
-    private ParticleManager particleManager;
+    private ParticleManager beatParticleManager;
+    [SerializeField]
+    private ParticleManager failParticleManager;
     [SerializeField]
     private SoundEffectManager soundEffectManager;
+    [SerializeField]
+    private ScreenPulse screenPulse;
 
     [Header("Timing")]
     [SerializeField] 
@@ -54,51 +58,78 @@ public class Judge : MonoBehaviour
             // RELEASED: stop any active hold
             if (!activeHolds.Remove(playerId, out _)) return;
             organismManager.StopHold(playerId);
-            particleManager.StopHoldParticles(playerId);
+            beatParticleManager.StopHoldParticles(playerId);
             soundEffectManager.StopHoldSound(playerId);
             return;
         }
 
-        var beatIndex = metronome.GetNearestBeat(songPosMs);
-        if (beatIndex < 0) return;
+        var baseIndex = metronome.GetBeat(songPosMs); // floor
 
-        var beatTimeMs = beatIndex * metronome.beatDurationInMS;
+        BeatData bestBeat = null;
+        int bestIndex = -1;
+        float bestDiff = float.MaxValue; 
+        
+        // check current + neighbors
+        for (var i = -1; i <= 1; i++)
+        {
+            var index = baseIndex + i;
+            if (index < 0) continue;
+
+            var candidate = composers[playerId].GetBeat(index);
+            if (candidate == null || candidate.hit) continue;
+
+            var beatTime = index * metronome.beatDurationInMS;
+            var diff = songPosMs - beatTime;
+
+            var abs = Mathf.Abs(diff);
+            if (abs < bestDiff)
+            {
+                bestDiff = abs;
+                bestBeat = candidate;
+                bestIndex = index;
+            }
+        }
+        if (bestBeat == null || bestDiff > errorMarginMs * 2) // no valid beat nearby → ignore input completely
+            return;
+        
+        var beatTimeMs = bestIndex  * metronome.beatDurationInMS;
         var timingDiff = songPosMs - beatTimeMs;
-
-        if (Mathf.Abs(timingDiff) > errorMarginMs)
+            
+        if (Mathf.Abs(timingDiff) > errorMarginMs || bestBeat.hit)
         {
+            if (timingDiff < 0)
+                failParticleManager.SpawnParticleWithIndexIDPos(playerId, 1); // Too early particle
+            else
+                failParticleManager.SpawnParticleWithIndexIDPos(playerId, 0); // Too late particle
             incorrectInputs++;
             return;
         }
 
-        var beat = composers[playerId].GetBeat(beatIndex);
-        if (beat == null || beat.hit)
-        {
-            incorrectInputs++;
-            return;
-        }
+        bestBeat.hit = true;
+        if (bestBeat.attribute == BeatAttribute.Water) correctInputsWater++;
+        else if (bestBeat.attribute == BeatAttribute.Co2) correctInputsCo2++;
 
-        beat.hit = true;
-        if (beat.attribute == BeatAttribute.Water) correctInputsWater++;
-        else if (beat.attribute == BeatAttribute.Co2) correctInputsCo2++;
+        var timeToNextBeat = (bestIndex  + 1) * metronome.beatDurationInMS - songPosMs;
 
-        var timeToNextBeat = (beatIndex + 1) * metronome.beatDurationInMS - songPosMs;
-
-        if (beat.type == BeatType.Tap)
+        var maxDelay = errorMarginMs / 1000f;
+        var delay = Mathf.Clamp(-timingDiff / 1000f, 0f, maxDelay);
+        if (bestBeat.type == BeatType.Tap)
         {
             organismManager.TriggerAnim(playerId, timeToNextBeat / 1000f);
-            particleManager.SpawnRandomParticleIDPos(playerId);
+            beatParticleManager.SpawnRandomParticleIDPos(playerId);
             soundEffectManager.PlayRandomSoundEffect();
+            screenPulse.HitPulse(delay, timingDiff);
         }
-        else if (beat.type == BeatType.Hold)
+        else if (bestBeat.type == BeatType.Hold)
         {
             // Only start if not already active
-            if (!activeHolds.TryAdd(playerId, beat)) return;
-            var holdDurationSec = (beat.beatEnd - beat.beatStart) * (metronome.beatDurationInMS / 1000f) - timingDiff / 1000f;
+            if (!activeHolds.TryAdd(playerId, bestBeat)) return;
+            var holdDurationSec = (bestBeat.beatEnd - bestBeat.beatStart) * (metronome.beatDurationInMS / 1000f) - timingDiff / 1000f;
 
-            organismManager.TriggerAnimHold(playerId, beat, holdDurationSec);
-            particleManager.SpawnRandomParticleIDPosHold(playerId, beat, holdDurationSec);
-            soundEffectManager.PlaySoundEffectWithIndexHold(0, beat, playerId, holdDurationSec);
+            organismManager.TriggerAnimHold(playerId, bestBeat, holdDurationSec);
+            beatParticleManager.SpawnRandomParticleIDPosHold(playerId, bestBeat, holdDurationSec);
+            soundEffectManager.PlaySoundEffectWithIndexHold(0, bestBeat, playerId, holdDurationSec);
+            screenPulse.HoldPulse(holdDurationSec, delay, timingDiff);
         }
     }
 }
