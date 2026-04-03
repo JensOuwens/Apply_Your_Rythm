@@ -46,8 +46,8 @@ public class BackgroundManager : MonoBehaviour
 
     private void Update()
     {
-        var color = background.color;
-        color.a = Mathf.Lerp(color.a, alpha, Time.deltaTime);
-        background.color = color;
+        // var color = background.color;
+        // color.a = Mathf.Lerp(color.a, alpha, Time.deltaTime);
+        // background.color = color;
     }
 }
