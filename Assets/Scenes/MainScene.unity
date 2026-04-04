@@ -341,7 +341,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 1
   autoRandomSeed: 1
   startDelay:
@@ -5129,7 +5129,7 @@ SpriteRenderer:
   m_SortingOrder: 5
   m_MaskInteraction: 0
   m_Sprite: {fileID: 21300000, guid: 0cb713f56c19f98419b6bb129320f906, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5563,7 +5563,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 1
   autoRandomSeed: 1
   startDelay:
@@ -10779,7 +10779,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 1
   autoRandomSeed: 1
   startDelay:
@@ -15599,7 +15599,7 @@ Transform:
   m_LocalScale: {x: 0.5028757, y: 0.5028757, z: 0.5028757}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1979995954}
+  m_Father: {fileID: 425141503}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &261843072
 SpriteRenderer:
@@ -15651,7 +15651,7 @@ SpriteRenderer:
   m_SortingOrder: -4
   m_MaskInteraction: 0
   m_Sprite: {fileID: 8816469358385476126, guid: 175ade5aa22fc44469f00ea64dfb0744, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -15801,7 +15801,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 1
   autoRandomSeed: 1
   startDelay:
@@ -20755,6 +20755,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 675762193}
+  - {fileID: 261843071}
+  - {fileID: 1242336174}
+  - {fileID: 2078495824}
+  - {fileID: 1390085417}
   - {fileID: 1759582078}
   - {fileID: 1979995954}
   - {fileID: 1155891466}
@@ -20797,16 +20802,71 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de94f79f646412f4b85f903fe8332b4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  background: {fileID: 0}
+  playerHitMultiplier: 4
+  autoIncrement: 0.5
+  backgrounds:
+  - threshold: 0
+    nextThreshold: 0.2
+    background: {fileID: 675762194}
+    parent: {fileID: 1759582077}
+    particleSystems:
+    - {fileID: 1931474247}
+    - {fileID: 662082375}
+    - {fileID: 1166060740}
+    - {fileID: 1099120658}
+  - threshold: 0.2
+    nextThreshold: 0.4
+    background: {fileID: 261843072}
+    parent: {fileID: 1979995953}
+    particleSystems:
+    - {fileID: 570954649}
+    - {fileID: 1549474704}
+    - {fileID: 1993876881}
+  - threshold: 0.4
+    nextThreshold: 0.6
+    background: {fileID: 1242336175}
+    parent: {fileID: 1155891465}
+    particleSystems:
+    - {fileID: 18248491}
+    - {fileID: 889682964}
+    - {fileID: 576450489}
+    - {fileID: 1168792627}
+    - {fileID: 106110179}
+  - threshold: 0.6
+    nextThreshold: 0.8
+    background: {fileID: 2078495825}
+    parent: {fileID: 1114044223}
+    particleSystems:
+    - {fileID: 745405155}
+    - {fileID: 1200516558}
+    - {fileID: 438129055}
+    - {fileID: 181179714}
+    - {fileID: 2020765536}
+    - {fileID: 1527698220}
+    - {fileID: 927297596}
+    - {fileID: 2027848383}
+  - threshold: 0.8
+    nextThreshold: 1
+    background: {fileID: 1390085418}
+    parent: {fileID: 1857045226}
+    particleSystems:
+    - {fileID: 668799290}
+    - {fileID: 363776667}
+    - {fileID: 1373932745}
+    - {fileID: 1332846568}
+    - {fileID: 1451991834}
+    - {fileID: 1551044599}
+    - {fileID: 1601462085}
+    - {fileID: 1523086697}
   buckets:
-  - {fileID: 2738742881734718413}
-  - {fileID: 1740054350}
-  - {fileID: 1215653392}
-  - {fileID: 1798084117}
   - {fileID: 1012537314}
-  - {fileID: 1475156453}
+  - {fileID: 1740054350}
   - {fileID: 1046053002}
+  - {fileID: 2738742881734718413}
+  - {fileID: 1798084117}
+  - {fileID: 1215653392}
   - {fileID: 1851508278}
+  - {fileID: 1475156453}
 --- !u!1 &429248771
 GameObject:
   m_ObjectHideFlags: 0
@@ -21097,7 +21157,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 1
   autoRandomSeed: 1
   startDelay:
@@ -26511,7 +26571,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 1
   autoRandomSeed: 1
   startDelay:
@@ -31347,7 +31407,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 1
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -36624,7 +36684,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 1
   autoRandomSeed: 1
   startDelay:
@@ -41515,7 +41575,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 1
   autoRandomSeed: 1
   startDelay:
@@ -46251,7 +46311,7 @@ Transform:
   m_LocalScale: {x: 0.5028757, y: 0.5028757, z: 0.5028757}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1759582078}
+  m_Father: {fileID: 425141503}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &675762194
 SpriteRenderer:
@@ -46645,7 +46705,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 1
   autoRandomSeed: 1
   startDelay:
@@ -52019,7 +52079,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 1
   autoRandomSeed: 1
   startDelay:
@@ -56855,7 +56915,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 1
   autoRandomSeed: 1
   startDelay:
@@ -62628,7 +62688,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 1
   autoRandomSeed: 1
   startDelay:
@@ -67373,7 +67433,6 @@ Transform:
   - {fileID: 1179029846}
   - {fileID: 1811714201}
   - {fileID: 2007298798}
-  - {fileID: 2078495824}
   - {fileID: 1527698218}
   - {fileID: 927297594}
   - {fileID: 2027848381}
@@ -67500,7 +67559,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1242336174}
   - {fileID: 936899775}
   - {fileID: 18248489}
   - {fileID: 889682962}
@@ -67642,7 +67700,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 1
   autoRandomSeed: 1
   startDelay:
@@ -72478,7 +72536,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 1
   autoRandomSeed: 1
   startDelay:
@@ -77674,7 +77732,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 1
   autoRandomSeed: 1
   startDelay:
@@ -82563,7 +82621,7 @@ Transform:
   m_LocalScale: {x: 0.5028757, y: 0.5028757, z: 0.5028757}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1155891466}
+  m_Father: {fileID: 425141503}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1242336175
 SpriteRenderer:
@@ -82615,7 +82673,7 @@ SpriteRenderer:
   m_SortingOrder: -3
   m_MaskInteraction: 0
   m_Sprite: {fileID: -7247417640091471639, guid: e25ba3d9800ddef4e862c75bd1a1ebda, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -82832,7 +82890,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 1
   autoRandomSeed: 1
   startDelay:
@@ -87756,7 +87814,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 1
   autoRandomSeed: 1
   startDelay:
@@ -92570,7 +92628,7 @@ Transform:
   m_LocalScale: {x: 0.5028757, y: 0.5028757, z: 0.5028757}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1857045227}
+  m_Father: {fileID: 425141503}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1390085418
 SpriteRenderer:
@@ -92622,7 +92680,7 @@ SpriteRenderer:
   m_SortingOrder: -1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 6362566484052537990, guid: fb68b0060ffb54c48a18447064bf3f32, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -93039,7 +93097,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 1
   autoRandomSeed: 1
   startDelay:
@@ -98028,7 +98086,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 1
   autoRandomSeed: 1
   startDelay:
@@ -102864,7 +102922,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 1
   autoRandomSeed: 1
   startDelay:
@@ -107914,7 +107972,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 1
   autoRandomSeed: 1
   startDelay:
@@ -112750,7 +112808,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 1
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -117688,7 +117746,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 1
   autoRandomSeed: 1
   startDelay:
@@ -122934,7 +122992,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 675762193}
   - {fileID: 1931474245}
   - {fileID: 662082373}
   - {fileID: 1166060738}
@@ -123712,7 +123769,6 @@ Transform:
   - {fileID: 1551044597}
   - {fileID: 1601462083}
   - {fileID: 1523086695}
-  - {fileID: 1390085417}
   m_Father: {fileID: 425141503}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1931474244
@@ -123845,7 +123901,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 1
   autoRandomSeed: 1
   startDelay:
@@ -128833,7 +128889,6 @@ Transform:
   - {fileID: 570954647}
   - {fileID: 1549474702}
   - {fileID: 1673167176}
-  - {fileID: 261843071}
   - {fileID: 953736895}
   - {fileID: 1356722278}
   - {fileID: 2116181488}
@@ -129058,7 +129113,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 1
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 1
   autoRandomSeed: 1
   startDelay:
@@ -134230,7 +134285,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 1
   autoRandomSeed: 1
   startDelay:
@@ -139066,7 +139121,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 1
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -144145,7 +144200,7 @@ Transform:
   m_LocalScale: {x: 0.5028757, y: 0.5028757, z: 0.5028757}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1114044224}
+  m_Father: {fileID: 425141503}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2078495825
 SpriteRenderer:
@@ -144197,7 +144252,7 @@ SpriteRenderer:
   m_SortingOrder: -2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 3657041310270573935, guid: 9f06ebf381a009a419e0211698f0ba5d, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
