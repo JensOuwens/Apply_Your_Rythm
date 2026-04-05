@@ -29,7 +29,6 @@ public class Judge : MonoBehaviour
     [Header("Timing")]
     [SerializeField] 
     private float errorMarginMs = 80f; // milliseconds window
-    public float ErrorMarginMs => errorMarginMs;
 
     public static int correctInputsWater = 0;
     public static int correctInputsCo2 = 0;
@@ -61,7 +60,6 @@ public class Judge : MonoBehaviour
             organismManager.StopHold(playerId);
             beatParticleManager.StopHoldParticles(playerId);
             soundEffectManager.StopHoldSound(playerId);
-            screenPulse.StopHoldPulse();
             return;
         }
 

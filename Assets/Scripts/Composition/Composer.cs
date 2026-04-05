@@ -21,19 +21,5 @@ public class Composer : MonoBehaviour
     }
 
     public void SetComposition(CompositionObject compositionObject) => composition = compositionObject;
-    public int GetCount()
-    {
-        var list = composition.BuildVisualList().ToArray();
-        var count = 0;
-        foreach (var beat in list)
-        {
-            if (beat == null)
-                continue;
-            if (beat.type == BeatType.Hold)
-                count += beat.beatEnd - beat.beatStart;
-            else if (beat.type == BeatType.Tap)
-                count++;
-        }
-        return count;
-    }
+    public int GetCount() => composition.BuildVisualList().ToArray().Length;
 }

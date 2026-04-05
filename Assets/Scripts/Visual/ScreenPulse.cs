@@ -8,7 +8,6 @@ using Unity.Mathematics;
 [RequireComponent(typeof(Camera))]
 public class ScreenPulse : MonoBehaviour
 {
-    [SerializeField] private Judge judge;
     [SerializeField] private Camera cam;
     [Space]
     [SerializeField] private AnimationCurve zoomCurve;
@@ -26,8 +25,6 @@ public class ScreenPulse : MonoBehaviour
     private float releaseTime;
     private bool waitingForRelease;
     private bool held;
-    
-    private Coroutine currentHold;
 
     [Serializable]
     private struct PulseZoom
@@ -51,7 +48,6 @@ public class ScreenPulse : MonoBehaviour
         cam ??= GetComponent<Camera>();
         if (cam)
             defaultZoom = cam.orthographicSize;
-        judge = FindFirstObjectByType<Judge>();
     }
 
     // Beat pulse (low priority)
@@ -91,33 +87,9 @@ public class ScreenPulse : MonoBehaviour
     }
 
     // Hold (highest priority)
-    public void HoldPulse(float holdDuration, float delay, float timingDiff) =>
-        currentHold = StartCoroutine(HoldPulseDelayed(holdDuration, delay, timingDiff));
+    public void HoldPulse(float holdDuration, float delay, float timingDiff) => 
+        StartCoroutine(HoldPulseDelayed(holdDuration, delay, timingDiff));
 
-    public void StopHoldPulse()
-    {
-        if (currentHold != null)
-        {
-            var timeRemaining = releaseTime - Time.time;
-            Debug.Log($"{timeRemaining} <= {judge.ErrorMarginMs / 1000f}");
-            if (timeRemaining <= judge.ErrorMarginMs / 1000f)
-                return;
-            
-            StopCoroutine(currentHold);
-        }
-        currentHold = null;
-        
-        if (!held) return;
-        held = false;
-        waitingForRelease = false;
-        zoomingIn = false;
-        animating = true;
-        currentTime = 0f;
-        currentDuration = zoomSpeed;
-        currentPriority = PulsePriority.Hold;
-        lockUntilTime = Time.time + 0.05f;
-    }
-    
     private IEnumerator HoldPulseDelayed(float holdDuration, float delay, float timingDiff)
     {
         if (delay > 0f)
