@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa3bec92135444ba96de7645acfa882c, type: 3}
+  m_Name: FinalCompList
+  m_EditorClassIdentifier: Assembly-CSharp::CompositionList
+  compositions:
+  - {fileID: 11400000, guid: 3143b5276e1703a4c9003f9108585518, type: 2}
+  - {fileID: 11400000, guid: b055d8b5d066f7f45a1fd88500b99969, type: 2}
+  - {fileID: 11400000, guid: a773a6fbeade2d148bb43562c5cf71d3, type: 2}
+  - {fileID: 11400000, guid: 6e4e9383952cad74a8b92ab8d59ad668, type: 2}
+  showVisual: 1

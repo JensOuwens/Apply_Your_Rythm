@@ -433,7 +433,7 @@ MonoBehaviour:
   songId: 0
   songList: {fileID: 11400000, guid: ecf47c244c55f8c4ea02d16492bb375c, type: 2}
   audioSource: {fileID: 77862650}
-  songLengthUsedForEnd: 60
+  songLengthUsedForEnd: 157
   onSongEnd:
     m_PersistentCalls:
       m_Calls:
@@ -1344,14 +1344,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   background: {fileID: 425141502}
   buckets:
-  - {fileID: 2738742881734718413}
-  - {fileID: 1851508278}
-  - {fileID: 1012537314}
-  - {fileID: 1215653392}
-  - {fileID: 1046053002}
-  - {fileID: 1798084117}
   - {fileID: 1740054350}
+  - {fileID: 1851508278}
   - {fileID: 1475156453}
+  - {fileID: 1798084117}
+  - {fileID: 1046053002}
+  - {fileID: 1215653392}
+  - {fileID: 1012537314}
+  - {fileID: 2738742881734718413}
 --- !u!1 &429248771
 GameObject:
   m_ObjectHideFlags: 0
@@ -5718,7 +5718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eec5a0132937ff48b89149fea5cbbfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  compositionList: {fileID: 11400000, guid: f1304eaa67879b249b08f644968855df, type: 2}
+  compositionList: {fileID: 11400000, guid: 526ca19dbd54dd24fa5eea367d3b008f, type: 2}
   judge: {fileID: 1959487384}
 --- !u!1 &2019573321
 GameObject:
