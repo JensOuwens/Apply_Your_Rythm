@@ -98,7 +98,7 @@ public class ShowBeatVisual : MonoBehaviour, IComparable
             lineRenderer.widthCurve = AnimationCurve.EaseInOut(0, 0.6f, 1, 0.1f);
             lineRenderer.colorGradient = holdLineColor;
             lineRenderer.numCapVertices = 10;
-            lineRenderer.sortingOrder = 0;
+            lineRenderer.sortingOrder = 20;
             
             lineRenderer.positionCount = Math.Max(lineLength, positions.Length);
             lineRenderer.useWorldSpace = true;
