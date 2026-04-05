@@ -42,4 +42,20 @@ MonoBehaviour:
     beatEnd: 38
     type: 1
     attribute: 0
+  - beatStart: 43
+    beatEnd: 43
+    type: 0
+    attribute: 0
+  - beatStart: 47
+    beatEnd: 47
+    type: 0
+    attribute: 0
+  - beatStart: 49
+    beatEnd: 49
+    type: 0
+    attribute: 0
+  - beatStart: 54
+    beatEnd: 56
+    type: 1
+    attribute: 0
   showVisual: 1
