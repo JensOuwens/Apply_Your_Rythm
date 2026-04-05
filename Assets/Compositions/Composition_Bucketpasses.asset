@@ -18,11 +18,31 @@ MonoBehaviour:
     beatEnd: 0
     type: 0
     attribute: 0
-  - beatStart: 60
+  - beatStart: 30
     beatEnd: 0
     type: 0
     attribute: 0
-  - beatStart: 61
+  - beatStart: 34
+    beatEnd: 0
+    type: 0
+    attribute: 0
+  - beatStart: 38
+    beatEnd: 0
+    type: 0
+    attribute: 0
+  - beatStart: 42
+    beatEnd: 0
+    type: 0
+    attribute: 0
+  - beatStart: 46
+    beatEnd: 0
+    type: 0
+    attribute: 0
+  - beatStart: 50
+    beatEnd: 0
+    type: 0
+    attribute: 0
+  - beatStart: 54
     beatEnd: 0
     type: 0
     attribute: 0
@@ -30,27 +50,23 @@ MonoBehaviour:
     beatEnd: 0
     type: 0
     attribute: 0
-  - beatStart: 63
+  - beatStart: 74
     beatEnd: 0
     type: 0
     attribute: 0
-  - beatStart: 64
+  - beatStart: 86
     beatEnd: 0
     type: 0
     attribute: 0
-  - beatStart: 101
+  - beatStart: 98
     beatEnd: 0
     type: 0
     attribute: 0
-  - beatStart: 102
+  - beatStart: 110
     beatEnd: 0
     type: 0
     attribute: 0
-  - beatStart: 103
-    beatEnd: 0
-    type: 0
-    attribute: 0
-  - beatStart: 104
+  - beatStart: 118
     beatEnd: 0
     type: 0
     attribute: 0
