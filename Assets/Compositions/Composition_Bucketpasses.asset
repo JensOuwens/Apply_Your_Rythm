@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b3ea7b7f2ae4bb199c2d490a05e48ac, type: 3}
   m_Name: Composition_Bucketpasses
   m_EditorClassIdentifier: Assembly-CSharp::CompositionObject
-  beatAmount: 120
+  beatAmount: 314
   data:
   - beatStart: 1
     beatEnd: 0
@@ -28,6 +28,42 @@ MonoBehaviour:
     attribute: 0
   - beatStart: 4
     beatEnd: 0
+    type: 0
+    attribute: 0
+  - beatStart: 67
+    beatEnd: 0
+    type: 0
+    attribute: 0
+  - beatStart: 68
+    beatEnd: 0
+    type: 0
+    attribute: 0
+  - beatStart: 69
+    beatEnd: 0
+    type: 0
+    attribute: 0
+  - beatStart: 70
+    beatEnd: 0
+    type: 0
+    attribute: 0
+  - beatStart: 71
+    beatEnd: 0
+    type: 0
+    attribute: 0
+  - beatStart: 106
+    beatEnd: 0
+    type: 0
+    attribute: 0
+  - beatStart: 116
+    beatEnd: 0
+    type: 0
+    attribute: 0
+  - beatStart: 126
+    beatEnd: 0
+    type: 0
+    attribute: 0
+  - beatStart: 137
+    beatEnd: 137
     type: 0
     attribute: 0
   showVisual: 1
