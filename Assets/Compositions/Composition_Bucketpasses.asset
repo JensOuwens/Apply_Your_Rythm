@@ -66,4 +66,44 @@ MonoBehaviour:
     beatEnd: 137
     type: 0
     attribute: 0
+  - beatStart: 147
+    beatEnd: 147
+    type: 0
+    attribute: 0
+  - beatStart: 174
+    beatEnd: 174
+    type: 0
+    attribute: 0
+  - beatStart: 175
+    beatEnd: 175
+    type: 0
+    attribute: 0
+  - beatStart: 176
+    beatEnd: 176
+    type: 0
+    attribute: 0
+  - beatStart: 177
+    beatEnd: 177
+    type: 0
+    attribute: 0
+  - beatStart: 198
+    beatEnd: 198
+    type: 0
+    attribute: 0
+  - beatStart: 199
+    beatEnd: 199
+    type: 0
+    attribute: 0
+  - beatStart: 200
+    beatEnd: 200
+    type: 0
+    attribute: 0
+  - beatStart: 201
+    beatEnd: 201
+    type: 0
+    attribute: 0
+  - beatStart: 222
+    beatEnd: 222
+    type: 0
+    attribute: 0
   showVisual: 1

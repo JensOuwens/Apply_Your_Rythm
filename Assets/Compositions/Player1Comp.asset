@@ -134,4 +134,100 @@ MonoBehaviour:
     beatEnd: 144
     type: 0
     attribute: 0
+  - beatStart: 150
+    beatEnd: 150
+    type: 0
+    attribute: 0
+  - beatStart: 152
+    beatEnd: 152
+    type: 0
+    attribute: 0
+  - beatStart: 158
+    beatEnd: 158
+    type: 0
+    attribute: 0
+  - beatStart: 163
+    beatEnd: 163
+    type: 0
+    attribute: 0
+  - beatStart: 165
+    beatEnd: 168
+    type: 1
+    attribute: 0
+  - beatStart: 178
+    beatEnd: 178
+    type: 0
+    attribute: 0
+  - beatStart: 180
+    beatEnd: 180
+    type: 0
+    attribute: 0
+  - beatStart: 182
+    beatEnd: 185
+    type: 1
+    attribute: 0
+  - beatStart: 186
+    beatEnd: 186
+    type: 0
+    attribute: 0
+  - beatStart: 188
+    beatEnd: 188
+    type: 0
+    attribute: 0
+  - beatStart: 190
+    beatEnd: 190
+    type: 0
+    attribute: 0
+  - beatStart: 192
+    beatEnd: 192
+    type: 0
+    attribute: 0
+  - beatStart: 194
+    beatEnd: 194
+    type: 0
+    attribute: 0
+  - beatStart: 196
+    beatEnd: 196
+    type: 0
+    attribute: 0
+  - beatStart: 205
+    beatEnd: 205
+    type: 0
+    attribute: 0
+  - beatStart: 207
+    beatEnd: 207
+    type: 0
+    attribute: 0
+  - beatStart: 210
+    beatEnd: 210
+    type: 0
+    attribute: 0
+  - beatStart: 212
+    beatEnd: 212
+    type: 0
+    attribute: 0
+  - beatStart: 218
+    beatEnd: 218
+    type: 0
+    attribute: 0
+  - beatStart: 221
+    beatEnd: 221
+    type: 0
+    attribute: 0
+  - beatStart: 229
+    beatEnd: 229
+    type: 0
+    attribute: 0
+  - beatStart: 233
+    beatEnd: 233
+    type: 0
+    attribute: 0
+  - beatStart: 240
+    beatEnd: 240
+    type: 0
+    attribute: 0
+  - beatStart: 243
+    beatEnd: 247
+    type: 1
+    attribute: 0
   showVisual: 0
