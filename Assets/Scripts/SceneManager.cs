@@ -6,7 +6,7 @@ using UnityEngine;
 public class SceneManager : MonoBehaviour
 {
     [SerializeField]
-    private string startMenuScene = "StartMenu";
+    private string startMenuScene = "TitleScreen";
     [SerializeField]
     private string gameScene = "SampleScene";
     [SerializeField]
