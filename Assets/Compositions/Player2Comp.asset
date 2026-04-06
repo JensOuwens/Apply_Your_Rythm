@@ -1,0 +1,301 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b3ea7b7f2ae4bb199c2d490a05e48ac, type: 3}
+  m_Name: Player2Comp
+  m_EditorClassIdentifier: Assembly-CSharp::CompositionObject
+  beatAmount: 314
+  data:
+  - beatStart: 8
+    beatEnd: 8
+    type: 0
+    attribute: 0
+  - beatStart: 12
+    beatEnd: 12
+    type: 0
+    attribute: 1
+  - beatStart: 16
+    beatEnd: 16
+    type: 0
+    attribute: 0
+  - beatStart: 20
+    beatEnd: 20
+    type: 0
+    attribute: 1
+  - beatStart: 24
+    beatEnd: 28
+    type: 1
+    attribute: 0
+  - beatStart: 32
+    beatEnd: 34
+    type: 1
+    attribute: 1
+  - beatStart: 36
+    beatEnd: 38
+    type: 1
+    attribute: 0
+  - beatStart: 41
+    beatEnd: 41
+    type: 0
+    attribute: 1
+  - beatStart: 45
+    beatEnd: 45
+    type: 0
+    attribute: 0
+  - beatStart: 49
+    beatEnd: 49
+    type: 0
+    attribute: 1
+  - beatStart: 51
+    beatEnd: 51
+    type: 0
+    attribute: 0
+  - beatStart: 54
+    beatEnd: 56
+    type: 1
+    attribute: 0
+  - beatStart: 60
+    beatEnd: 64
+    type: 1
+    attribute: 1
+  - beatStart: 65
+    beatEnd: 65
+    type: 0
+    attribute: 1
+  - beatStart: 66
+    beatEnd: 66
+    type: 0
+    attribute: 1
+  - beatStart: 67
+    beatEnd: 67
+    type: 0
+    attribute: 0
+  - beatStart: 75
+    beatEnd: 75
+    type: 0
+    attribute: 1
+  - beatStart: 84
+    beatEnd: 84
+    type: 0
+    attribute: 1
+  - beatStart: 86
+    beatEnd: 92
+    type: 1
+    attribute: 1
+  - beatStart: 94
+    beatEnd: 94
+    type: 0
+    attribute: 0
+  - beatStart: 100
+    beatEnd: 100
+    type: 0
+    attribute: 0
+  - beatStart: 102
+    beatEnd: 102
+    type: 0
+    attribute: 1
+  - beatStart: 109
+    beatEnd: 109
+    type: 0
+    attribute: 1
+  - beatStart: 111
+    beatEnd: 111
+    type: 0
+    attribute: 0
+  - beatStart: 113
+    beatEnd: 113
+    type: 0
+    attribute: 1
+  - beatStart: 118
+    beatEnd: 125
+    type: 1
+    attribute: 1
+  - beatStart: 129
+    beatEnd: 129
+    type: 0
+    attribute: 0
+  - beatStart: 131
+    beatEnd: 131
+    type: 0
+    attribute: 1
+  - beatStart: 133
+    beatEnd: 133
+    type: 0
+    attribute: 0
+  - beatStart: 151
+    beatEnd: 151
+    type: 0
+    attribute: 1
+  - beatStart: 153
+    beatEnd: 153
+    type: 0
+    attribute: 0
+  - beatStart: 160
+    beatEnd: 160
+    type: 0
+    attribute: 0
+  - beatStart: 164
+    beatEnd: 164
+    type: 0
+    attribute: 1
+  - beatStart: 166
+    beatEnd: 166
+    type: 0
+    attribute: 1
+  - beatStart: 169
+    beatEnd: 172
+    type: 1
+    attribute: 1
+  - beatStart: 178
+    beatEnd: 178
+    type: 0
+    attribute: 0
+  - beatStart: 180
+    beatEnd: 180
+    type: 0
+    attribute: 0
+  - beatStart: 182
+    beatEnd: 182
+    type: 0
+    attribute: 1
+  - beatStart: 184
+    beatEnd: 184
+    type: 0
+    attribute: 0
+  - beatStart: 186
+    beatEnd: 189
+    type: 1
+    attribute: 1
+  - beatStart: 190
+    beatEnd: 190
+    type: 0
+    attribute: 0
+  - beatStart: 192
+    beatEnd: 192
+    type: 0
+    attribute: 1
+  - beatStart: 194
+    beatEnd: 194
+    type: 0
+    attribute: 1
+  - beatStart: 196
+    beatEnd: 196
+    type: 0
+    attribute: 0
+  - beatStart: 204
+    beatEnd: 204
+    type: 0
+    attribute: 1
+  - beatStart: 206
+    beatEnd: 206
+    type: 0
+    attribute: 1
+  - beatStart: 211
+    beatEnd: 211
+    type: 0
+    attribute: 0
+  - beatStart: 213
+    beatEnd: 213
+    type: 0
+    attribute: 1
+  - beatStart: 219
+    beatEnd: 219
+    type: 0
+    attribute: 0
+  - beatStart: 220
+    beatEnd: 220
+    type: 0
+    attribute: 0
+  - beatStart: 228
+    beatEnd: 228
+    type: 0
+    attribute: 1
+  - beatStart: 231
+    beatEnd: 231
+    type: 0
+    attribute: 0
+  - beatStart: 237
+    beatEnd: 240
+    type: 1
+    attribute: 1
+  - beatStart: 244
+    beatEnd: 244
+    type: 0
+    attribute: 1
+  - beatStart: 248
+    beatEnd: 248
+    type: 0
+    attribute: 1
+  - beatStart: 250
+    beatEnd: 249
+    type: 0
+    attribute: 0
+  - beatStart: 252
+    beatEnd: 252
+    type: 0
+    attribute: 0
+  - beatStart: 253
+    beatEnd: 257
+    type: 1
+    attribute: 1
+  - beatStart: 259
+    beatEnd: 259
+    type: 0
+    attribute: 0
+  - beatStart: 261
+    beatEnd: 251
+    type: 0
+    attribute: 1
+  - beatStart: 263
+    beatEnd: 265
+    type: 1
+    attribute: 0
+  - beatStart: 267
+    beatEnd: 267
+    type: 0
+    attribute: 1
+  - beatStart: 272
+    beatEnd: 272
+    type: 0
+    attribute: 0
+  - beatStart: 275
+    beatEnd: 275
+    type: 0
+    attribute: 0
+  - beatStart: 277
+    beatEnd: 277
+    type: 0
+    attribute: 1
+  - beatStart: 284
+    beatEnd: 286
+    type: 1
+    attribute: 0
+  - beatStart: 294
+    beatEnd: 294
+    type: 0
+    attribute: 1
+  - beatStart: 297
+    beatEnd: 297
+    type: 0
+    attribute: 1
+  - beatStart: 299
+    beatEnd: 299
+    type: 0
+    attribute: 0
+  - beatStart: 301
+    beatEnd: 301
+    type: 0
+    attribute: 1
+  - beatStart: 303
+    beatEnd: 307
+    type: 1
+    attribute: 0
+  showVisual: 0
