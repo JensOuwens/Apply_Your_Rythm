@@ -153,7 +153,7 @@ public class Judge : MonoBehaviour
             else if (bestBeat.attribute == BeatAttribute.Co2) correctInputsCo2++;
             organismManager.TriggerAnim(playerId, timeToNextBeat / 1000f);
             beatParticleManager.SpawnRandomParticleIDPos(playerId);
-            soundEffectManager.PlayRandomSoundEffect();
+            soundEffectManager.PlayRandomSoundEffect(playerId);
             screenPulse.HitPulse(delay, timingDiff);
         }
         else if (bestBeat.type == BeatType.Hold)

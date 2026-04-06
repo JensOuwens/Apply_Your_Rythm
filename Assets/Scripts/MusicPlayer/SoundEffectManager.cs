@@ -7,6 +7,7 @@ public struct SoundEffectItem
 {
     public uint id;
     public AudioClip AudioClip;
+    public float Volume;
 }
 
 public class SoundEffectManager : MonoBehaviour
@@ -22,6 +23,13 @@ public class SoundEffectManager : MonoBehaviour
     [SerializeField]
     private Metronome metronome;
 
+    [Header("player pitches")]
+    [SerializeField] private float player1Pitch;
+    [SerializeField] private float player2Pitch;
+    [SerializeField] private float player3Pitch;
+    [SerializeField] private float player4Pitch;
+
+
     private Dictionary<int, AudioSource> activeHoldSounds = new();
 
     private void Awake()
@@ -30,11 +38,29 @@ public class SoundEffectManager : MonoBehaviour
         instance = this;
     }
 
-    public void PlayRandomSoundEffect()
+    public void PlayRandomSoundEffect(int playerID)
     {
         int listIndex = Random.Range(0, SoundEffectsTap.Count - 1);
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = SoundEffectsTap[listIndex].AudioClip;
+        audioSource.volume = SoundEffectsTap[listIndex].Volume;
+        float pitch = 0;
+        switch (playerID)
+        {
+            case 0:
+                pitch = player1Pitch;
+                break;
+            case 1:
+                pitch =  player2Pitch;
+                break;
+            case 2:
+                pitch = player3Pitch;
+                break;
+            case 3:
+                pitch = player4Pitch;
+                break;
+        }
+        audioSource.pitch = pitch;
         audioSource.Play();
         Destroy(audioSource, audioSource.clip.length);
     }
@@ -43,6 +69,7 @@ public class SoundEffectManager : MonoBehaviour
     {
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = SoundEffectsTap[index].AudioClip;
+        audioSource.volume = SoundEffectsTap[index].Volume;
         audioSource.Play();
         Destroy(audioSource, audioSource.clip.length);
     }
@@ -61,6 +88,7 @@ public class SoundEffectManager : MonoBehaviour
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = SoundEffectsHold[index].AudioClip;
         audioSource.loop = true;
+        audioSource.volume = SoundEffectsHold[index].Volume;
         audioSource.Play();
 
         activeHoldSounds[playerId] = audioSource;
