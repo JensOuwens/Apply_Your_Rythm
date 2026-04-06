@@ -34,11 +34,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.r
-<<<<<<< HEAD
     path: SD Background1
-=======
-    path: 
->>>>>>> parent of 5458817 (Reapply "Removed: Animations to see if this fixes things")
     classID: 212
     script: {fileID: 0}
     flags: 0
@@ -59,11 +55,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.g
-<<<<<<< HEAD
     path: SD Background1
-=======
-    path: 
->>>>>>> parent of 5458817 (Reapply "Removed: Animations to see if this fixes things")
     classID: 212
     script: {fileID: 0}
     flags: 0
@@ -84,7 +76,6 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.b
-<<<<<<< HEAD
     path: SD Background1
     classID: 212
     script: {fileID: 0}
@@ -107,9 +98,6 @@ AnimationClip:
       m_RotationOrder: 4
     attribute: m_Color.a
     path: SD Background1
-=======
-    path: 
->>>>>>> parent of 5458817 (Reapply "Removed: Animations to see if this fixes things")
     classID: 212
     script: {fileID: 0}
     flags: 0
@@ -122,11 +110,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-<<<<<<< HEAD
       path: 3938738056
-=======
-      path: 0
->>>>>>> parent of 5458817 (Reapply "Removed: Animations to see if this fixes things")
       attribute: 2526845255
       script: {fileID: 0}
       typeID: 212
@@ -135,11 +119,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-<<<<<<< HEAD
       path: 3938738056
-=======
-      path: 0
->>>>>>> parent of 5458817 (Reapply "Removed: Animations to see if this fixes things")
       attribute: 4215373228
       script: {fileID: 0}
       typeID: 212
@@ -148,11 +128,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-<<<<<<< HEAD
       path: 3938738056
-=======
-      path: 0
->>>>>>> parent of 5458817 (Reapply "Removed: Animations to see if this fixes things")
       attribute: 2334886179
       script: {fileID: 0}
       typeID: 212
@@ -160,7 +136,6 @@ AnimationClip:
       isPPtrCurve: 0
       isIntCurve: 0
       isSerializeReferenceCurve: 0
-<<<<<<< HEAD
     - serializedVersion: 2
       path: 3938738056
       attribute: 304273561
@@ -170,8 +145,6 @@ AnimationClip:
       isPPtrCurve: 0
       isIntCurve: 0
       isSerializeReferenceCurve: 0
-=======
->>>>>>> parent of 5458817 (Reapply "Removed: Animations to see if this fixes things")
     pptrCurveMapping: []
   m_AnimationClipSettings:
     serializedVersion: 2
@@ -211,11 +184,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.r
-<<<<<<< HEAD
     path: SD Background1
-=======
-    path: 
->>>>>>> parent of 5458817 (Reapply "Removed: Animations to see if this fixes things")
     classID: 212
     script: {fileID: 0}
     flags: 0
@@ -236,11 +205,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.g
-<<<<<<< HEAD
     path: SD Background1
-=======
-    path: 
->>>>>>> parent of 5458817 (Reapply "Removed: Animations to see if this fixes things")
     classID: 212
     script: {fileID: 0}
     flags: 0
@@ -261,7 +226,6 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_Color.b
-<<<<<<< HEAD
     path: SD Background1
     classID: 212
     script: {fileID: 0}
@@ -284,9 +248,6 @@ AnimationClip:
       m_RotationOrder: 4
     attribute: m_Color.a
     path: SD Background1
-=======
-    path: 
->>>>>>> parent of 5458817 (Reapply "Removed: Animations to see if this fixes things")
     classID: 212
     script: {fileID: 0}
     flags: 0

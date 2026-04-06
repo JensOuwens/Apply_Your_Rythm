@@ -32,7 +32,6 @@ AnimationClip:
       m_RotationOrder: 4
     path: 
   m_ScaleCurves: []
-<<<<<<< HEAD
   m_FloatCurves:
   - serializedVersion: 2
     curve:
@@ -55,9 +54,6 @@ AnimationClip:
     classID: 82
     script: {fileID: 0}
     flags: 0
-=======
-  m_FloatCurves: []
->>>>>>> parent of 5458817 (Reapply "Removed: Animations to see if this fixes things")
   m_PPtrCurves: []
   m_SampleRate: 60
   m_WrapMode: 0
@@ -75,7 +71,6 @@ AnimationClip:
       isPPtrCurve: 0
       isIntCurve: 0
       isSerializeReferenceCurve: 0
-<<<<<<< HEAD
     - serializedVersion: 2
       path: 3652983185
       attribute: 4104493590
@@ -85,8 +80,6 @@ AnimationClip:
       isPPtrCurve: 0
       isIntCurve: 0
       isSerializeReferenceCurve: 0
-=======
->>>>>>> parent of 5458817 (Reapply "Removed: Animations to see if this fixes things")
     pptrCurveMapping: []
   m_AnimationClipSettings:
     serializedVersion: 2
@@ -172,7 +165,6 @@ AnimationClip:
     classID: 4
     script: {fileID: 0}
     flags: 0
-<<<<<<< HEAD
   - serializedVersion: 2
     curve:
       serializedVersion: 2
@@ -194,8 +186,6 @@ AnimationClip:
     classID: 82
     script: {fileID: 0}
     flags: 0
-=======
->>>>>>> parent of 5458817 (Reapply "Removed: Animations to see if this fixes things")
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 1
   m_HasMotionFloatCurves: 0
