@@ -7,6 +7,7 @@ public struct SoundEffectItem
 {
     public uint id;
     public AudioClip AudioClip;
+    public float Volume;
 }
 
 public class SoundEffectManager : MonoBehaviour
@@ -35,6 +36,7 @@ public class SoundEffectManager : MonoBehaviour
         int listIndex = Random.Range(0, SoundEffectsTap.Count - 1);
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = SoundEffectsTap[listIndex].AudioClip;
+        audioSource.volume = SoundEffectsTap[listIndex].Volume;
         audioSource.Play();
         Destroy(audioSource, audioSource.clip.length);
     }
@@ -43,6 +45,7 @@ public class SoundEffectManager : MonoBehaviour
     {
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = SoundEffectsTap[index].AudioClip;
+        audioSource.volume = SoundEffectsTap[index].Volume;
         audioSource.Play();
         Destroy(audioSource, audioSource.clip.length);
     }
@@ -61,6 +64,7 @@ public class SoundEffectManager : MonoBehaviour
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = SoundEffectsHold[index].AudioClip;
         audioSource.loop = true;
+        audioSource.volume = SoundEffectsHold[index].Volume;
         audioSource.Play();
 
         activeHoldSounds[playerId] = audioSource;

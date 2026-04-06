@@ -20897,13 +20897,13 @@ MonoBehaviour:
       initialIntensity: 1
   buckets:
   - {fileID: 1798084117}
-  - {fileID: 1215653392}
-  - {fileID: 2738742881734718413}
-  - {fileID: 1851508278}
-  - {fileID: 1740054350}
   - {fileID: 1046053002}
-  - {fileID: 1012537314}
+  - {fileID: 1740054350}
+  - {fileID: 1851508278}
+  - {fileID: 2738742881734718413}
+  - {fileID: 1215653392}
   - {fileID: 1475156453}
+  - {fileID: 1012537314}
 --- !u!1 &429248771
 GameObject:
   m_ObjectHideFlags: 0
@@ -46639,13 +46639,17 @@ MonoBehaviour:
   SoundEffectsTap:
   - id: 0
     AudioClip: {fileID: 8300000, guid: 39ba10150e708914793d85f05ecf4abb, type: 3}
+    Volume: 0.6
   - id: 1
     AudioClip: {fileID: 8300000, guid: fb5ab940ba458df42990d7b2bcb3d7a7, type: 3}
+    Volume: 0.6
   - id: 2
     AudioClip: {fileID: 8300000, guid: 9c78027cb34f38643afb9e7ddd9adb64, type: 3}
+    Volume: 0.6
   SoundEffectsHold:
   - id: 0
     AudioClip: {fileID: 8300000, guid: 5a1f7b6dcfbb3af43a05263cfa03d912, type: 3}
+    Volume: 0.4
   metronome: {fileID: 1741322473}
 --- !u!1 &745405152
 GameObject:
