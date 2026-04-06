@@ -99,7 +99,6 @@ public class ScreenPulse : MonoBehaviour
         if (currentHold != null)
         {
             var timeRemaining = releaseTime - Time.time;
-            Debug.Log($"{timeRemaining} <= {judge.ErrorMarginMs / 1000f}");
             if (timeRemaining <= judge.ErrorMarginMs / 1000f)
                 return;
             
