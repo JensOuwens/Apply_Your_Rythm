@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 
 /// <summary>
@@ -36,7 +38,19 @@ public class Judge : MonoBehaviour
     public static int incorrectInputs = 0;
     public static int maxAmount;
 
-    private Dictionary<int, BeatData> activeHolds = new();
+    private Dictionary<int, ActiveHoldInstance> activeHolds = new();
+
+    private class ActiveHoldInstance
+    {
+        public BeatData beat;
+        public Coroutine coroutine;
+
+        public ActiveHoldInstance(BeatData beat, Coroutine coroutine)
+        {
+            this.beat = beat;
+            this.coroutine = coroutine;
+        }
+    }
 
     private void Start()
     {
@@ -55,7 +69,7 @@ public class Judge : MonoBehaviour
 
     public void SubscribeComposer(Composer composer)
     {
-        maxAmount += composer.GetCount();
+        maxAmount = math.max(maxAmount, composer.GetCount());
         composers.Add(composer);
     }
 
@@ -67,11 +81,21 @@ public class Judge : MonoBehaviour
         if (!pressed)
         {
             // RELEASED: stop any active hold
-            if (!activeHolds.Remove(playerId, out _)) return;
+            if (!activeHolds.Remove(playerId, out var lastHoldBeat)) return;
+            StopCoroutine(lastHoldBeat.coroutine);
+            
             organismManager.StopHold(playerId);
             beatParticleManager.StopHoldParticles(playerId);
             soundEffectManager.StopHoldSound(playerId);
             screenPulse.StopHoldPulse();
+
+            var songPosInBeats = songPosMs / metronome.beatDurationInMS;
+            var totalBeats = lastHoldBeat.beat.beatEnd - lastHoldBeat.beat.beatStart;
+            var heldBeats = Mathf.Max(0f, songPosInBeats - lastHoldBeat.beat.beatStart);
+            var beatWorth = Mathf.Min(totalBeats, Mathf.FloorToInt(heldBeats));
+            
+            if (lastHoldBeat.beat.attribute == BeatAttribute.Water) correctInputsWater += beatWorth;
+            else if (lastHoldBeat.beat.attribute == BeatAttribute.Co2) correctInputsCo2 += beatWorth;
             return;
         }
 
@@ -118,8 +142,6 @@ public class Judge : MonoBehaviour
         }
 
         bestBeat.hit = true;
-        if (bestBeat.attribute == BeatAttribute.Water) correctInputsWater++;
-        else if (bestBeat.attribute == BeatAttribute.Co2) correctInputsCo2++;
 
         var timeToNextBeat = (bestIndex  + 1) * metronome.beatDurationInMS - songPosMs;
 
@@ -127,6 +149,8 @@ public class Judge : MonoBehaviour
         var delay = Mathf.Clamp(-timingDiff / 1000f, 0f, maxDelay);
         if (bestBeat.type == BeatType.Tap)
         {
+            if (bestBeat.attribute == BeatAttribute.Water) correctInputsWater++;
+            else if (bestBeat.attribute == BeatAttribute.Co2) correctInputsCo2++;
             organismManager.TriggerAnim(playerId, timeToNextBeat / 1000f);
             beatParticleManager.SpawnRandomParticleIDPos(playerId);
             soundEffectManager.PlayRandomSoundEffect();
@@ -135,13 +159,23 @@ public class Judge : MonoBehaviour
         else if (bestBeat.type == BeatType.Hold)
         {
             // Only start if not already active
-            if (!activeHolds.TryAdd(playerId, bestBeat)) return;
             var holdDurationSec = (bestBeat.beatEnd - bestBeat.beatStart) * (metronome.beatDurationInMS / 1000f) - timingDiff / 1000f;
+            if (!activeHolds.TryAdd(playerId,
+                    new ActiveHoldInstance(bestBeat,
+                        StartCoroutine(InvokePointAdditionHoldBeat(holdDurationSec, playerId, bestBeat.attribute, bestBeat.beatEnd - bestBeat.beatStart))))) return;
 
             organismManager.TriggerAnimHold(playerId, bestBeat, holdDurationSec);
             beatParticleManager.SpawnRandomParticleIDPosHold(playerId, bestBeat, holdDurationSec);
             soundEffectManager.PlaySoundEffectWithIndexHold(0, bestBeat, playerId, holdDurationSec);
             screenPulse.HoldPulse(holdDurationSec, delay, timingDiff);
         }
+    }
+
+    private IEnumerator InvokePointAdditionHoldBeat(float waitingTime, int playerId, BeatAttribute beatAttribute, int beatWorth)
+    {
+        yield return new WaitForSeconds(waitingTime);
+        activeHolds.Remove(playerId, out _);
+        if (beatAttribute == BeatAttribute.Water) correctInputsWater += beatWorth;
+        else if (beatAttribute == BeatAttribute.Co2) correctInputsCo2 += beatWorth;
     }
 }
