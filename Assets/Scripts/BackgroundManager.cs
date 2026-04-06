@@ -16,7 +16,6 @@ public class BackgroundManager : MonoBehaviour
     private Bucket[] buckets;
     private Composer composer;
     private Metronome metronome;
-    private int maxAmount;
     private float currentAmount = 0;
     private float state = 1;
     private int lastIndex = -1;
@@ -127,7 +126,6 @@ public class BackgroundManager : MonoBehaviour
         currentAmount = 0;
         state = 1;
         lastIndex = -1;
-        ComposerCreator.ComposerSubscribed += SubscribeComposer;
         foreach (var bucket in buckets)
             bucket.OnEmptyBucket += OnEmptyBucket;
         metronome.OnBeat.AddListener(OnBeat);
@@ -135,22 +133,20 @@ public class BackgroundManager : MonoBehaviour
 
     private void OnDisable()
     {
-        ComposerCreator.ComposerSubscribed -= SubscribeComposer;
         foreach (var bucket in buckets)
             bucket.OnEmptyBucket -= OnEmptyBucket;
         metronome.OnBeat.RemoveListener(OnBeat);
     }
 
-    private void SubscribeComposer(Composer obj) => maxAmount = obj.GetCount();
     private void OnEmptyBucket(float amount) => AddToAmount(amount);
 
     public void AddToAmount(float amount, float multiplier = 1)
     {
-        if (maxAmount <= 0 || amount <= 0)
+        if (Judge.maxAmount <= 0 || amount <= 0)
             return;
         currentAmount += amount;
         var appliedMultiplier = Mathf.Approximately(multiplier, 1) ? multiplier : playerHitMultiplier;
-        var percentage = (float)currentAmount / maxAmount;
+        var percentage = (float)currentAmount / Judge.maxAmount;
         percentage *= appliedMultiplier;
         state = Mathf.Clamp01(1f - percentage);
 

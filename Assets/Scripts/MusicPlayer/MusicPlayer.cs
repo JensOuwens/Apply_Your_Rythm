@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -22,7 +23,11 @@ public class MusicPlayer : MonoBehaviour
 
     private void OnValidate() => audioSource = GetComponent<AudioSource>();
 
-    private void Start() => PlaySong(0);
+    private void Start()
+    {
+        PlaySong(0);
+        StartCoroutine(InvokeEndSong());
+    }
 
     public void PlaySong(int songId)
     {
@@ -42,9 +47,9 @@ public class MusicPlayer : MonoBehaviour
         return currentSongPositionInMS;
     }
 
-    private void Update()
+    private IEnumerator InvokeEndSong()
     {
-        if (audioSource.time >= songLengthUsedForEnd)
-            onSongEnd.Invoke();
+        yield return new WaitForSeconds(songLengthUsedForEnd);
+        onSongEnd.Invoke();
     }
 }

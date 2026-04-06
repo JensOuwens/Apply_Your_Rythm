@@ -34,6 +34,7 @@ public class Judge : MonoBehaviour
     public static int correctInputsWater = 0;
     public static int correctInputsCo2 = 0;
     public static int incorrectInputs = 0;
+    public static int maxAmount;
 
     private Dictionary<int, BeatData> activeHolds = new();
 
@@ -44,10 +45,19 @@ public class Judge : MonoBehaviour
         incorrectInputs = 0;
     }
 
-    private void OnEnable() => ComposerCreator.ComposerSubscribed += SubscribeComposer;
+    private void OnEnable()
+    {
+        maxAmount = 0;
+        ComposerCreator.ComposerSubscribed += SubscribeComposer;
+    }
+
     private void OnDisable() => ComposerCreator.ComposerSubscribed -= SubscribeComposer;
 
-    public void SubscribeComposer(Composer composer) => composers.Add(composer);
+    public void SubscribeComposer(Composer composer)
+    {
+        maxAmount += composer.GetCount();
+        composers.Add(composer);
+    }
 
     public void CheckInput(float songPosMs, int playerId, bool pressed)
     {
