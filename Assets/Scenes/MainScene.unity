@@ -5269,7 +5269,7 @@ MonoBehaviour:
   songId: 0
   songList: {fileID: 11400000, guid: ecf47c244c55f8c4ea02d16492bb375c, type: 2}
   audioSource: {fileID: 77862650}
-  songLengthUsedForEnd: 60
+  songLengthUsedForEnd: 155
   onSongEnd:
     m_PersistentCalls:
       m_Calls:
@@ -20814,6 +20814,7 @@ MonoBehaviour:
     - {fileID: 662082375}
     - {fileID: 1166060740}
     - {fileID: 1099120658}
+    lights: []
   - threshold: 0.2
     nextThreshold: 0.4
     background: {fileID: 261843072}
@@ -20822,6 +20823,13 @@ MonoBehaviour:
     - {fileID: 570954649}
     - {fileID: 1549474704}
     - {fileID: 1993876881}
+    lights:
+    - light: {fileID: 953736896}
+      initialIntensity: 1
+    - light: {fileID: 1356722279}
+      initialIntensity: 1
+    - light: {fileID: 2116181489}
+      initialIntensity: 1
   - threshold: 0.4
     nextThreshold: 0.6
     background: {fileID: 1242336175}
@@ -20832,6 +20840,13 @@ MonoBehaviour:
     - {fileID: 576450489}
     - {fileID: 1168792627}
     - {fileID: 106110179}
+    lights:
+    - light: {fileID: 1014059206}
+      initialIntensity: 1
+    - light: {fileID: 805340343}
+      initialIntensity: 1
+    - light: {fileID: 839376736}
+      initialIntensity: 1
   - threshold: 0.6
     nextThreshold: 0.8
     background: {fileID: 2078495825}
@@ -20845,6 +20860,17 @@ MonoBehaviour:
     - {fileID: 1527698220}
     - {fileID: 927297596}
     - {fileID: 2027848383}
+    lights:
+    - light: {fileID: 2005227879}
+      initialIntensity: 1
+    - light: {fileID: 661058816}
+      initialIntensity: 1
+    - light: {fileID: 1179029847}
+      initialIntensity: 1
+    - light: {fileID: 1811714202}
+      initialIntensity: 1
+    - light: {fileID: 2007298799}
+      initialIntensity: 1
   - threshold: 0.8
     nextThreshold: 1
     background: {fileID: 1390085418}
@@ -20858,14 +20884,25 @@ MonoBehaviour:
     - {fileID: 1551044599}
     - {fileID: 1601462085}
     - {fileID: 1523086697}
+    lights:
+    - light: {fileID: 1073666903}
+      initialIntensity: 1
+    - light: {fileID: 503679108}
+      initialIntensity: 1
+    - light: {fileID: 1042235938}
+      initialIntensity: 1
+    - light: {fileID: 2102555866}
+      initialIntensity: 1
+    - light: {fileID: 1984619039}
+      initialIntensity: 1
   buckets:
-  - {fileID: 1012537314}
-  - {fileID: 1740054350}
-  - {fileID: 1046053002}
-  - {fileID: 2738742881734718413}
   - {fileID: 1798084117}
   - {fileID: 1215653392}
+  - {fileID: 2738742881734718413}
   - {fileID: 1851508278}
+  - {fileID: 1740054350}
+  - {fileID: 1046053002}
+  - {fileID: 1012537314}
   - {fileID: 1475156453}
 --- !u!1 &429248771
 GameObject:
@@ -21019,6 +21056,40 @@ MonoBehaviour:
       atime7: 0
       m_Mode: 0
       m_ColorSpace: 0
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+  - type: 1
+    attribute: 1
+    prefab: {fileID: 3405389222467856930, guid: c7350666f64687c4ba7e0db9d264bbd9, type: 3}
+    holdLineMaterial: {fileID: 2100000, guid: 59a4d6a153eeb954d94ff9b5045395f9, type: 2}
+    holdLineColor:
+      serializedVersion: 2
+      key0: {r: 0.5388595, g: 0.3647059, b: 0.6627451, a: 1}
+      key1: {r: 0.85904616, g: 0.72156864, b: 0.8901961, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: -1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
   positions:
@@ -26407,6 +26478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c3ac97f77b4f1647a7b7ad078b5f9cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  judge: {fileID: 1959487384}
   cam: {fileID: 519420031}
   zoomCurve:
     serializedVersion: 2
@@ -46573,7 +46645,7 @@ MonoBehaviour:
     AudioClip: {fileID: 8300000, guid: 9c78027cb34f38643afb9e7ddd9adb64, type: 3}
   SoundEffectsHold:
   - id: 0
-    AudioClip: {fileID: 8300000, guid: 620df935250a881429a9a64617fabc45, type: 3}
+    AudioClip: {fileID: 8300000, guid: 5a1f7b6dcfbb3af43a05263cfa03d912, type: 3}
   metronome: {fileID: 1741322473}
 --- !u!1 &745405152
 GameObject:
@@ -123567,6 +123639,40 @@ MonoBehaviour:
       m_ColorSpace: 0
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
+  - type: 1
+    attribute: 1
+    prefab: {fileID: 3405389222467856930, guid: c7350666f64687c4ba7e0db9d264bbd9, type: 3}
+    holdLineMaterial: {fileID: 2100000, guid: 59a4d6a153eeb954d94ff9b5045395f9, type: 2}
+    holdLineColor:
+      serializedVersion: 2
+      key0: {r: 0.5388595, g: 0.3647059, b: 0.6627451, a: 1}
+      key1: {r: 0.85904616, g: 0.72156864, b: 0.8901961, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: -1
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
   positions:
   - {fileID: 153311976}
   - {fileID: 878065515}
@@ -128855,7 +128961,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eec5a0132937ff48b89149fea5cbbfa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  compositionList: {fileID: 11400000, guid: f1304eaa67879b249b08f644968855df, type: 2}
+  compositionList: {fileID: 11400000, guid: 526ca19dbd54dd24fa5eea367d3b008f, type: 2}
   judge: {fileID: 1959487384}
 --- !u!1 &1979995953
 GameObject:
@@ -134147,6 +134253,40 @@ MonoBehaviour:
       atime7: 0
       m_Mode: 0
       m_ColorSpace: 0
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+  - type: 1
+    attribute: 1
+    prefab: {fileID: 3405389222467856930, guid: c7350666f64687c4ba7e0db9d264bbd9, type: 3}
+    holdLineMaterial: {fileID: 2100000, guid: 59a4d6a153eeb954d94ff9b5045395f9, type: 2}
+    holdLineColor:
+      serializedVersion: 2
+      key0: {r: 0.5388595, g: 0.3647059, b: 0.6627451, a: 1}
+      key1: {r: 0.85904616, g: 0.72156864, b: 0.8901961, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: -1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
   positions:
@@ -143979,6 +144119,40 @@ MonoBehaviour:
       atime7: 0
       m_Mode: 0
       m_ColorSpace: 0
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+  - type: 1
+    attribute: 1
+    prefab: {fileID: 3405389222467856930, guid: c7350666f64687c4ba7e0db9d264bbd9, type: 3}
+    holdLineMaterial: {fileID: 2100000, guid: 59a4d6a153eeb954d94ff9b5045395f9, type: 2}
+    holdLineColor:
+      serializedVersion: 2
+      key0: {r: 0.5388595, g: 0.3647059, b: 0.6627451, a: 1}
+      key1: {r: 0.85904616, g: 0.72156864, b: 0.8901961, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: -1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
   positions:
