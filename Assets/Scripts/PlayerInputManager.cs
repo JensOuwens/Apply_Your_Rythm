@@ -27,9 +27,32 @@ public class PlayerInputManager : MonoBehaviour
     public UnityEvent<int> onPlayerReleased = new();
     [SerializeField, Space]
     private int playerCount = 0;
+    public int PlayerCount { get => playerCount; private set => playerCount = value; }
     
-    private List<InputDevice> registeredInputDevices = new();
+    private List<PlayerRegistration> registeredPlayers = new();
     private bool[] shouldWaitForRelease;
+
+    private class PlayerRegistration
+    {
+        private readonly int deviceId;
+        private readonly string controlPath;
+
+        public PlayerRegistration(int deviceId, string controlPath)
+        {
+            this.deviceId = deviceId;
+            this.controlPath = controlPath;
+        }
+        
+        public override bool Equals(object other) =>
+            other is PlayerRegistration r &&
+            deviceId == r.deviceId &&
+            controlPath == r.controlPath;
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine(deviceId, controlPath);
+        }
+    }
 
     private void OnValidate()
     {
@@ -43,6 +66,9 @@ public class PlayerInputManager : MonoBehaviour
         playerHitBeatAction.Enable();
         playerHitBeatAction.performed += OnPlayerPressed;
         shouldWaitForRelease = new bool[playerCount];
+
+        var neededPlayers = playerHitBeatAction.controls.Select(inputControl => new PlayerRegistration(inputControl.device.deviceId, inputControl.name)).ToArray();
+        for (var i = 0; i < playerCount; i++) CheckRegistrationDevice(neededPlayers[i]);
     }
 
     private void Update() => CheckReleasedAction();
@@ -52,18 +78,22 @@ public class PlayerInputManager : MonoBehaviour
         if (!playerHitBeatAction.WasReleasedThisFrame()) return;
         foreach (var inputControl in playerHitBeatAction.controls)
         {
-            var id = GetDeviceId(inputControl.device);
-            if (shouldWaitForRelease[id] && !inputControl.IsPressed())
-                OnPlayerReleased(id);
+            var possiblePlayer = new PlayerRegistration(inputControl.device.deviceId, inputControl.name);
+            var playerId = GetPlayerId(possiblePlayer);
+            if (playerId < 0 || playerId >= registeredPlayers.Count)
+                continue;
+            if (shouldWaitForRelease[playerId] && !inputControl.IsPressed())
+                OnPlayerReleased(playerId);
         }
     }
 
     private void OnPlayerPressed(InputAction.CallbackContext obj)
     {
-        CheckRegistrationDevice(obj.control.device);
-        var id = GetDeviceId(obj.control.device);
-        onPlayerPressed.Invoke(id);
-        shouldWaitForRelease[id] = true;
+        var player = new PlayerRegistration(obj.control.device.deviceId, obj.control.name);
+        CheckRegistrationDevice(player);
+        var playerId = GetPlayerId(player);
+        onPlayerPressed.Invoke(playerId);
+        shouldWaitForRelease[playerId] = true;
     }
 
     private void OnPlayerReleased(int id)
@@ -72,11 +102,11 @@ public class PlayerInputManager : MonoBehaviour
         shouldWaitForRelease[id] = false;
     }
 
-    private void CheckRegistrationDevice(InputDevice controlDevice)
+    private void CheckRegistrationDevice(PlayerRegistration player)
     {
-        if (!registeredInputDevices.Contains(controlDevice))
-            registeredInputDevices.Add(controlDevice);
+        if (!registeredPlayers.Contains(player))
+            registeredPlayers.Add(player);
     }
     
-    private int GetDeviceId(InputDevice device) => registeredInputDevices.FindIndex(x => x.deviceId == device.deviceId);
+    private int GetPlayerId(PlayerRegistration player) => registeredPlayers.FindIndex(x => Equals(x, player));
 }

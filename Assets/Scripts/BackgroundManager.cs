@@ -7,6 +7,9 @@ using UnityEngine.Rendering.Universal;
 public class BackgroundManager : MonoBehaviour
 {
     [SerializeField]
+    private PlayerInputManager playerInputManager;
+    [SerializeField]
+    private float[] playerHitMultipliers;
     private float playerHitMultiplier; // TODO change this depending on player count, 1 player is 4, 4 players is 1, 3 players is 2
     [SerializeField]
     private float autoIncrement = 0.5f;
@@ -107,6 +110,7 @@ public class BackgroundManager : MonoBehaviour
 
     private void OnValidate()
     {
+        playerInputManager = FindFirstObjectByType<PlayerInputManager>();
         buckets = FindObjectsByType<Bucket>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         metronome = FindFirstObjectByType<Metronome>();
         foreach (var background in backgrounds) background.OnValidate();
@@ -129,6 +133,8 @@ public class BackgroundManager : MonoBehaviour
         foreach (var bucket in buckets)
             bucket.OnEmptyBucket += OnEmptyBucket;
         metronome.OnBeat.AddListener(OnBeat);
+
+        playerHitMultiplier = playerHitMultipliers[playerInputManager.PlayerCount - 1];
     }
 
     private void OnDisable()
@@ -144,10 +150,9 @@ public class BackgroundManager : MonoBehaviour
     {
         if (Judge.maxAmount <= 0 || amount <= 0)
             return;
-        currentAmount += amount;
         var appliedMultiplier = Mathf.Approximately(multiplier, 1) ? multiplier : playerHitMultiplier;
+        currentAmount += amount * appliedMultiplier;
         var percentage = (float)currentAmount / Judge.maxAmount;
-        percentage *= appliedMultiplier;
         state = Mathf.Clamp01(1f - percentage);
 
         if (state <= 0)

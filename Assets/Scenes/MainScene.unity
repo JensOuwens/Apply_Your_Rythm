@@ -15523,7 +15523,7 @@ MonoBehaviour:
     m_Asset: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
     m_Actions:
     - m_Name: HitBeat
-      m_Type: 1
+      m_Type: 2
       m_ExpectedControlType: 
       m_Id: 1b434086-5465-4e5a-9752-8f6283d4556e
       m_Processors: 
@@ -15532,16 +15532,32 @@ MonoBehaviour:
       m_Flags: 0
     m_Bindings:
     - m_Name: 
-      m_Id: bb964627-afb4-43c8-b707-c656f3760e1c
-      m_Path: <Gamepad>/buttonSouth
+      m_Id: d2cf46a5-4f5d-4702-a214-93f7f77f7977
+      m_Path: <Keyboard>/a
       m_Interactions: 
       m_Processors: 
-      m_Groups: ;Gamepad
+      m_Groups: ;Keyboard&Mouse
       m_Action: HitBeat
       m_Flags: 0
     - m_Name: 
-      m_Id: d008b23f-fa18-452a-bab3-abc3b5b6d868
-      m_Path: <Keyboard>/space
+      m_Id: c600585f-c80f-4a2b-88a1-6fcd589fa09a
+      m_Path: <Keyboard>/f
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: ;Keyboard&Mouse
+      m_Action: HitBeat
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 01c03d2e-2759-4968-a9e9-3ac23c5abd7b
+      m_Path: <Keyboard>/j
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: ;Keyboard&Mouse
+      m_Action: HitBeat
+      m_Flags: 0
+    - m_Name: 
+      m_Id: bca8390d-6a2e-4fe1-a121-6c859cb8e52e
+      m_Path: <Keyboard>/semicolon
       m_Interactions: 
       m_Processors: 
       m_Groups: ;Keyboard&Mouse
@@ -15553,7 +15569,7 @@ MonoBehaviour:
   onPlayerReleased:
     m_PersistentCalls:
       m_Calls: []
-  playerCount: 1
+  playerCount: 4
 --- !u!4 &182072263
 Transform:
   m_ObjectHideFlags: 0
@@ -20802,7 +20818,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de94f79f646412f4b85f903fe8332b4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  playerHitMultiplier: 4
+  playerInputManager: {fileID: 182072262}
+  playerHitMultipliers:
+  - 4
+  - 3
+  - 2
+  - 1
   autoIncrement: 0.5
   backgrounds:
   - threshold: 0
@@ -20896,14 +20917,14 @@ MonoBehaviour:
     - light: {fileID: 1984619039}
       initialIntensity: 1
   buckets:
-  - {fileID: 1851508278}
-  - {fileID: 1215653392}
   - {fileID: 1046053002}
-  - {fileID: 1740054350}
+  - {fileID: 2738742881734718413}
   - {fileID: 1798084117}
   - {fileID: 1012537314}
+  - {fileID: 1740054350}
   - {fileID: 1475156453}
-  - {fileID: 2738742881734718413}
+  - {fileID: 1851508278}
+  - {fileID: 1215653392}
 --- !u!1 &429248771
 GameObject:
   m_ObjectHideFlags: 0

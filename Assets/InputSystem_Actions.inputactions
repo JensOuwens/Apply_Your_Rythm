@@ -8,7 +8,7 @@
             "actions": [
                 {
                     "name": "HitBeat",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "1b434086-5465-4e5a-9752-8f6283d4556e",
                     "expectedControlType": "",
                     "processors": "",
@@ -19,19 +19,41 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "bb964627-afb4-43c8-b707-c656f3760e1c",
-                    "path": "<Gamepad>/buttonSouth",
+                    "id": "d2cf46a5-4f5d-4702-a214-93f7f77f7977",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Gamepad",
+                    "groups": ";Keyboard&Mouse",
                     "action": "HitBeat",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "d008b23f-fa18-452a-bab3-abc3b5b6d868",
-                    "path": "<Keyboard>/space",
+                    "id": "c600585f-c80f-4a2b-88a1-6fcd589fa09a",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "HitBeat",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "01c03d2e-2759-4968-a9e9-3ac23c5abd7b",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "HitBeat",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bca8390d-6a2e-4fe1-a121-6c859cb8e52e",
+                    "path": "<Keyboard>/semicolon",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
