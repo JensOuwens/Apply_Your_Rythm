@@ -92,14 +92,18 @@ public class PlayerInputManager : MonoBehaviour
         var player = new PlayerRegistration(obj.control.device.deviceId, obj.control.name);
         CheckRegistrationDevice(player);
         var playerId = GetPlayerId(player);
+        if (playerId < 0 || playerId >= registeredPlayers.Count)
+            return;
         onPlayerPressed.Invoke(playerId);
         shouldWaitForRelease[playerId] = true;
     }
 
-    private void OnPlayerReleased(int id)
+    private void OnPlayerReleased(int playerId)
     {
-        onPlayerReleased.Invoke(id);
-        shouldWaitForRelease[id] = false;
+        if (playerId < 0 || playerId >= registeredPlayers.Count)
+            return;
+        onPlayerReleased.Invoke(playerId);
+        shouldWaitForRelease[playerId] = false;
     }
 
     private void CheckRegistrationDevice(PlayerRegistration player)
