@@ -1,0 +1,323 @@
+fileFormatVersion: 2
+guid: 977fb5e0cf98b8f418b9fa19279fd5bc
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8735122250054162665
+    second: RedSpriteSheet_0
+  - first:
+      213: 3930630809545582623
+    second: RedSpriteSheet_1
+  - first:
+      213: 1755914440924353342
+    second: RedSpriteSheet_2
+  - first:
+      213: 1067050610656874921
+    second: RedSpriteSheet_3
+  - first:
+      213: -1517014687223479262
+    second: RedSpriteSheet_4
+  - first:
+      213: -5418743519169157107
+    second: RedSpriteSheet_5
+  - first:
+      213: 2425355775674783375
+    second: RedSpriteSheet_6
+  - first:
+      213: -5343963708317903090
+    second: RedSpriteSheet_7
+  - first:
+      213: 4797342731756962076
+    second: RedSpriteSheet_8
+  - first:
+      213: 8628208224390718196
+    second: RedSpriteSheet_9
+  - first:
+      213: -6990494243177305732
+    second: RedSpriteSheet_10
+  - first:
+      213: -5183989072373640063
+    second: RedSpriteSheet_11
+  - first:
+      213: 5588940839005172028
+    second: RedSpriteSheet_12
+  - first:
+      213: -509883086242637191
+    second: RedSpriteSheet_13
+  - first:
+      213: -3920301765209386823
+    second: RedSpriteSheet_14
+  - first:
+      213: 452997593727831684
+    second: RedSpriteSheet_15
+  - first:
+      213: -8577623282696751570
+    second: RedSpriteSheet_16
+  - first:
+      213: -6323291299836673998
+    second: RedSpriteSheet_17
+  - first:
+      213: 7116845335417905602
+    second: RedSpriteSheet_18
+  - first:
+      213: 7769825653122942799
+    second: RedSpriteSheet_19
+  - first:
+      213: -3675571365587692176
+    second: RedSpriteSheet_20
+  - first:
+      213: 4521755599009624142
+    second: RedSpriteSheet_21
+  - first:
+      213: -3046104867683080534
+    second: RedSpriteSheet_22
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 1400
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: RedSpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 2405
+        width: 1597
+        height: 1330
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e33564b71e24e5810800000000000000
+      internalID: 1755914440924353342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RedSpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 2323
+        y: 2405
+        width: 1598
+        height: 1330
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d08e8f2aa71ccc4b0800000000000000
+      internalID: -5418743519169157107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RedSpriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 355
+        width: 1598
+        height: 1331
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 97a1787d8088ce8f0800000000000000
+      internalID: -509883086242637191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: RedSpriteSheet_17
+      rect:
+        serializedVersion: 2
+        x: 2323
+        y: 355
+        width: 1598
+        height: 1331
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 230cae5a0182f38a0800000000000000
+      internalID: -6323291299836673998
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: d4b728718a7c8c04db2723240a3878bd
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      RedSpriteSheet_0: 8735122250054162665
+      RedSpriteSheet_1: 3930630809545582623
+      RedSpriteSheet_10: -6990494243177305732
+      RedSpriteSheet_11: -5183989072373640063
+      RedSpriteSheet_12: 5588940839005172028
+      RedSpriteSheet_13: -509883086242637191
+      RedSpriteSheet_14: -3920301765209386823
+      RedSpriteSheet_15: 452997593727831684
+      RedSpriteSheet_16: -8577623282696751570
+      RedSpriteSheet_17: -6323291299836673998
+      RedSpriteSheet_18: 7116845335417905602
+      RedSpriteSheet_19: 7769825653122942799
+      RedSpriteSheet_2: 1755914440924353342
+      RedSpriteSheet_20: -3675571365587692176
+      RedSpriteSheet_21: 4521755599009624142
+      RedSpriteSheet_22: -3046104867683080534
+      RedSpriteSheet_3: 1067050610656874921
+      RedSpriteSheet_4: -1517014687223479262
+      RedSpriteSheet_5: -5418743519169157107
+      RedSpriteSheet_6: 2425355775674783375
+      RedSpriteSheet_7: -5343963708317903090
+      RedSpriteSheet_8: 4797342731756962076
+      RedSpriteSheet_9: 8628208224390718196
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

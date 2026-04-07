@@ -137,7 +137,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -749024654251515319, guid: bb91c5b441a90cf40b838559d92dbed3, type: 3}
+  m_Sprite: {fileID: 3720597489193549950, guid: d4c1f4110a350ae46b9cd8c79a0b374e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -159,9 +159,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19dda3b509e304a40b0621247743e545, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GooberCatchAnim
-  originalSprite: {fileID: -749024654251515319, guid: bb91c5b441a90cf40b838559d92dbed3, type: 3}
-  catchSprite: {fileID: -1025294881627752460, guid: bb91c5b441a90cf40b838559d92dbed3, type: 3}
+  originalSprite: {fileID: 3720597489193549950, guid: d4c1f4110a350ae46b9cd8c79a0b374e, type: 3}
+  catchSprite: {fileID: -3036725280192997629, guid: d4c1f4110a350ae46b9cd8c79a0b374e, type: 3}
   spriteRenderer: {fileID: 3029183715732786499}
-  animator: {fileID: 8685563640430310012}
   idleAnim: {fileID: 7400000, guid: 1653b1295c1827e47897889a02340b1f, type: 2}
   jumpAnim: {fileID: 7400000, guid: 7a4b54afa149d914cad61abbbe6b6b9a, type: 2}
+  animator: {fileID: 8685563640430310012}
