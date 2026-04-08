@@ -20776,11 +20776,11 @@ MonoBehaviour:
     - light: {fileID: 1984619039}
       initialIntensity: 1
   buckets:
+  - {fileID: 1475156453}
+  - {fileID: 1215653392}
+  - {fileID: 2738742881734718413}
   - {fileID: 1608330921}
   - {fileID: 1740054350}
-  - {fileID: 1215653392}
-  - {fileID: 1475156453}
-  - {fileID: 2738742881734718413}
   - {fileID: 1798084117}
 --- !u!1 &429248771
 GameObject:
@@ -51388,6 +51388,10 @@ PrefabInstance:
     - target: {fileID: 90139825592177333, guid: 01b4cc60c458d9940b3546e3d36a39da, type: 3}
       propertyPath: m_Name
       value: Organism (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1877442983286012509, guid: 01b4cc60c458d9940b3546e3d36a39da, type: 3}
+      propertyPath: blinkChance
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1877442983286012509, guid: 01b4cc60c458d9940b3546e3d36a39da, type: 3}
       propertyPath: catchSprite
@@ -82525,6 +82529,10 @@ PrefabInstance:
       value: Organism (4)
       objectReference: {fileID: 0}
     - target: {fileID: 1877442983286012509, guid: 01b4cc60c458d9940b3546e3d36a39da, type: 3}
+      propertyPath: blinkChance
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1877442983286012509, guid: 01b4cc60c458d9940b3546e3d36a39da, type: 3}
       propertyPath: catchSprite
       value: 
       objectReference: {fileID: -201262782921583390, guid: 03db0825c04f9ce49b7b357fea053c80, type: 3}
@@ -92377,6 +92385,10 @@ PrefabInstance:
     - target: {fileID: 90139825592177333, guid: 01b4cc60c458d9940b3546e3d36a39da, type: 3}
       propertyPath: m_Name
       value: Organism (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1877442983286012509, guid: 01b4cc60c458d9940b3546e3d36a39da, type: 3}
+      propertyPath: blinkChance
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1877442983286012509, guid: 01b4cc60c458d9940b3546e3d36a39da, type: 3}
       propertyPath: catchSprite
@@ -144869,6 +144881,10 @@ PrefabInstance:
     - target: {fileID: 90139825592177333, guid: 01b4cc60c458d9940b3546e3d36a39da, type: 3}
       propertyPath: m_Name
       value: Organism (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1877442983286012509, guid: 01b4cc60c458d9940b3546e3d36a39da, type: 3}
+      propertyPath: blinkChance
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1877442983286012509, guid: 01b4cc60c458d9940b3546e3d36a39da, type: 3}
       propertyPath: catchSprite
