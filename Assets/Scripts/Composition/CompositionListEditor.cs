@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
+#if UNITY_EDITOR
+using UnityEditor;
 /// <summary>
 /// An editor class that only exists inside Unity's editor, used for visualizing the compositionList
 /// </summary>
@@ -87,3 +88,4 @@ public class CompositionListEditor : Editor
         }
     }
 }
+#endif
