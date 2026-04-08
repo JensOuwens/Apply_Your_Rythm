@@ -39,7 +39,7 @@ public class ParticleManager : MonoBehaviour
 
     public void SpawnHoldParticle(int position, float beatLength, BeatAttribute attribute)
     {
-        GameObject currentParticle = new GameObject();
+        GameObject currentParticle = null;
         switch (attribute)
         {
             case BeatAttribute.Co2:
