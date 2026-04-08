@@ -153,6 +153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Bucket
   animateAlongSpline: {fileID: 3816109654976220206}
   spriteRenderer: {fileID: 6833575179535485211}
+  animator: {fileID: 6256689148889708208}
 --- !u!1 &5027119533187392702
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,12 +236,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7578331518214074657, guid: 567833014ebc8d640a9cd23b9ae26d92, type: 3}
+  m_Sprite: {fileID: 21300000, guid: eb5e8ae2090722f4da499e597a191b90, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 6.25, y: 7.15}
+  m_Size: {x: 20.48, y: 20.48}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1

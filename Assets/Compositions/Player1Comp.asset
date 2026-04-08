@@ -294,4 +294,4 @@ MonoBehaviour:
     beatEnd: 307
     type: 1
     attribute: 0
-  showVisual: 0
+  showVisual: 1
