@@ -2,8 +2,21 @@ using UnityEngine;
 
 public class DestroyOnDone : MonoBehaviour
 {
-    void OnParticleSystemStopped()
+    private ParticleSystem[] systems;
+    
+    void Awake()
     {
+        systems = GetComponentsInChildren<ParticleSystem>();
+    }
+    
+    void Update()
+    {
+        foreach (var ps in systems)
+        {
+            if (ps.IsAlive(true))
+                return;
+        }
+
         Destroy(gameObject);
     }
 }
