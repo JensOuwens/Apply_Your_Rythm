@@ -152,7 +152,7 @@ public class Judge : MonoBehaviour
             if (bestBeat.attribute == BeatAttribute.Water) correctInputsWater++;
             else if (bestBeat.attribute == BeatAttribute.Co2) correctInputsCo2++;
             organismManager.TriggerAnim(playerId, timeToNextBeat / 1000f);
-            beatParticleManager.SpawnRandomParticleIDPos(playerId);
+            beatParticleManager.SpawnTapParticle(playerId, bestBeat.attribute);
             soundEffectManager.PlayRandomSoundEffect(playerId, bestBeat.attribute);
             screenPulse.HitPulse(delay, timingDiff);
         }
@@ -165,7 +165,7 @@ public class Judge : MonoBehaviour
                         StartCoroutine(InvokePointAdditionHoldBeat(holdDurationSec, playerId, bestBeat.attribute, bestBeat.beatEnd - bestBeat.beatStart))))) return;
 
             organismManager.TriggerAnimHold(playerId, bestBeat, holdDurationSec);
-            beatParticleManager.SpawnRandomParticleIDPosHold(playerId, bestBeat, holdDurationSec);
+            beatParticleManager.SpawnHoldParticle(playerId, holdDurationSec, bestBeat.attribute);
             soundEffectManager.PlaySoundEffectWithIndexHold(0, bestBeat, playerId, holdDurationSec);
             screenPulse.HoldPulse(holdDurationSec, delay, timingDiff);
         }

@@ -3,65 +3,66 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public struct ParticleSystemItem
-{
-    public uint id;
-    public ParticleSystem particleSystem;
-}
 
 public class ParticleManager : MonoBehaviour
 {
-    [SerializeField]
-    private List<ParticleSystemItem> particleSystems;
-    [SerializeField]
-    private List<ParticleSystemItem> holdParticleSystems;
+    [SerializeField] private GameObject carbonTapParticle;
+    [SerializeField] private GameObject waterTapParticle;
+    [SerializeField] private GameObject carbonHoldParticle;
+    [SerializeField] private GameObject waterHoldParticle;
     
     [SerializeField]
     private List<Vector2> spawnPositions;
+    
+    [SerializeField]
+    private List<ParticleSystem> particleSystems;
     
     [SerializeField] 
     private Metronome metronome;
 
     private Dictionary<int, Coroutine> activeHoldParticles = new();
 
-    public void SpawnRandomParticleIDPos(int position)
+    public void SpawnTapParticle(int position, BeatAttribute attribute)
     {
-        int listIndex = Random.Range(0, particleSystems.Count);
-        Instantiate(particleSystems[listIndex].particleSystem, spawnPositions[position], Quaternion.identity);
+        GameObject currentParticle = new GameObject();
+        switch (attribute)
+        {
+            case BeatAttribute.Co2:
+                currentParticle = carbonTapParticle;
+                break;
+            case BeatAttribute.Water:
+                currentParticle = waterTapParticle;
+                break;
+        }
+        Instantiate(currentParticle, spawnPositions[position], Quaternion.identity);
     }
 
-    public void SpawnParticleWithIndexIDPos(int position, int index)
+    public void SpawnHoldParticle(int position, float beatLength, BeatAttribute attribute)
     {
-        Instantiate(particleSystems[index].particleSystem, spawnPositions[position], Quaternion.identity);
-    }
-
-    public void SpawnRandomParticleIDPosHold(int position, BeatData beatData, float beatLength)
-    {
-        int listIndex = Random.Range(0, holdParticleSystems.Count);
+        GameObject currentParticle = new GameObject();
+        switch (attribute)
+        {
+            case BeatAttribute.Co2:
+                currentParticle = carbonTapParticle;
+                break;
+            case BeatAttribute.Water:
+                currentParticle = waterTapParticle;
+                break;
+        }
 
         if (activeHoldParticles.TryGetValue(position, out var existing))
             StopCoroutine(existing);
 
-        activeHoldParticles[position] = StartCoroutine(SpawnParticleForTimeFrame(position, listIndex, beatLength));
+        activeHoldParticles[position] = StartCoroutine(SpawnParticleForTimeFrame(position, beatLength, attribute, currentParticle));
     }
 
-    public void SpawnParticleWithIndexIDPosHold(int position, int index, BeatData beatData)
-    {
-        float beatLength = (beatData.beatEnd - beatData.beatStart + 1) * metronome.beatDurationInMS / 1000f;
-
-        if (activeHoldParticles.TryGetValue(position, out var existing))
-            StopCoroutine(existing);
-
-        activeHoldParticles[position] = StartCoroutine(SpawnParticleForTimeFrame(position, index, beatLength));
-    }
-
-    private IEnumerator SpawnParticleForTimeFrame(int position, int index, float beatLength)
+    private IEnumerator SpawnParticleForTimeFrame(int position, float beatLength, BeatAttribute attribute, GameObject currentParticle)
     {
         float endtime = Time.time + beatLength;
 
         while (Time.time < endtime)
         {
-            Instantiate(holdParticleSystems[index].particleSystem, spawnPositions[position], Quaternion.identity);   
+            Instantiate(currentParticle, spawnPositions[position], Quaternion.identity);   
             yield return new WaitForSeconds(0.2f);
         }
     }
@@ -73,5 +74,10 @@ public class ParticleManager : MonoBehaviour
             StopCoroutine(coroutine);
             activeHoldParticles.Remove(position);
         }
+    }
+
+    public void SpawnParticleWithIndexIDPos(int position, int index)
+    {
+        Instantiate(particleSystems[index].GetComponent<ParticleSystem>(), spawnPositions[position], Quaternion.identity);
     }
 }

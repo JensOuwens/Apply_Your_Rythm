@@ -5344,19 +5344,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d63b39439ac27f4f9dd2adc5608754c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParticleManager
-  particleSystems:
-  - id: 0
-    particleSystem: {fileID: 7400366457010098375, guid: 05dcd86ca73c67e48aab50298d1d4742, type: 3}
-  - id: 1
-    particleSystem: {fileID: 7400366457010098375, guid: 58e295a4741b96244a7cbe72ebb335c5, type: 3}
-  holdParticleSystems:
-  - id: 0
-    particleSystem: {fileID: 757784602335229234, guid: 925450bc1d1cc9548acf165ba2204c9f, type: 3}
+  carbonTapParticle: {fileID: 0}
+  waterTapParticle: {fileID: 0}
+  carbonHoldParticle: {fileID: 0}
+  waterHoldParticle: {fileID: 0}
   spawnPositions:
   - {x: -3.61, y: -2.45}
   - {x: -1.2, y: -2.45}
   - {x: 1.2, y: -2.45}
   - {x: 3.61, y: -2.45}
+  particleSystems:
+  - {fileID: 0}
+  - {fileID: 0}
   metronome: {fileID: 1741322473}
 --- !u!1 &106082428
 GameObject:
@@ -20776,12 +20775,12 @@ MonoBehaviour:
     - light: {fileID: 1984619039}
       initialIntensity: 1
   buckets:
-  - {fileID: 1215653392}
-  - {fileID: 1475156453}
   - {fileID: 2738742881734718413}
+  - {fileID: 1475156453}
   - {fileID: 1740054350}
-  - {fileID: 1798084117}
   - {fileID: 1608330921}
+  - {fileID: 1215653392}
+  - {fileID: 1798084117}
 --- !u!1 &429248771
 GameObject:
   m_ObjectHideFlags: 0
@@ -20908,15 +20907,15 @@ MonoBehaviour:
     holdLineMaterial: {fileID: 2100000, guid: 59a4d6a153eeb954d94ff9b5045395f9, type: 2}
     holdLineColor:
       serializedVersion: 2
-      key0: {r: 0.3647059, g: 0.56078434, b: 0.6627451, a: 1}
-      key1: {r: 0.72156864, g: 0.8862746, b: 0.89019614, a: 1}
+      key0: {r: 0.14901961, g: 0.34509805, b: 0.3372549, a: 1}
+      key1: {r: 0.32156864, g: 0.62352943, b: 0.62352943, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 25443
+      ctime0: 0
       ctime1: 65535
       ctime2: 0
       ctime3: 0
@@ -20933,7 +20932,7 @@ MonoBehaviour:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: 0
+      m_ColorSpace: -1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
   - type: 1
@@ -20943,7 +20942,7 @@ MonoBehaviour:
     holdLineColor:
       serializedVersion: 2
       key0: {r: 0.5388595, g: 0.3647059, b: 0.6627451, a: 1}
-      key1: {r: 0.85904616, g: 0.72156864, b: 0.8901961, a: 1}
+      key1: {r: 0.5254902, g: 0.5568628, b: 0.6666667, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -46466,17 +46465,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d63b39439ac27f4f9dd2adc5608754c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ParticleManager
-  particleSystems:
-  - id: 0
-    particleSystem: {fileID: 757784602335229234, guid: 925450bc1d1cc9548acf165ba2204c9f, type: 3}
-  holdParticleSystems:
-  - id: 0
-    particleSystem: {fileID: 757784602335229234, guid: 925450bc1d1cc9548acf165ba2204c9f, type: 3}
+  carbonTapParticle: {fileID: 1823155169343961585, guid: 98107c4d46ec13849a1a19c2cb6237c4, type: 3}
+  waterTapParticle: {fileID: 6044366822757301807, guid: ca0eb0936a71bb7449266f3329e68206, type: 3}
+  carbonHoldParticle: {fileID: 1823155169343961585, guid: 98107c4d46ec13849a1a19c2cb6237c4, type: 3}
+  waterHoldParticle: {fileID: 6044366822757301807, guid: ca0eb0936a71bb7449266f3329e68206, type: 3}
   spawnPositions:
   - {x: -3.61, y: 0}
   - {x: -1.2, y: 0}
   - {x: 1.2, y: 0}
   - {x: 3.61, y: 0}
+  particleSystems:
+  - {fileID: 7400366457010098375, guid: 05dcd86ca73c67e48aab50298d1d4742, type: 3}
+  - {fileID: 7400366457010098375, guid: 58e295a4741b96244a7cbe72ebb335c5, type: 3}
   metronome: {fileID: 1741322473}
 --- !u!1 &732773499
 GameObject:
@@ -123574,15 +123574,15 @@ MonoBehaviour:
     holdLineMaterial: {fileID: 2100000, guid: 59a4d6a153eeb954d94ff9b5045395f9, type: 2}
     holdLineColor:
       serializedVersion: 2
-      key0: {r: 0.3647059, g: 0.56078434, b: 0.6627451, a: 1}
-      key1: {r: 0.72156864, g: 0.8862746, b: 0.89019614, a: 1}
+      key0: {r: 0.14901961, g: 0.34509805, b: 0.3372549, a: 1}
+      key1: {r: 0.32156864, g: 0.62352943, b: 0.62352943, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 25443
+      ctime0: 0
       ctime1: 65535
       ctime2: 0
       ctime3: 0
@@ -123599,7 +123599,7 @@ MonoBehaviour:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: 0
+      m_ColorSpace: -1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
   - type: 1
@@ -123609,7 +123609,7 @@ MonoBehaviour:
     holdLineColor:
       serializedVersion: 2
       key0: {r: 0.5388595, g: 0.3647059, b: 0.6627451, a: 1}
-      key1: {r: 0.85904616, g: 0.72156864, b: 0.8901961, a: 1}
+      key1: {r: 0.5254902, g: 0.5568628, b: 0.6666667, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -134190,15 +134190,15 @@ MonoBehaviour:
     holdLineMaterial: {fileID: 2100000, guid: 59a4d6a153eeb954d94ff9b5045395f9, type: 2}
     holdLineColor:
       serializedVersion: 2
-      key0: {r: 0.3647059, g: 0.56078434, b: 0.6627451, a: 1}
-      key1: {r: 0.72156864, g: 0.8862746, b: 0.89019614, a: 1}
+      key0: {r: 0.14901961, g: 0.34509805, b: 0.3372549, a: 1}
+      key1: {r: 0.32156864, g: 0.62352943, b: 0.62352943, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 25443
+      ctime0: 0
       ctime1: 65535
       ctime2: 0
       ctime3: 0
@@ -134215,7 +134215,7 @@ MonoBehaviour:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: 0
+      m_ColorSpace: -1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
   - type: 1
@@ -134225,7 +134225,7 @@ MonoBehaviour:
     holdLineColor:
       serializedVersion: 2
       key0: {r: 0.5388595, g: 0.3647059, b: 0.6627451, a: 1}
-      key1: {r: 0.85904616, g: 0.72156864, b: 0.8901961, a: 1}
+      key1: {r: 0.5254902, g: 0.5568628, b: 0.6666667, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -144056,15 +144056,15 @@ MonoBehaviour:
     holdLineMaterial: {fileID: 2100000, guid: 59a4d6a153eeb954d94ff9b5045395f9, type: 2}
     holdLineColor:
       serializedVersion: 2
-      key0: {r: 0.3647059, g: 0.56078434, b: 0.6627451, a: 1}
-      key1: {r: 0.72156864, g: 0.8862746, b: 0.89019614, a: 1}
+      key0: {r: 0.14901961, g: 0.34509805, b: 0.3372549, a: 1}
+      key1: {r: 0.32156864, g: 0.62352943, b: 0.62352943, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
-      ctime0: 25443
+      ctime0: 0
       ctime1: 65535
       ctime2: 0
       ctime3: 0
@@ -144081,7 +144081,7 @@ MonoBehaviour:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_ColorSpace: 0
+      m_ColorSpace: -1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
   - type: 1
@@ -144091,7 +144091,7 @@ MonoBehaviour:
     holdLineColor:
       serializedVersion: 2
       key0: {r: 0.5388595, g: 0.3647059, b: 0.6627451, a: 1}
-      key1: {r: 0.85904616, g: 0.72156864, b: 0.8901961, a: 1}
+      key1: {r: 0.5254902, g: 0.5568628, b: 0.6666667, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
