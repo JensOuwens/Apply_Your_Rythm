@@ -62,6 +62,7 @@ public class PlayerInputManager : MonoBehaviour
 
     private void Awake()
     {
+        inputActionMap = inputActionAsset?.FindActionMap(nameActionMap);
         playerHitBeatAction = inputActionMap.FindAction(nameHitBeatAction);
         playerHitBeatAction.Enable();
         playerHitBeatAction.performed += OnPlayerPressed;
