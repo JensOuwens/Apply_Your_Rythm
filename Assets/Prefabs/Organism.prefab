@@ -66,6 +66,7 @@ GameObject:
   - component: {fileID: 6832882934770004386}
   - component: {fileID: 3029183715732786499}
   - component: {fileID: 1877442983286012509}
+  - component: {fileID: 1050021935693620961}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -161,7 +162,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GooberCatchAnim
   originalSprite: {fileID: 3720597489193549950, guid: d4c1f4110a350ae46b9cd8c79a0b374e, type: 3}
   catchSprite: {fileID: -3036725280192997629, guid: d4c1f4110a350ae46b9cd8c79a0b374e, type: 3}
+  blinkgOriginalSprite: {fileID: 4302941638903170631, guid: d4c1f4110a350ae46b9cd8c79a0b374e, type: 3}
+  blinkCatchSprite: {fileID: 2341632038225658272, guid: d4c1f4110a350ae46b9cd8c79a0b374e, type: 3}
+  blinkChance: 20
+  blinkTimeInSeconds: 0.4
   spriteRenderer: {fileID: 3029183715732786499}
   idleAnim: {fileID: 7400000, guid: 1653b1295c1827e47897889a02340b1f, type: 2}
   jumpAnim: {fileID: 7400000, guid: 7a4b54afa149d914cad61abbbe6b6b9a, type: 2}
   animator: {fileID: 8685563640430310012}
+--- !u!114 &1050021935693620961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093443666415257981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e45b0011282dc874caf2ae3c7daccfb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OrganismBlink

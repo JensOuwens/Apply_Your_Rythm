@@ -20918,14 +20918,14 @@ MonoBehaviour:
     - light: {fileID: 1984619039}
       initialIntensity: 1
   buckets:
-  - {fileID: 1046053002}
   - {fileID: 1012537314}
-  - {fileID: 2738742881734718413}
-  - {fileID: 1740054350}
-  - {fileID: 1475156453}
-  - {fileID: 1851508278}
   - {fileID: 1215653392}
+  - {fileID: 1740054350}
+  - {fileID: 1851508278}
   - {fileID: 1798084117}
+  - {fileID: 2738742881734718413}
+  - {fileID: 1046053002}
+  - {fileID: 1475156453}
 --- !u!1 &429248771
 GameObject:
   m_ObjectHideFlags: 0
@@ -51533,6 +51533,14 @@ PrefabInstance:
       propertyPath: originalSprite
       value: 
       objectReference: {fileID: 1755914440924353342, guid: 977fb5e0cf98b8f418b9fa19279fd5bc, type: 3}
+    - target: {fileID: 1877442983286012509, guid: 01b4cc60c458d9940b3546e3d36a39da, type: 3}
+      propertyPath: blinkCatchSprite
+      value: 
+      objectReference: {fileID: -6323291299836673998, guid: 977fb5e0cf98b8f418b9fa19279fd5bc, type: 3}
+    - target: {fileID: 1877442983286012509, guid: 01b4cc60c458d9940b3546e3d36a39da, type: 3}
+      propertyPath: blinkgOriginalSprite
+      value: 
+      objectReference: {fileID: -5418743519169157107, guid: 977fb5e0cf98b8f418b9fa19279fd5bc, type: 3}
     - target: {fileID: 3029183715732786499, guid: 01b4cc60c458d9940b3546e3d36a39da, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -82812,6 +82820,14 @@ PrefabInstance:
       propertyPath: originalSprite
       value: 
       objectReference: {fileID: -114802999304708358, guid: 03db0825c04f9ce49b7b357fea053c80, type: 3}
+    - target: {fileID: 1877442983286012509, guid: 01b4cc60c458d9940b3546e3d36a39da, type: 3}
+      propertyPath: blinkCatchSprite
+      value: 
+      objectReference: {fileID: -1679581418948920030, guid: 03db0825c04f9ce49b7b357fea053c80, type: 3}
+    - target: {fileID: 1877442983286012509, guid: 01b4cc60c458d9940b3546e3d36a39da, type: 3}
+      propertyPath: blinkgOriginalSprite
+      value: 
+      objectReference: {fileID: 3492601515662931020, guid: 03db0825c04f9ce49b7b357fea053c80, type: 3}
     - target: {fileID: 3029183715732786499, guid: 01b4cc60c458d9940b3546e3d36a39da, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -145102,6 +145118,14 @@ PrefabInstance:
       propertyPath: originalSprite
       value: 
       objectReference: {fileID: 1545382626213165288, guid: 6de323638e6e11149aea0f76abc2725b, type: 3}
+    - target: {fileID: 1877442983286012509, guid: 01b4cc60c458d9940b3546e3d36a39da, type: 3}
+      propertyPath: blinkCatchSprite
+      value: 
+      objectReference: {fileID: 6877112699558524050, guid: 6de323638e6e11149aea0f76abc2725b, type: 3}
+    - target: {fileID: 1877442983286012509, guid: 01b4cc60c458d9940b3546e3d36a39da, type: 3}
+      propertyPath: blinkgOriginalSprite
+      value: 
+      objectReference: {fileID: -3777623152481536322, guid: 6de323638e6e11149aea0f76abc2725b, type: 3}
     - target: {fileID: 3029183715732786499, guid: 01b4cc60c458d9940b3546e3d36a39da, type: 3}
       propertyPath: m_Sprite
       value: 
