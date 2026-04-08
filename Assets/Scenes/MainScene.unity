@@ -20918,14 +20918,14 @@ MonoBehaviour:
     - light: {fileID: 1984619039}
       initialIntensity: 1
   buckets:
+  - {fileID: 1475156453}
+  - {fileID: 1851508278}
+  - {fileID: 1046053002}
+  - {fileID: 1215653392}
+  - {fileID: 1012537314}
+  - {fileID: 1798084117}
   - {fileID: 1740054350}
   - {fileID: 2738742881734718413}
-  - {fileID: 1012537314}
-  - {fileID: 1215653392}
-  - {fileID: 1475156453}
-  - {fileID: 1798084117}
-  - {fileID: 1046053002}
-  - {fileID: 1851508278}
 --- !u!1 &429248771
 GameObject:
   m_ObjectHideFlags: 0
