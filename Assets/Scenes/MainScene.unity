@@ -5300,63 +5300,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 143344362}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &95097287
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 95097288}
-  - component: {fileID: 95097289}
-  m_Layer: 0
-  m_Name: FailParticleEffectManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &95097288
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 95097287}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.45, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1959487382}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &95097289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 95097287}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d63b39439ac27f4f9dd2adc5608754c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ParticleManager
-  carbonTapParticle: {fileID: 0}
-  waterTapParticle: {fileID: 0}
-  carbonHoldParticle: {fileID: 0}
-  waterHoldParticle: {fileID: 0}
-  spawnPositions:
-  - {x: -3.61, y: -2.45}
-  - {x: -1.2, y: -2.45}
-  - {x: 1.2, y: -2.45}
-  - {x: 3.61, y: -2.45}
-  particleSystems:
-  - {fileID: 0}
-  - {fileID: 0}
-  metronome: {fileID: 1741322473}
 --- !u!1 &106082428
 GameObject:
   m_ObjectHideFlags: 0
@@ -20775,12 +20718,12 @@ MonoBehaviour:
     - light: {fileID: 1984619039}
       initialIntensity: 1
   buckets:
+  - {fileID: 1215653392}
+  - {fileID: 1608330921}
   - {fileID: 2738742881734718413}
   - {fileID: 1475156453}
-  - {fileID: 1740054350}
-  - {fileID: 1608330921}
-  - {fileID: 1215653392}
   - {fileID: 1798084117}
+  - {fileID: 1740054350}
 --- !u!1 &429248771
 GameObject:
   m_ObjectHideFlags: 0
@@ -128887,8 +128830,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 95097288}
+  m_Children: []
   m_Father: {fileID: 143344362}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1959487384
@@ -128908,7 +128850,6 @@ MonoBehaviour:
   musicPlayer: {fileID: 77862651}
   organismManager: {fileID: 505783573}
   beatParticleManager: {fileID: 727059446}
-  failParticleManager: {fileID: 95097289}
   soundEffectManager: {fileID: 732773501}
   screenPulse: {fileID: 519420033}
   errorMarginMs: 150

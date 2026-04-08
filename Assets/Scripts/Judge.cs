@@ -22,8 +22,6 @@ public class Judge : MonoBehaviour
     [SerializeField]
     private ParticleManager beatParticleManager;
     [SerializeField]
-    private ParticleManager failParticleManager;
-    [SerializeField]
     private SoundEffectManager soundEffectManager;
     [SerializeField]
     private ScreenPulse screenPulse;
@@ -134,9 +132,9 @@ public class Judge : MonoBehaviour
         if (Mathf.Abs(timingDiff) > errorMarginMs || bestBeat.hit)
         {
             if (timingDiff < 0)
-                failParticleManager.SpawnParticleWithIndexIDPos(playerId, 1); // Too early particle
+                beatParticleManager.SpawnParticleWithIndexIDPos(playerId, 1); // Too early particle
             else
-                failParticleManager.SpawnParticleWithIndexIDPos(playerId, 0); // Too late particle
+                beatParticleManager.SpawnParticleWithIndexIDPos(playerId, 0); // Too late particle
             incorrectInputs++;
             return;
         }

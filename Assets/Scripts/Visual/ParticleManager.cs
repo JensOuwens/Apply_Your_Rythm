@@ -78,6 +78,6 @@ public class ParticleManager : MonoBehaviour
 
     public void SpawnParticleWithIndexIDPos(int position, int index)
     {
-        Instantiate(particleSystems[index].GetComponent<ParticleSystem>(), spawnPositions[position], Quaternion.identity);
+        Instantiate(particleSystems[index], spawnPositions[position], Quaternion.identity);
     }
 }
