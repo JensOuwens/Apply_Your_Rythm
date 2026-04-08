@@ -135,7 +135,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4779862
 Transform:
   m_ObjectHideFlags: 0
@@ -20720,10 +20720,10 @@ MonoBehaviour:
   buckets:
   - {fileID: 1215653392}
   - {fileID: 1608330921}
-  - {fileID: 2738742881734718413}
-  - {fileID: 1475156453}
-  - {fileID: 1798084117}
   - {fileID: 1740054350}
+  - {fileID: 1475156453}
+  - {fileID: 2738742881734718413}
+  - {fileID: 1798084117}
 --- !u!1 &429248771
 GameObject:
   m_ObjectHideFlags: 0
@@ -25770,7 +25770,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &446709261
 Transform:
   m_ObjectHideFlags: 0
@@ -46288,7 +46288,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &704784477
 Transform:
   m_ObjectHideFlags: 0
@@ -97732,7 +97732,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 47.73534, y: 24.800001}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -144081,7 +144081,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2048668424
 Transform:
   m_ObjectHideFlags: 0
