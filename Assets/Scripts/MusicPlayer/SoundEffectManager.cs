@@ -16,7 +16,10 @@ public class SoundEffectManager : MonoBehaviour
     public static SoundEffectManager instance;
     
     [SerializeField]
-    private List<SoundEffectItem> SoundEffectsTap;
+    private List<SoundEffectItem> SoundEffectsTapWater;
+    
+    [SerializeField]
+    private List<SoundEffectItem> SoundEffectTapC02;
     [SerializeField]
     private List<SoundEffectItem> SoundEffectsHold;
     
@@ -38,12 +41,24 @@ public class SoundEffectManager : MonoBehaviour
         instance = this;
     }
 
-    public void PlayRandomSoundEffect(int playerID)
+    public void PlayRandomSoundEffect(int playerID, BeatAttribute attribute)
     {
-        int listIndex = Random.Range(0, SoundEffectsTap.Count - 1);
+        List<SoundEffectItem> currentSFXList = new List<SoundEffectItem>();
+
+        switch (attribute)
+        {
+            case BeatAttribute.Water:
+                currentSFXList = SoundEffectsTapWater;
+                break;
+            case BeatAttribute.Co2 :
+                currentSFXList = SoundEffectTapC02;
+                break;
+        }
+        
+        int listIndex = Random.Range(0, currentSFXList.Count - 1);
         AudioSource audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource.clip = SoundEffectsTap[listIndex].AudioClip;
-        audioSource.volume = SoundEffectsTap[listIndex].Volume;
+        audioSource.clip = currentSFXList[listIndex].AudioClip;
+        audioSource.volume = currentSFXList[listIndex].Volume;
         float pitch = 0;
         switch (playerID)
         {
@@ -61,15 +76,6 @@ public class SoundEffectManager : MonoBehaviour
                 break;
         }
         audioSource.pitch = pitch;
-        audioSource.Play();
-        Destroy(audioSource, audioSource.clip.length);
-    }
-
-    public void PlaySoundEffectWithIndex(int index)
-    {
-        AudioSource audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource.clip = SoundEffectsTap[index].AudioClip;
-        audioSource.volume = SoundEffectsTap[index].Volume;
         audioSource.Play();
         Destroy(audioSource, audioSource.clip.length);
     }

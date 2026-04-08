@@ -20776,11 +20776,11 @@ MonoBehaviour:
     - light: {fileID: 1984619039}
       initialIntensity: 1
   buckets:
-  - {fileID: 1798084117}
-  - {fileID: 1475156453}
   - {fileID: 1215653392}
-  - {fileID: 1740054350}
+  - {fileID: 1475156453}
   - {fileID: 2738742881734718413}
+  - {fileID: 1740054350}
+  - {fileID: 1798084117}
   - {fileID: 1608330921}
 --- !u!1 &429248771
 GameObject:
@@ -46522,7 +46522,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48492d8649b050b4cb4fee525dea259c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoundEffectManager
-  SoundEffectsTap:
+  SoundEffectsTapWater:
+  - id: 0
+    AudioClip: {fileID: 8300000, guid: 2cd56a72e59b99d44a927a66c4e0be97, type: 3}
+    Volume: 0.6
+  - id: 1
+    AudioClip: {fileID: 8300000, guid: 36b6c55d4b8617f4a8dd1b322ef60236, type: 3}
+    Volume: 0.6
+  - id: 2
+    AudioClip: {fileID: 8300000, guid: 4c7fd00059f8d204ea4312075e88d9ca, type: 3}
+    Volume: 0.6
+  SoundEffectTapC02:
   - id: 0
     AudioClip: {fileID: 8300000, guid: 00e978f9c45586d46ae2813870b326f6, type: 3}
     Volume: 0.6
