@@ -42,7 +42,7 @@ public class Bucket : MonoBehaviour
     private void Update()
     {
         if (!organismToFollow) return;
-        transform.position = organismToFollow.transform.position;
+        transform.position = organismToFollow.transform.position + new Vector3(0,0.5f,0);
     }
 
     public void FollowOrganism(OrganismAnim catchAnim, float duration)
