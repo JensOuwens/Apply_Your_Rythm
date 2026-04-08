@@ -22,8 +22,6 @@ public class Judge : MonoBehaviour
     [SerializeField]
     private ParticleManager beatParticleManager;
     [SerializeField]
-    private ParticleManager failParticleManager;
-    [SerializeField]
     private SoundEffectManager soundEffectManager;
     [SerializeField]
     private ScreenPulse screenPulse;
@@ -134,9 +132,9 @@ public class Judge : MonoBehaviour
         if (Mathf.Abs(timingDiff) > errorMarginMs || bestBeat.hit)
         {
             if (timingDiff < 0)
-                failParticleManager.SpawnParticleWithIndexIDPos(playerId, 1); // Too early particle
+                beatParticleManager.SpawnParticleWithIndexIDPos(playerId, 1); // Too early particle
             else
-                failParticleManager.SpawnParticleWithIndexIDPos(playerId, 0); // Too late particle
+                beatParticleManager.SpawnParticleWithIndexIDPos(playerId, 0); // Too late particle
             incorrectInputs++;
             return;
         }
@@ -152,8 +150,8 @@ public class Judge : MonoBehaviour
             if (bestBeat.attribute == BeatAttribute.Water) correctInputsWater++;
             else if (bestBeat.attribute == BeatAttribute.Co2) correctInputsCo2++;
             organismManager.TriggerAnim(playerId, timeToNextBeat / 1000f);
-            beatParticleManager.SpawnRandomParticleIDPos(playerId);
-            soundEffectManager.PlayRandomSoundEffect(playerId);
+            beatParticleManager.SpawnTapParticle(playerId, bestBeat.attribute);
+            soundEffectManager.PlayRandomSoundEffect(playerId, bestBeat.attribute);
             screenPulse.HitPulse(delay, timingDiff);
         }
         else if (bestBeat.type == BeatType.Hold)
@@ -165,7 +163,7 @@ public class Judge : MonoBehaviour
                         StartCoroutine(InvokePointAdditionHoldBeat(holdDurationSec, playerId, bestBeat.attribute, bestBeat.beatEnd - bestBeat.beatStart))))) return;
 
             organismManager.TriggerAnimHold(playerId, bestBeat, holdDurationSec);
-            beatParticleManager.SpawnRandomParticleIDPosHold(playerId, bestBeat, holdDurationSec);
+            beatParticleManager.SpawnHoldParticle(playerId, holdDurationSec, bestBeat.attribute);
             soundEffectManager.PlaySoundEffectWithIndexHold(0, bestBeat, playerId, holdDurationSec);
             screenPulse.HoldPulse(holdDurationSec, delay, timingDiff);
         }

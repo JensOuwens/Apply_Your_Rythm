@@ -20,7 +20,7 @@ public class Bucket : MonoBehaviour
     private OrganismManager parentManager;
     private OrganismAnim organismToFollow;
     private int savedAmount;
-    public int CurrentState => animateAlongSpline.CurrentState;
+    public int CurrentState => animateAlongSpline.currentIndex;
     public Action<float> OnEmptyBucket;
 
     private void OnValidate()
@@ -42,7 +42,7 @@ public class Bucket : MonoBehaviour
     private void Update()
     {
         if (!organismToFollow) return;
-        transform.position = organismToFollow.transform.position;
+        transform.position = organismToFollow.transform.position + new Vector3(0,0.5f,0);
     }
 
     public void FollowOrganism(OrganismAnim catchAnim, float duration)

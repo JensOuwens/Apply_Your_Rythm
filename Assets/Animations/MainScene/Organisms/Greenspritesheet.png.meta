@@ -1,0 +1,331 @@
+fileFormatVersion: 2
+guid: 03db0825c04f9ce49b7b357fea053c80
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 2290230962546118914
+    second: Greenspritesheet_0
+  - first:
+      213: -7852930463355227922
+    second: Greenspritesheet_1
+  - first:
+      213: 874033623866385630
+    second: Greenspritesheet_2
+  - first:
+      213: -1436744429294059145
+    second: Greenspritesheet_3
+  - first:
+      213: -9046851116219252703
+    second: Greenspritesheet_4
+  - first:
+      213: 6517893180095257282
+    second: Greenspritesheet_5
+  - first:
+      213: -8095193185718514892
+    second: Greenspritesheet_6
+  - first:
+      213: -114802999304708358
+    second: Greenspritesheet_7
+  - first:
+      213: 3492601515662931020
+    second: Greenspritesheet_8
+  - first:
+      213: 4704785475778312471
+    second: Greenspritesheet_9
+  - first:
+      213: 6139617949165175854
+    second: Greenspritesheet_10
+  - first:
+      213: -1335744824608267327
+    second: Greenspritesheet_11
+  - first:
+      213: -7984007393830225617
+    second: Greenspritesheet_12
+  - first:
+      213: -4032199410189654232
+    second: Greenspritesheet_13
+  - first:
+      213: -8641703001256709075
+    second: Greenspritesheet_14
+  - first:
+      213: -9122417881284944851
+    second: Greenspritesheet_15
+  - first:
+      213: -6723508691849706568
+    second: Greenspritesheet_16
+  - first:
+      213: 6374464599743821011
+    second: Greenspritesheet_17
+  - first:
+      213: 7856323951331182598
+    second: Greenspritesheet_18
+  - first:
+      213: -2714609717805007158
+    second: Greenspritesheet_19
+  - first:
+      213: -201262782921583390
+    second: Greenspritesheet_20
+  - first:
+      213: -1679581418948920030
+    second: Greenspritesheet_21
+  - first:
+      213: -6026155275986090820
+    second: Greenspritesheet_22
+  - first:
+      213: -1615485401206660869
+    second: Greenspritesheet_23
+  - first:
+      213: -1343184424417246197
+    second: Greenspritesheet_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 1400
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Greenspritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 2360
+        width: 1690
+        height: 1449
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afe1b47c743286ef0800000000000000
+      internalID: -114802999304708358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Greenspritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 2050
+        y: 2360
+        width: 1862
+        height: 1452
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c44741be296387030800000000000000
+      internalID: 3492601515662931020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Greenspritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 304
+        width: 1699
+        height: 1457
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2e4d375b098f43df0800000000000000
+      internalID: -201262782921583390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Greenspritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 2050
+        y: 304
+        width: 1862
+        height: 1458
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22df338299de0b8e0800000000000000
+      internalID: -1679581418948920030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: fb0d425175ea70d4eba2f464fb6ba5ae
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Greenspritesheet_0: 2290230962546118914
+      Greenspritesheet_1: -7852930463355227922
+      Greenspritesheet_10: 6139617949165175854
+      Greenspritesheet_11: -1335744824608267327
+      Greenspritesheet_12: -7984007393830225617
+      Greenspritesheet_13: -4032199410189654232
+      Greenspritesheet_14: -8641703001256709075
+      Greenspritesheet_15: -9122417881284944851
+      Greenspritesheet_16: -6723508691849706568
+      Greenspritesheet_17: 6374464599743821011
+      Greenspritesheet_18: 7856323951331182598
+      Greenspritesheet_19: -2714609717805007158
+      Greenspritesheet_2: 874033623866385630
+      Greenspritesheet_20: -201262782921583390
+      Greenspritesheet_21: -1679581418948920030
+      Greenspritesheet_22: -6026155275986090820
+      Greenspritesheet_23: -1615485401206660869
+      Greenspritesheet_24: -1343184424417246197
+      Greenspritesheet_3: -1436744429294059145
+      Greenspritesheet_4: -9046851116219252703
+      Greenspritesheet_5: 6517893180095257282
+      Greenspritesheet_6: -8095193185718514892
+      Greenspritesheet_7: -114802999304708358
+      Greenspritesheet_8: 3492601515662931020
+      Greenspritesheet_9: 4704785475778312471
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

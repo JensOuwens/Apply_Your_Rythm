@@ -17,6 +17,8 @@ public class UIPulse : MonoBehaviour
     [SerializeField]
     private RectTransform rectTransform;
     private float t;
+    
+    private Vector3 lastScale;
 
     private void OnValidate()
     {
@@ -25,11 +27,18 @@ public class UIPulse : MonoBehaviour
         if (!rectTransform)
             enabled = false;
     }
-
+    
     private void Update()
     {
         t += Time.unscaledDeltaTime * speed;
-        var s = (Mathf.Sin(t) + 1f) * 0.5f;
-        rectTransform.localScale = Vector3.Lerp(minScale, maxScale, s);
+        float s = (Mathf.Sin(t) + 1f) * 0.5f;
+
+        Vector3 newScale = Vector3.Lerp(minScale, maxScale, s);
+
+        if ((newScale - lastScale).sqrMagnitude > 0.000001f)
+        {
+            rectTransform.localScale = newScale;
+            lastScale = newScale;
+        }
     }
 }

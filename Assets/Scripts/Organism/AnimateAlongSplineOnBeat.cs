@@ -1,125 +1,138 @@
 using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using Unity.Mathematics;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Splines;
 using UnityEngine.Splines.Interpolators;
 
-/// <summary>
-/// Moves object transform along a spline based on amount of set states, or knots within the spline
-/// </summary>
 [RequireComponent(typeof(SplineAnimate))]
 public class AnimateAlongSplineOnBeat : MonoBehaviour
 {
     [Header("RequireComponents")]
     private Metronome metronome;
-    [SerializeField]
-    private MusicPlayer musicPlayer;
-    [SerializeField]
-    private SplineAnimate splineAnimate;
-    [SerializeField]
-    private bool shouldUseKnots;
-    private float[] knotsInDistance;
-    [Header("config")]
-    [SerializeField]
-    private int currentState;
-    public int CurrentState
-    {
-        get => currentState;
-        private set => currentState = value;
-    }
 
-    private int amountOfStates;
-    [SerializeField]
-    private int[] unUsedStates;
-    [SerializeField]
-    private AnimationCurve beatEasing = AnimationCurve.EaseInOut(0, 0, 1, 1);
+    [SerializeField] private MusicPlayer musicPlayer;
+    [SerializeField] private SplineAnimate splineAnimate;
+
+    [Header("Config")]
+    [SerializeField] private bool shouldUseKnots = true;
+    [SerializeField] private int[] unUsedStates;
+
+    [Tooltip("Adds extra spline space after last state so it can move off-screen")]
+    [SerializeField] private float endPadding = 0.1f;
+
+    private float[] knotsInDistance;
+    private List<int> validStates;
+
+    public int currentIndex;
+
+    [SerializeField] private AnimationCurve beatEasing = AnimationCurve.EaseInOut(0, 0, 1, 1);
     private LerpFloat lerpFloat;
+
     private float fromTime;
     private float toTime;
     private double transitionStartBeat;
     private bool isTransitioning;
+
     [Header("Beat counting")]
-    [SerializeField]
-    private int amountOfBeatsToCount = 1;
-    private int beatCount = 0;
+    [SerializeField] private int amountOfBeatsToCount = 1;
+    private int beatCount;
+
     [Header("Events")]
-    [SerializeField] 
-    private UnityEvent onLastState;
-    [SerializeField] 
-    private UnityEvent onStartLoop;
+    [SerializeField] private UnityEvent onLastState;
+    [SerializeField] private UnityEvent onStartLoop;
+
+    private int AmountOfStates =>
+        splineAnimate && splineAnimate.Container != null
+            ? splineAnimate.Container.Spline.Count
+            : 0;
 
     private void OnValidate()
     {
         if (!splineAnimate)
             splineAnimate = GetComponent<SplineAnimate>();
-        enabled = splineAnimate && musicPlayer;
-        
-        if (shouldUseKnots && splineAnimate && splineAnimate.Container)
-            amountOfStates = splineAnimate.Container.Spline.Count;
-        currentState = math.clamp(currentState, 0, amountOfStates);
+
+        if (splineAnimate && splineAnimate.Container != null)
+        {
+            CalculateKnotsInDistance();
+            BuildValidStates();
+        }
+
+        if (validStates != null && validStates.Count > 0)
+            currentIndex = Mathf.Clamp(currentIndex, 0, validStates.Count - 1);
     }
-    
+
     public void Initialize(Metronome metronome1)
     {
         metronome = metronome1;
+
         CalculateKnotsInDistance();
-        SetState(currentState);
+        BuildValidStates();
+
+        currentIndex = Mathf.Clamp(currentIndex, 0, Mathf.Max(0, validStates.Count - 1));
+
+        if (validStates.Count > 0)
+            SetState(validStates[currentIndex], true);
+    }
+
+    private void BuildValidStates()
+    {
+        validStates = Enumerable.Range(0, AmountOfStates)
+            .Where(i => unUsedStates == null || !unUsedStates.Contains(i))
+            .ToList();
     }
 
     public void OnMove()
     {
         beatCount++;
-        if (beatCount < amountOfBeatsToCount) return;
+
+        if (beatCount < amountOfBeatsToCount)
+            return;
+
         beatCount = 0;
         AdvanceState();
     }
 
     private void AdvanceState()
     {
-        var newState = (int)currentState + 1;
-        while (unUsedStates.Contains(newState))
+        if (validStates == null || validStates.Count == 0)
+            return;
+
+        int previousIndex = currentIndex;
+
+        currentIndex++;
+
+        if (currentIndex >= validStates.Count)
         {
-            if (unUsedStates.Contains(newState))
-                newState++;
-            else
-                break;
-            if (newState > amountOfStates)
-                newState = 0;
+            currentIndex = 0;
+            onStartLoop.Invoke();
         }
-        
-        if (newState > amountOfStates)
-            SetState(0);
-        else
-            SetState(newState);
+
+        SetState(validStates[currentIndex], false, previousIndex);
     }
 
-    private void SetState(int stateToSet)
+    private void SetState(int stateToSet, bool instant = false, int previousIndexOverride = -1)
     {
-        var previousState = currentState;
+        int previousIndex = previousIndexOverride >= 0 ? previousIndexOverride : currentIndex;
 
-        if (stateToSet == amountOfStates - 1)
-            onLastState.Invoke();
-        
+        int previousState = validStates[Mathf.Clamp(previousIndex, 0, validStates.Count - 1)];
+        int newState = stateToSet;
+
+        bool isLoopWrap = previousIndex == validStates.Count - 1 && currentIndex == 0;
+
         fromTime = PositionOnTimeLine(previousState);
-        currentState = stateToSet;
-        toTime = PositionOnTimeLine(currentState);
+        toTime = PositionOnTimeLine(newState);
 
-        // Detect wrap: EndHidden -> StartHidden
-        var isWrap = previousState == amountOfStates && currentState == 0;
-
-        // teleport
-        if (isWrap)
+        if (instant || isLoopWrap)
         {
-            if (currentState == 0)
-                onStartLoop.Invoke();
             splineAnimate.NormalizedTime = toTime;
             isTransitioning = false;
+
+            if (isLoopWrap)
+                onStartLoop.Invoke();
+
             return;
         }
 
@@ -132,10 +145,9 @@ public class AnimateAlongSplineOnBeat : MonoBehaviour
         if (!splineAnimate ||
             !metronome ||
             !musicPlayer ||
-            !splineAnimate.Container ||
+            splineAnimate.Container == null ||
             splineAnimate.Container.Spline == null ||
-            splineAnimate.Container.Spline.Count < 2 ||
-            splineAnimate.Container.Spline.GetLength() <= 0f)
+            splineAnimate.Container.Spline.Count < 2)
             return;
 
         LerpPositionToState();
@@ -147,7 +159,7 @@ public class AnimateAlongSplineOnBeat : MonoBehaviour
             return;
 
         double currentBeat = musicPlayer.GetSongPositionInMS() / metronome.beatDurationInMS;
-        var phase = (float)(currentBeat - transitionStartBeat);
+        float phase = (float)(currentBeat - transitionStartBeat);
 
         if (phase >= 1f)
         {
@@ -156,49 +168,59 @@ public class AnimateAlongSplineOnBeat : MonoBehaviour
             return;
         }
 
-        var curved = beatEasing.Evaluate(phase);
+        float curved = beatEasing.Evaluate(phase);
         splineAnimate.NormalizedTime = lerpFloat.Interpolate(fromTime, toTime, curved);
     }
 
-    private float PositionOnTimeLine(int s)
+    private float PositionOnTimeLine(int state)
     {
-        if (!shouldUseKnots)
-            return Mathf.Clamp01((float)s / amountOfStates);
-        // calculate knotPosition along the spline
-        var spline = splineAnimate.Container.Spline;
+        if (validStates == null || validStates.Count == 0)
+            return 0f;
 
-        if (s <= 0 || s >= spline.Count)
-            return math.clamp(s, 0, 1);
-        
-        return knotsInDistance[s];
+        bool isLastState = state == validStates[validStates.Count - 1];
+
+        if (shouldUseKnots)
+        {
+            float t = knotsInDistance[state];
+
+            if (isLastState)
+                return 1f + endPadding;
+
+            return t;
+        }
+
+        int index = validStates.IndexOf(state);
+
+        if (validStates.Count <= 1)
+            return 0f;
+
+        float normalized = index / (validStates.Count - 1f);
+
+        if (isLastState)
+            return 1f + endPadding;
+
+        return normalized;
     }
-    
+
     private void CalculateKnotsInDistance()
     {
-        knotsInDistance = new float[amountOfStates];
-        if (!splineAnimate || !splineAnimate.Container || splineAnimate.Container.Spline == null)
+        if (!splineAnimate || splineAnimate.Container == null || splineAnimate.Container.Spline == null)
             return;
-        
-        var spline = splineAnimate.Container.Spline;
-        var totalLength = spline.GetLength();
 
-        for (var s = 0; s < knotsInDistance.Length; s++)
+        var spline = splineAnimate.Container.Spline;
+
+        knotsInDistance = new float[spline.Count];
+
+        float totalLength = spline.GetLength();
+
+        for (int s = 0; s < spline.Count; s++)
         {
-            var distanceToKnot = 0f;
-            for (var i = 0; i < s; i++) 
+            float distanceToKnot = 0f;
+
+            for (int i = 0; i < s; i++)
                 distanceToKnot += spline.GetCurveLength(i);
 
-            knotsInDistance[s] =  Mathf.Clamp01(distanceToKnot / totalLength);
+            knotsInDistance[s] = Mathf.Clamp01(distanceToKnot / totalLength);
         }
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        if (shouldUseKnots || !splineAnimate || !splineAnimate.Container || splineAnimate.Container.Spline == null)
-            return;
-        
-        Gizmos.color = Color.red;
-        foreach (var knot in splineAnimate.Container.Spline) 
-            Gizmos.DrawSphere(knot.Position, 0.1f);
     }
 }

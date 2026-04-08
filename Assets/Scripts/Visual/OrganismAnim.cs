@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class OrganismAnim : MonoBehaviour
 {
@@ -9,17 +10,34 @@ public class OrganismAnim : MonoBehaviour
     private static readonly int IdleSpeed = Animator.StringToHash("IdleSpeed");
     [SerializeField] private Sprite originalSprite;
     [SerializeField] private Sprite catchSprite;
+    [SerializeField] private Sprite blinkgOriginalSprite;
+    [SerializeField] private Sprite blinkCatchSprite;
+    [SerializeField] private GameObject hands;
+    private Sprite currentIdleSprite;
+    private Sprite currentcatchSprite;
+    [SerializeField] private int blinkChance;
+    [SerializeField] private float blinkTimeInSeconds;
     [SerializeField] private SpriteRenderer spriteRenderer;
     private Coroutine currentAnim;
     [Header("movementAnim")]
     [SerializeReference] private AnimationClip idleAnim;
     [SerializeReference] private AnimationClip jumpAnim;
     [SerializeReference] private Animator animator;
+    
 
     private void OnValidate()
     {
         if (!spriteRenderer) spriteRenderer = GetComponent<SpriteRenderer>();
         enabled = spriteRenderer != null;
+    }
+
+    private void Awake()
+    {
+        currentIdleSprite = originalSprite;
+        currentcatchSprite = catchSprite;
+        
+        InvokeRepeating("blinkLogic", 1, 1);
+        
     }
 
     private static float GetNeededSpeedMult(AnimationClip clip, float targetDuration)
@@ -52,9 +70,11 @@ public class OrganismAnim : MonoBehaviour
 
     private IEnumerator GooberAnimCoroutine(float duration)
     {
-        spriteRenderer.sprite = catchSprite;
+        spriteRenderer.sprite = currentcatchSprite;
+        hands.gameObject.SetActive(true);
         yield return new WaitForSeconds(duration);
-        spriteRenderer.sprite = originalSprite;
+        spriteRenderer.sprite = currentIdleSprite;
+        hands.gameObject.SetActive(false);
         currentAnim = null;
     }
     
@@ -66,6 +86,45 @@ public class OrganismAnim : MonoBehaviour
             currentAnim = null;
         }
 
-        spriteRenderer.sprite = originalSprite;
+        spriteRenderer.sprite = currentIdleSprite;
+        hands.gameObject.SetActive(false);
+    }
+    
+    private void blinkLogic()
+    {
+        int chanceRoll = Random.Range(0, 100);
+
+        if (blinkChance < chanceRoll) return;
+        
+        StartCoroutine(blinkTime());
+    }
+
+    IEnumerator blinkTime()
+    {
+        Debug.Log("working");
+        currentIdleSprite = blinkgOriginalSprite;
+        currentcatchSprite = blinkCatchSprite;
+        ApplyCurrentSprite();
+        
+        yield return new WaitForSeconds(blinkTimeInSeconds);
+        
+        currentIdleSprite = originalSprite;
+        currentcatchSprite =  catchSprite;
+        ApplyCurrentSprite();
+    }
+    
+    private void ApplyCurrentSprite()
+    {
+        if (currentAnim == null)
+        {
+            spriteRenderer.sprite = currentIdleSprite;
+            
+        }
+        else
+        {
+            spriteRenderer.sprite = currentcatchSprite;
+            
+        }
+        
     }
 }
