@@ -29,6 +29,8 @@ public class InputEventComponent : MonoBehaviour
         enabled = !(inputActionAsset == null || inputActionMap == null);
     }
 
+    private void Awake() => inputActionMap = inputActionAsset?.FindActionMap(nameActionMap);
+
     private void OnEnable()
     {
         playerAction = inputActionMap.FindAction(nameAction);
